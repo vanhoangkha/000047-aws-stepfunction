@@ -18,7 +18,7 @@ home = [ "HTML", "RSS", "JSON"]
   
 [Languages]
 [Languages.en]
-title = "Use Tag and Resource Group"
+title = "AWS Step Functions"
 weight = 1
 languageName = "English"
 
@@ -35,7 +35,7 @@ url = "https://www.facebook.com/groups/660548818043427/"
 weight = 20
 
 [Languages.vi]
-title = "Sử dụng Tag và Resource Group"
+title = "AWS Step Functions"
 weight = 2
 languageName = "Tiếng Việt"
 

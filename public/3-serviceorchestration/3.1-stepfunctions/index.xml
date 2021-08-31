@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AWS Step Functions on Use Tag and Resource Group</title>
+    <title>AWS Step Functions</title>
     <link>/3-serviceorchestration/3.1-stepfunctions/</link>
-    <description>Recent content in AWS Step Functions on Use Tag and Resource Group</description>
+    <description>Recent content on AWS Step Functions</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 01 Jan 1970 07:33:41 +0700</lastBuildDate>
     
