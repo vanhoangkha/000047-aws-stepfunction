@@ -20,7 +20,7 @@ mkdir -p statemachine && pushd statemachine && touch account-application-workflo
 ![StepFunctions](/images/SF/040.png?width=90pc)
 
 2. Click vào thư mục **statemachine** và mở file **account-application-workflow.asl.json**.
-  + Thay thế nội dung JSON dưới đây.
+  + Thay thế nội dung dưới đây.
   + Ấn **Ctrl+S** để lưu tập tin.
 
 ```

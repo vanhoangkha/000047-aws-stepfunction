@@ -11,7 +11,7 @@ pre = "<b>3.4.1 </b>"
 
 Trong bước này chúng ta sẽ thêm thuộc tính ResultPath vào trạng thái **Check Name** và **Check Address** bên trong state machine của chúng ta được xác định trong **state-machine / account-application-workflow.asl.json**.
 
-1. Quay trở lại giao diện dòng lệnh của Cloud9 instance, thay thế nội dung của file **state-machine/account-application-workflow.asl.json** với nội dung JSON dưới đây.
+1. Quay trở lại giao diện dòng lệnh của Cloud9 instance, thay thế nội dung của file **state-machine/account-application-workflow.asl.json** với nội dung dưới đây.
   + Ấn **Ctrl + S** để lưu thay đổi.
 
  ```

@@ -38,10 +38,10 @@ pre = "<b>3.5.2 </b>"
 ```
   + Click **Start execution**.
 
-![StepFunctions](/images/SF/064.png?width=90pc)
+![StepFunctions](/images/SF/066.png?width=90pc)
 
 6. Hãy lưu ý cách chúng ta định tuyến đến **Pending Review**, lần này chúng ta chuyển đến một địa chỉ không hợp lệ theo mẫu <số>-<khoảng trắng>-<chữ>. ( ví dụ : 123 Street) 
 
-![StepFunctions](/images/SF/065.png?width=90pc)
+![StepFunctions](/images/SF/067.png?width=90pc)
 
 Nhờ **Choice state**, chúng ta hiện đang định tuyến workflow của mình theo cách chúng ta muốn. Tuy nhiên, chúng ta vẫn chưa thực hiện xử lý gì ở state **Approve Application** và **Pending Review**. Chúng tôi sẽ tạm dừng việc triển khai bước Phê duyệt đơn đăng ký cho đến phần sau của workshop (chúng ta đã biết cách tích hợp với một hàm Lambda, vì vậy đó chưa phải là bước tiếp theo thú vị để thực hiện). Thay vào đó, chúng tôi sẽ tiếp tục duy trì đà học tập và tìm hiểu cách triển khai trạng thái **Pending Review** trong bước kế tiếp.

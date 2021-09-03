@@ -14,7 +14,7 @@ Các bước chúng ta sẽ làm trong phần này :
 + Thêm trạng thái **Review Required ?** Sử dụng **Choice state** để chuyển sang trạng thái **Pending Review** nếu kiểm tra tên hoặc địa chỉ trả về kết quả bị gắn cờ.
 + Cập nhật bước **Check Address** để chuyển sang trạng thái **Review Required?**.
 
-1. Quay trở lại giao diện dòng lệnh của Cloud9 instance, thay thế nội dung của file **state-machine/account-application-workflow.asl.json** với nội dung JSON dưới đây.
+1. Quay trở lại giao diện dòng lệnh của Cloud9 instance, thay thế nội dung của file **state-machine/account-application-workflow.asl.json** với nội dung dưới đây.
   + Ấn **Ctrl + S** để lưu thay đổi.
 
  ```
@@ -86,7 +86,7 @@ sam deploy
 
 ![StepFunctions](/images/SF/059.png?width=90pc)
 
-Chúng tôi vừa thêm hai trạng thái mới vào workflow làm việc của mình: **Review Required** Và **Pending Review**. Trạng thái **Review Requried?** Kiểm tra đầu vào của nó (là đầu ra từ trạng thái **Check Address**) và chạy qua một loạt kiểm tra. 
+Chúng ta vừa thêm hai trạng thái mới vào workflow làm việc của mình: **Review Required** Và **Pending Review**. Trạng thái **Review Requried?** Kiểm tra đầu vào của nó (là đầu ra từ trạng thái **Check Address**) và sẽ chạy qua một loạt các quy tắc kiểm tra ( rules ). 
 
 {{%notice tip%}}
 Bạn có thể thấy rằng có một loạt hai quy tắc lựa chọn trong định nghĩa của trạng thái, mỗi quy tắc chỉ định state ( trạng thái ) sẽ chuyển đến tiếp theo nếu quy tắc của nó khớp thành công. Cũng có một tên trạng thái mặc định được chỉ định để chuyển đổi sang trong trường hợp không có quy tắc phù hợp nào.

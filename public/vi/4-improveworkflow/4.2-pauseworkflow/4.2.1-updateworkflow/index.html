@@ -1,0 +1,2825 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Cập nhật workflow :: AWS Step Functions</title>
+
+    
+    <link href="/css/nucleus.css?1630677296" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1630677296" rel="stylesheet">
+    <link href="/css/hybrid.css?1630677296" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1630677296" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1630677296" rel="stylesheet">
+    <link href="/css/auto-complete.css?1630677296" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1630677296" rel="stylesheet">
+    <link href="/css/theme.css?1630677296" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1630677296" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1630677296" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1630677296"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/vi/4-improveworkflow/4.2-pauseworkflow/4.2.1-updateworkflow/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1630677296"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1630677296"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/vi";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1630677296"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-intro/" title="Giới thiệu Workshop" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/1-intro/">
+          <b>1. </b>Giới thiệu Workshop
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-intro/1.1-orches/" title="Service Orchestration" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/1-intro/1.1-orches/">
+          <b>1.1 </b>Service Orchestration
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-intro/1.2-businessdomain/" title="Lĩnh vực kinh doanh" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/1-intro/1.2-businessdomain/">
+          <b>1.2 </b>Lĩnh vực kinh doanh
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-intro/1.3-detailworkflow/" title="Chi tiết workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/1-intro/1.3-detailworkflow/">
+          <b>1.3 </b>Chi tiết workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prepare/" title="Chuẩn bị" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prepare/">
+          <b>2. </b>Chuẩn bị
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prepare/2.1-cloud9/" title="Tạo Cloud9 Instance" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prepare/2.1-cloud9/">
+          <b>2.1 </b>Tạo Cloud9 Instance
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prepare/2.2-createservice/" title="Tạo các dịch vụ mẫu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prepare/2.2-createservice/">
+          <b>2.2 </b>Tạo các dịch vụ mẫu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prepare/2.3-exploreservice/" title="Kiểm tra dịch vụ mẫu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prepare/2.3-exploreservice/">
+          <b>2.3 </b>Kiểm tra dịch vụ mẫu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prepare/2.3-exploreservice/2.3.1-account/" title="Account Application" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prepare/2.3-exploreservice/2.3.1-account/">
+          <b>2.3.1 </b>Account Application
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prepare/2.3-exploreservice/2.3.2-datacheck/" title="Data Checking" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prepare/2.3-exploreservice/2.3.2-datacheck/">
+          <b>2.3.2 </b>Data Checking
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/" title="Dịch vụ điều phối" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/">
+          <b>3. </b>Dịch vụ điều phối
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.1-stepfunctions/" title="AWS Step Functions" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.1-stepfunctions/">
+          <b>3.1 </b>AWS Step Functions
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.1-stepfunctions/3.1.1-workflow/" title="Khởi tạo workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.1-stepfunctions/3.1.1-workflow/">
+          <b>3.1.1 </b>Khởi tạo workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.1-stepfunctions/3.1.2-tryworkflow/" title="Kiểm tra workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.1-stepfunctions/3.1.2-tryworkflow/">
+          <b>3.1.2 </b>Kiểm tra workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.2-taskstate/" title="Kiểu Task State" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.2-taskstate/">
+          <b>3.2 </b>Kiểu Task State
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.2-taskstate/3.2.1-updateworkflow/" title="Update workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.2-taskstate/3.2.1-updateworkflow/">
+          <b>3.2.1 </b>Update workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.2-taskstate/3.2.2-tryworkflow/" title="Kiểm tra workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.2-taskstate/3.2.2-tryworkflow/">
+          <b>3.2.2 </b>Kiểm tra workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.3-updatepermission/" title="Cập nhật Permissions" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.3-updatepermission/">
+          <b>3.3 </b>Cập nhật Permissions
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.3-updatepermission/3.3.1-deleteoldworkflow/" title="Xóa state machine" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.3-updatepermission/3.3.1-deleteoldworkflow/">
+          <b>3.3.1 </b>Xóa state machine
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.3-updatepermission/3.3.2-updatesamtemplate/" title="Cập nhật SAM template" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.3-updatepermission/3.3.2-updatesamtemplate/">
+          <b>3.3.2 </b>Cập nhật SAM template
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.3-updatepermission/3.3.3-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.3-updatepermission/3.3.3-checkworkflow/">
+          <b>3.3.3 </b>Kiểm tra workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.4-stateinputoutput/" title="State Input/Output" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.4-stateinputoutput/">
+          <b>3.4 </b>State Input/Output
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.4-stateinputoutput/3.4.1-updateworkflow/" title="Cập nhật workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.4-stateinputoutput/3.4.1-updateworkflow/">
+          <b>3.4.1 </b>Cập nhật workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.4-stateinputoutput/3.4.2-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.4-stateinputoutput/3.4.2-checkworkflow/">
+          <b>3.4.2 </b>Kiểm tra workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.5-choicestatetype/" title="Kiểu Choice State" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.5-choicestatetype/">
+          <b>3.5 </b>Kiểu Choice State
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.5-choicestatetype/3.5.1-updateworkflow/" title="Cập nhật workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.5-choicestatetype/3.5.1-updateworkflow/">
+          <b>3.5.1 </b>Cập nhật workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-serviceorchestration/3.5-choicestatetype/3.5.2-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-serviceorchestration/3.5-choicestatetype/3.5.2-checkworkflow/">
+          <b>3.5.2 </b>Kiểm tra workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-improveworkflow/" title="Cải tiến workflow" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/vi/4-improveworkflow/">
+          <b>4. </b>Cải tiến workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-improveworkflow/4.1-startworkflow/" title="Kích hoạt workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/4-improveworkflow/4.1-startworkflow/">
+          <b>4.1 </b>Kích hoạt workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-improveworkflow/4.1-startworkflow/4.1.1-updateworkflow/" title="Cập nhật workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/4-improveworkflow/4.1-startworkflow/4.1.1-updateworkflow/">
+          <b>4.1.1 </b>Cập nhật workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-improveworkflow/4.1-startworkflow/4.1.2-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/4-improveworkflow/4.1-startworkflow/4.1.2-checkworkflow/">
+          <b>4.1.2 </b>Kiểm tra workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-improveworkflow/4.2-pauseworkflow/" title="Tạm dừng workflow để chờ kiểm tra hoàn tất" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/vi/4-improveworkflow/4.2-pauseworkflow/">
+          <b>4.2 </b>Tạm dừng workflow để chờ kiểm tra hoàn tất
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-improveworkflow/4.2-pauseworkflow/4.2.1-updateworkflow/" title="Cập nhật workflow" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/vi/4-improveworkflow/4.2-pauseworkflow/4.2.1-updateworkflow/">
+          <b>4.2.1 </b>Cập nhật workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-improveworkflow/4.2-pauseworkflow/4.2.2-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/4-improveworkflow/4.2-pauseworkflow/4.2.2-checkworkflow/">
+          <b>4.2.2 </b>Kiểm tra workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-improveworkflow/4.3-finishworkflow/" title="Hoàn tất workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/4-improveworkflow/4.3-finishworkflow/">
+          <b>4.3 </b>Hoàn tất workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-errorhandling/" title="Xử lý lỗi" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/5-errorhandling/">
+          <b>5. </b>Xử lý lỗi
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-errorhandling/5.1-retry/" title="Thêm tính năng retry" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/5-errorhandling/5.1-retry/">
+          <b>5.1 </b>Thêm tính năng retry
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-errorhandling/5.2-catch/" title="Thêm tính năng catch" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/5-errorhandling/5.2-catch/">
+          <b>5.2 </b>Thêm tính năng catch
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/6-stateparallel/" title="Xử lý state song song" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/6-stateparallel/">
+          <b>6. </b>Xử lý state song song
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/6-stateparallel/6.1-updateworkflow/" title="Cập nhật workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/6-stateparallel/6.1-updateworkflow/">
+          <b>6.1 </b>Cập nhật workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/6-stateparallel/6.2-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/6-stateparallel/6.2-checkworkflow/">
+          <b>6.2 </b>Kiểm tra workflow
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/7-furtherlearning/" title="Tìm hiểu thêm" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/7-furtherlearning/">
+          <b>7. </b>Tìm hiểu thêm
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/8-cleanup/" title="Dọn dẹp tài nguyên" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/8-cleanup/">
+          <b>8. </b>Dọn dẹp tài nguyên
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="http://awsstudygroup.com"><i class='fab fa-aws'></i> AWS Study Group - Blog</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/660548818043427/"><i class='fab fa-facebook'></i> AWS Study Group - Nhóm FB</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="/4-improveworkflow/4.2-pauseworkflow/4.2.1-updateworkflow/">English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="/vi/4-improveworkflow/4.2-pauseworkflow/4.2.1-updateworkflow/" selected>Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7860608&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>03-09-2021</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i>
+                <a href="https://twitter.com/gabehollombe"  style="color:orange">Gabe Hollombe</a> , 
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng</a>
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/vi/'>Bắt đầu với AWS Step Functions</a> > <a href='/vi/4-improveworkflow/'>Cải tiến workflow</a> > <a href='/vi/4-improveworkflow/4.2-pauseworkflow/'>Tạm dừng workflow để chờ kiểm tra hoàn tất</a> > Cập nhật workflow
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Cập nhật workflow
+            </h1>
+          
+
+        
+
+
+
+	<h4 id="cập-nhật-workflow">Cập nhật workflow</h4>
+<ol>
+<li>Quay trở lại giao diện dòng lệnh của Cloud9 instance, thay thế nội dung của file <strong>functions/account-applications/flag.js</strong> với nội dung dưới đây.</li>
+</ol>
+<ul>
+<li>Ấn <strong>Ctrl + S</strong> để lưu thay đổi.</li>
+</ul>
+<pre><code>'use strict';
+const REGION = process.env.REGION
+const APPLICATIONS_TABLE_NAME = process.env.APPLICATIONS_TABLE_NAME
+
+const AWS = require('aws-sdk')
+AWS.config.update({region: REGION});
+
+const dynamo = new AWS.DynamoDB.DocumentClient();
+
+const AccountApplications = require('./AccountApplications')(APPLICATIONS_TABLE_NAME, dynamo)
+
+const flagForReview = async (data) =&gt; {
+    const { id, flagType, taskToken } = data
+
+    if (flagType !== 'REVIEW' &amp;&amp; flagType !== 'UNPROCESSABLE_DATA') {
+        throw new Error(&quot;flagType must be REVIEW or UNPROCESSABLE_DATA&quot;)
+    }
+
+    let newState
+    let reason
+    if (flagType === 'REVIEW') {
+        newState = 'FLAGGED_FOR_REVIEW'
+        reason = data.reason
+    }
+    else {
+        reason = JSON.parse(data.errorInfo.Cause).errorMessage
+        newState = 'FLAGGED_WITH_UNPROCESSABLE_DATA'
+    }
+
+    const updatedApplication = await AccountApplications.update(
+        id,
+        {
+            state: newState,
+            reason,
+            taskToken
+        }
+    )
+    return updatedApplication
+}
+
+module.exports.handler = async(event) =&gt; {
+    try {
+        const result = await flagForReview(event)
+        return result
+    } catch (ex) {
+        console.error(ex)
+        console.info('event', JSON.stringify(event))
+        throw ex
+    }
+};
+</code></pre><p><img src="/images/SF/075.png?width=90pc" alt="StepFunctions"></p>
+<ol start="2">
+<li>Chạy lệnh dưới đây để tạo mới file review.js</li>
+</ol>
+<pre><code>touch functions/account-applications/review.js
+
+</code></pre><p><img src="/images/SF/076.png?width=90pc" alt="StepFunctions"></p>
+<ol start="3">
+<li>Thay thế nội dung của file <strong>functions/account-applications/review.js</strong> với nội dung dưới đây.</li>
+</ol>
+<ul>
+<li>Ấn <strong>Ctrl + S</strong> để lưu thay đổi.</li>
+</ul>
+<pre><code>'use strict';
+const REGION = process.env.REGION
+const APPLICATIONS_TABLE_NAME = process.env.APPLICATIONS_TABLE_NAME
+
+const AWS = require('aws-sdk')
+AWS.config.update({region: REGION});
+
+const dynamo = new AWS.DynamoDB.DocumentClient();
+const stepfunctions = new AWS.StepFunctions();
+
+const AccountApplications = require('./AccountApplications')(APPLICATIONS_TABLE_NAME, dynamo)
+
+const updateApplicationWithDecision = (id, decision) =&gt; {
+    if (decision !== 'APPROVE' &amp;&amp; decision !== 'REJECT') {
+        throw new Error(&quot;Required `decision` parameter must be 'APPROVE' or 'REJECT'&quot;)
+    }
+
+    switch(decision) {
+        case 'APPROVE': return AccountApplications.update(id, { state: 'REVIEW_APPROVED' })
+        case 'REJECT': return AccountApplications.update(id, { state: 'REVIEW_REJECTED' })
+    }
+}
+
+const updateWorkflowWithReviewDecision = async (data) =&gt; {
+    const { id, decision } = data
+
+    const updatedApplication = await updateApplicationWithDecision(id, decision)
+
+    let params = {
+        output: JSON.stringify({ decision }),
+        taskToken: updatedApplication.taskToken
+    };
+    await stepfunctions.sendTaskSuccess(params).promise()
+
+    return updatedApplication
+}
+
+module.exports.handler = async(event) =&gt; {
+    try {
+        const result = await updateWorkflowWithReviewDecision(event)
+        return result
+    } catch (ex) {
+        console.error(ex)
+        console.info('event', JSON.stringify(event))
+        throw ex
+    }
+};
+</code></pre><p><img src="/images/SF/077.png?width=90pc" alt="StepFunctions"></p>
+<ol start="4">
+<li>Thay thế nội dung của file <strong>template.yaml</strong> với nội dung dưới đây.</li>
+</ol>
+<ul>
+<li>Ấn <strong>Ctrl + S</strong> để lưu thay đổi.</li>
+</ul>
+<pre><code>AWSTemplateFormatVersion: &quot;2010-09-09&quot;
+Transform: AWS::Serverless-2016-10-31
+Description: Template for step-functions-workshop
+
+Resources:
+  ApplicationProcessingStateMachine:
+    Type: AWS::Serverless::StateMachine
+    Properties:
+      DefinitionUri: statemachine/account-application-workflow.asl.json
+      DefinitionSubstitutions:
+        DataCheckingFunctionArn: !GetAtt DataCheckingFunction.Arn
+        FlagApplicationFunctionName: !Ref FlagApplicationFunction
+      Policies:
+        - LambdaInvokePolicy:
+            FunctionName: !Ref DataCheckingFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref FlagApplicationFunction
+
+  ApproveApplicationFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: sfn-workshop-ApproveApplication
+      CodeUri: functions/account-applications/
+      Handler: approve.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          APPLICATIONS_TABLE_NAME: !Ref ApplicationsTable
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ApplicationsTable
+
+  DataCheckingFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: sfn-workshop-DataChecking
+      CodeUri: functions/data-checking/
+      Handler: data-checking.handler
+      Runtime: nodejs12.x
+
+  FindApplicationsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: sfn-workshop-FindApplications
+      CodeUri: functions/account-applications/
+      Handler: find.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          APPLICATIONS_TABLE_NAME: !Ref ApplicationsTable
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ApplicationsTable
+
+  FlagApplicationFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: sfn-workshop-FlagApplication
+      CodeUri: functions/account-applications/
+      Handler: flag.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          APPLICATIONS_TABLE_NAME: !Ref ApplicationsTable
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ApplicationsTable
+
+  RejectApplicationFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: sfn-workshop-RejectApplication
+      CodeUri: functions/account-applications/
+      Handler: reject.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          APPLICATIONS_TABLE_NAME: !Ref ApplicationsTable
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ApplicationsTable
+
+  ReviewApplicationFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: sfn-workshop-ReviewApplication
+      CodeUri: functions/account-applications/
+      Handler: review.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          APPLICATIONS_TABLE_NAME: !Ref ApplicationsTable
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ApplicationsTable
+        - Statement:
+          - Sid: AllowCallbacksToStateMachinePolicy
+            Effect: &quot;Allow&quot;
+            Action:
+              - &quot;states:SendTaskSuccess&quot;
+              - &quot;states:SendTaskFailure&quot;
+            Resource: !Ref ApplicationProcessingStateMachine
+
+  SubmitApplicationFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: sfn-workshop-SubmitApplication
+      CodeUri: functions/account-applications/
+      Handler: submit.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          APPLICATIONS_TABLE_NAME: !Ref ApplicationsTable
+          APPLICATION_PROCESSING_STEP_FUNCTION_ARN: !Ref ApplicationProcessingStateMachine
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ApplicationsTable
+        - StepFunctionsExecutionPolicy:
+            StateMachineName: !GetAtt ApplicationProcessingStateMachine.Name
+
+  ApplicationsTable:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      TableName: !Sub StepFunctionWorkshop-AccountApplications-${AWS::StackName}
+      AttributeDefinitions:
+        -
+          AttributeName: id
+          AttributeType: S
+        -
+          AttributeName: state
+          AttributeType: S
+      KeySchema:
+        -
+          AttributeName: id
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
+      GlobalSecondaryIndexes:
+          -
+              IndexName: state
+              KeySchema:
+                  -
+                      AttributeName: state
+                      KeyType: HASH
+              Projection:
+                  ProjectionType: ALL
+Outputs:
+  SubmitApplicationFunctionArn:
+    Description: &quot;Submit Application Function ARN&quot;
+    Value: !GetAtt SubmitApplicationFunction.Arn
+  FlagApplicationFunctionArn:
+    Description: &quot;Flag Application Function ARN&quot;
+    Value: !GetAtt FlagApplicationFunction.Arn
+  FindApplicationsFunctionArn:
+    Description: &quot;Find Applications Function ARN&quot;
+    Value: !GetAtt FindApplicationsFunction.Arn
+  ApproveApplicationFunctionArn:
+    Description: &quot;Approve Application Function ARN&quot;
+    Value: !GetAtt ApproveApplicationFunction.Arn
+  RejectApplicationFunctionArn:
+    Description: &quot;Reject Application Function ARN&quot;
+    Value: !GetAtt RejectApplicationFunction.Arn
+  DataCheckingFunctionArn:
+    Description: &quot;Data Checking Function ARN&quot;
+    Value: !GetAtt DataCheckingFunction.Arn
+
+</code></pre><p><img src="/images/SF/078.png?width=90pc" alt="StepFunctions"></p>
+<ol start="5">
+<li>Thay thế nội dung của file <strong>statemachine/account-application-workflow.asl.json</strong> với nội dung dưới đây.</li>
+</ol>
+<ul>
+<li>Ấn <strong>Ctrl + S</strong> để lưu thay đổi.</li>
+</ul>
+<pre><code>{
+    &quot;StartAt&quot;: &quot;Check Name&quot;,
+    &quot;States&quot;: {
+        &quot;Check Name&quot;: {
+            &quot;Type&quot;: &quot;Task&quot;,
+            &quot;Parameters&quot;: {
+                &quot;command&quot;: &quot;CHECK_NAME&quot;,
+                &quot;data&quot;: {
+                    &quot;name.$&quot;: &quot;$.application.name&quot;
+                }
+            },
+            &quot;Resource&quot;: &quot;${DataCheckingFunctionArn}&quot;,
+            &quot;ResultPath&quot;: &quot;$.checks.name&quot;,
+            &quot;Next&quot;: &quot;Check Address&quot;
+        },
+        &quot;Check Address&quot;: {
+            &quot;Type&quot;: &quot;Task&quot;,
+            &quot;Parameters&quot;: {
+                &quot;command&quot;: &quot;CHECK_ADDRESS&quot;,
+                &quot;data&quot;: {
+                    &quot;address.$&quot;: &quot;$.application.address&quot;
+                }
+            },
+            &quot;Resource&quot;: &quot;${DataCheckingFunctionArn}&quot;,
+            &quot;ResultPath&quot;: &quot;$.checks.address&quot;,
+            &quot;Next&quot;: &quot;Review Required?&quot;
+        },
+        &quot;Review Required?&quot;: {
+            &quot;Type&quot;: &quot;Choice&quot;,
+            &quot;Choices&quot;: [
+                {
+                    &quot;Variable&quot;: &quot;$.checks.name.flagged&quot;,
+                    &quot;BooleanEquals&quot;: true,
+                    &quot;Next&quot;: &quot;Pending Review&quot;
+                },
+                {
+                    &quot;Variable&quot;: &quot;$.checks.address.flagged&quot;,
+                    &quot;BooleanEquals&quot;: true,
+                    &quot;Next&quot;: &quot;Pending Review&quot;
+                }
+            ],
+            &quot;Default&quot;: &quot;Approve Application&quot;
+        },
+        &quot;Pending Review&quot;: {
+            &quot;Type&quot;: &quot;Task&quot;,
+            &quot;Resource&quot;: &quot;arn:aws:states:::lambda:invoke.waitForTaskToken&quot;,
+            &quot;Parameters&quot;: {
+                &quot;FunctionName&quot;: &quot;${FlagApplicationFunctionName}&quot;,
+                &quot;Payload&quot;: {
+                    &quot;id.$&quot;: &quot;$.application.id&quot;,
+                    &quot;flagType&quot;: &quot;REVIEW&quot;,
+                    &quot;taskToken.$&quot;: &quot;$$.Task.Token&quot;
+                }
+            },
+            &quot;ResultPath&quot;: &quot;$.review&quot;,
+            &quot;Next&quot;: &quot;Review Approved?&quot;
+        },
+        &quot;Review Approved?&quot;: {
+            &quot;Type&quot;: &quot;Choice&quot;,
+            &quot;Choices&quot;: [
+                {
+                    &quot;Variable&quot;: &quot;$.review.decision&quot;,
+                    &quot;StringEquals&quot;: &quot;APPROVE&quot;,
+                    &quot;Next&quot;: &quot;Approve Application&quot;
+                },
+                {
+                    &quot;Variable&quot;: &quot;$.review.decision&quot;,
+                    &quot;StringEquals&quot;: &quot;REJECT&quot;,
+                    &quot;Next&quot;: &quot;Reject Application&quot;
+                }
+            ]
+        },
+        &quot;Reject Application&quot;: {
+            &quot;Type&quot;: &quot;Pass&quot;,
+            &quot;End&quot;: true
+        },
+        &quot;Approve Application&quot;: {
+            &quot;Type&quot;: &quot;Pass&quot;,
+            &quot;End&quot;: true
+        }
+    }
+}
+</code></pre><p><img src="/images/SF/079.png?width=90pc" alt="StepFunctions"></p>
+<ol start="6">
+<li>Chạy lệnh dưới đây để thực hiện build và deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:</li>
+</ol>
+<pre><code>sam build &amp;&amp; sam deploy
+</code></pre><p><img src="/images/SF/080.png?width=90pc" alt="StepFunctions"></p>
+<p><img src="/images/SF/081.png?width=90pc" alt="StepFunctions"></p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/vi/4-improveworkflow/4.2-pauseworkflow/" title="Tạm dừng workflow để chờ kiểm tra hoàn tất"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/vi/4-improveworkflow/4.2-pauseworkflow/4.2.2-checkworkflow/" title="Kiểm tra workflow" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1630677296"></script>
+    <script src="/js/perfect-scrollbar.min.js?1630677296"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1630677296"></script>
+    <script src="/js/jquery.sticky.js?1630677296"></script>
+    <script src="/js/featherlight.min.js?1630677296"></script>
+    <script src="/js/highlight.pack.js?1630677296"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1630677296"></script>
+    <script src="/js/learn.js?1630677296"></script>
+    <script src="/js/hugo-learn.js?1630677296"></script>
+
+    <link href="/mermaid/mermaid.css?1630677296" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1630677296"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

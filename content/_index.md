@@ -28,3 +28,8 @@ Thông qua workshop chúng ta sẽ nắm được:
 1. [Giới thiệu workshop](1-intro/)
 2. [Chuẩn bị](2-prepare/)
 3. [Dịch vụ điều phối ](3-serviceorchestration/)
+4. [Cải tiến workflow](4-improveworkflow/)
+5. [Xử lý lỗi](5-errorhandling/)
+6. [Xử lý state song song](6-stateparallel/)
+7. [Tìm hiểu thêm](7-furtherlearning/)
+8. [Dọn dẹp tài nguyên](8-cleanup/)
