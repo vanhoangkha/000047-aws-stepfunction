@@ -12,21 +12,21 @@
     <title>Tạo các dịch vụ mẫu :: AWS Step Functions</title>
 
     
-    <link href="/css/nucleus.css?1630678081" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1630678081" rel="stylesheet">
-    <link href="/css/hybrid.css?1630678081" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1630678081" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1630678081" rel="stylesheet">
-    <link href="/css/auto-complete.css?1630678081" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1630678081" rel="stylesheet">
-    <link href="/css/theme.css?1630678081" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1630678081" rel="stylesheet">
+    <link href="/css/nucleus.css?1630745910" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1630745910" rel="stylesheet">
+    <link href="/css/hybrid.css?1630745910" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1630745910" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1630745910" rel="stylesheet">
+    <link href="/css/auto-complete.css?1630745910" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1630745910" rel="stylesheet">
+    <link href="/css/theme.css?1630745910" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1630745910" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1630678081" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1630745910" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1630678081"></script>
+    <script src="/js/jquery-3.3.1.min.js?1630745910"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1630678081"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1630678081"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1630745910"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1630745910"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1630678081"></script>
+<script type="text/javascript" src="/js/search.js?1630745910"></script>
 
     
   </div>
@@ -1688,6 +1688,10 @@ cd workshop-dir
 <pre><code># Run our first deploy in guided mode. Answer the interactive questions the same way that the comments show below:
 sam deploy --guided
 </code></pre><p><img src="/images/SF/010.png?width==90pc" alt="StepFunctions"></p>
+
+<div class="notices warning" ><p>Nếu bạn bị lỗi ở bước deploy hãy thử thay bước 6 bằng các bước ở mục <a href="#ch%E1%BA%A1y-sam-deploy-b%E1%BA%B1ng-file-config-t%E1%BB%B1-t%E1%BA%A1o">Chạy sam deploy bằng file config tự tạo.</a></p>
+</div>
+
 <ol start="7">
 <li>Dành thời gian kiểm tra nội dung các files chúng ta đã tạo trong thư mục <strong>workshop-dir</strong> :</li>
 </ol>
@@ -1704,7 +1708,43 @@ functions/data-checking/data-checking.js
 template.yaml
 <span style="color:#75715e"># Đây là file AWS SAM sẽ khai báo các tài nguyên mà chúng ta muốn tạo và triển khai trong giải pháp của mình, có cấu trúc khá tương tự CloudFormation template vì SAM được xây dựng trên nền tảng của CloudFormation.</span>
 </code></pre></div><p>Bước tiếp theo chúng ta sẽ kiểm tra các dịch vụ mẫu cho workflow của chúng ta.</p>
+<h4 id="chạy-sam-deploy-bằng-file-config-tự-tạo">Chạy sam deploy bằng file config tự tạo.</h4>
 
+<div class="notices warning" ><p>Chỉ thực hiện bước này nếu việc thực hiện sam deploy -guided không thành công.</p>
+</div>
+
+<ol>
+<li>Kiểm tra đường dẫn thư mục đang ở workshop-dir</li>
+<li>Chạy lệnh dưới đây để tạo SAM CLI bucket ( bạn có thể thay yourname = tên bạn )</li>
+</ol>
+<pre><code>aws s3 mb s3://stepfunctions-workshop-yourname --region ap-southeast-1
+</code></pre><ol start="3">
+<li>Chạy lệnh dưới đây để tạo file samconfig.toml</li>
+</ol>
+<pre><code>touch samconfig.toml
+</code></pre><ol start="4">
+<li>Double click vào file samconfig.toml và thực hiện thêm nội dung cấu hình như sau :</li>
+</ol>
+<pre><code>version=0.1
+[default.global.parameters]
+stack_name = &quot;step-functions-workshop&quot;
+
+[default.deploy.parameters]
+stack_name = &quot;step-functions-workshop&quot;
+s3_bucket = &quot;stepfunctions-workshop-yourname&quot;
+s3_prefix = &quot;stepfunctions&quot;
+region = &quot;ap-southeast-1&quot;
+confirm_changeset = false
+capabilities = &quot;CAPABILITY_IAM&quot;
+</code></pre><ul>
+<li>Ấn Ctrl+S để lưu file samconfig.toml.</li>
+</ul>
+<p><img src="/images/SF/f01.png?width==90pc" alt="StepFunctions"></p>
+<ol start="5">
+<li>Chạy lệnh dưới để thực hiện deploy lại.</li>
+</ol>
+<pre><code>sam deploy
+</code></pre>
 
 
 
@@ -2488,19 +2528,19 @@ template.yaml
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1630678081"></script>
-    <script src="/js/perfect-scrollbar.min.js?1630678081"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1630678081"></script>
-    <script src="/js/jquery.sticky.js?1630678081"></script>
-    <script src="/js/featherlight.min.js?1630678081"></script>
-    <script src="/js/highlight.pack.js?1630678081"></script>
+    <script src="/js/clipboard.min.js?1630745910"></script>
+    <script src="/js/perfect-scrollbar.min.js?1630745910"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1630745910"></script>
+    <script src="/js/jquery.sticky.js?1630745910"></script>
+    <script src="/js/featherlight.min.js?1630745910"></script>
+    <script src="/js/highlight.pack.js?1630745910"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1630678081"></script>
-    <script src="/js/learn.js?1630678081"></script>
-    <script src="/js/hugo-learn.js?1630678081"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1630745910"></script>
+    <script src="/js/learn.js?1630745910"></script>
+    <script src="/js/hugo-learn.js?1630745910"></script>
 
-    <link href="/mermaid/mermaid.css?1630678081" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1630678081"></script>
+    <link href="/mermaid/mermaid.css?1630745910" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1630745910"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

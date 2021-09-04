@@ -84,6 +84,10 @@ sam deploy --guided
 
 ![StepFunctions](/images/SF/010.png?width==90pc)
 
+{{%notice warning%}}
+Nếu bạn bị lỗi ở bước deploy hãy thử thay bước 6 bằng các bước ở mục [Chạy sam deploy bằng file config tự tạo.](#chạy-sam-deploy-bằng-file-config-tự-tạo)
+{{%/notice%}}
+
 7. Dành thời gian kiểm tra nội dung các files chúng ta đã tạo trong thư mục **workshop-dir** :
 
 ![StepFunctions](/images/SF/011.png?width==90pc)
@@ -102,3 +106,42 @@ template.yaml
 # Đây là file AWS SAM sẽ khai báo các tài nguyên mà chúng ta muốn tạo và triển khai trong giải pháp của mình, có cấu trúc khá tương tự CloudFormation template vì SAM được xây dựng trên nền tảng của CloudFormation.
 ```
 Bước tiếp theo chúng ta sẽ kiểm tra các dịch vụ mẫu cho workflow của chúng ta.
+
+#### Chạy sam deploy bằng file config tự tạo.
+
+{{%notice warning%}}
+Chỉ thực hiện bước này nếu việc thực hiện sam deploy -guided không thành công.
+{{%/notice%}}
+
+1. Kiểm tra đường dẫn thư mục đang ở workshop-dir
+2. Chạy lệnh dưới đây để tạo SAM CLI bucket ( bạn có thể thay yourname = tên bạn )
+```
+aws s3 mb s3://stepfunctions-workshop-yourname --region ap-southeast-1
+```
+3. Chạy lệnh dưới đây để tạo file samconfig.toml
+
+```
+touch samconfig.toml
+```
+4. Double click vào file samconfig.toml và thực hiện thêm nội dung cấu hình như sau :
+```
+version=0.1
+[default.global.parameters]
+stack_name = "step-functions-workshop"
+
+[default.deploy.parameters]
+stack_name = "step-functions-workshop"
+s3_bucket = "stepfunctions-workshop-yourname"
+s3_prefix = "stepfunctions"
+region = "ap-southeast-1"
+confirm_changeset = false
+capabilities = "CAPABILITY_IAM"
+```
+  + Ấn Ctrl+S để lưu file samconfig.toml.
+
+![StepFunctions](/images/SF/f01.png?width==90pc)
+
+5. Chạy lệnh dưới để thực hiện deploy lại.
+```
+sam deploy
+```
