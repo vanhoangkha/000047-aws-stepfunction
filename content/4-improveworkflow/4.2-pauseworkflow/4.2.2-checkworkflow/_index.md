@@ -18,7 +18,7 @@ aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "n
 
 2. Kiểm tra xem đăng ký của chúng ta có bị gắn cờ để kiểm tra lại hay không bằng lệnh dưới đây
 ```
-aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "name": "Spock", "address": "InvalidAddressFormat" }' /dev/stdout 
+aws lambda invoke --function-name sfn-workshop-FindApplications --payload '{ "state": "FLAGGED_FOR_REVIEW" }' /dev/stdout 
 
 ```
 
