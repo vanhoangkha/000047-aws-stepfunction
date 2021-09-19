@@ -23,6 +23,8 @@ Thông qua workshop chúng ta sẽ nắm được:
   + Thực hiện **Pause/Resume** dựa trên token & callback sử dụng **waitForTaskToken**.
 + Visualizing, debugging and auditing workflow sử dụng AWS Step Functions console.
 
+#### Phiên bản tiếng Anh
+[Intro to Service Coordination using AWS Step Functions](https://step-functions-workshop.go-aws.com/)
 
 #### Nội dung
 1. [Giới thiệu workshop](1-intro/)
