@@ -1,5 +1,5 @@
 +++
-title = "Tạo Cloud9 Instance"
+title = "Create Cloud9 Instance"
 date = 2021
 weight = 1
 chapter = false
@@ -7,29 +7,39 @@ pre = "<b>2.1 </b>"
 +++
 
 
-#### Tạo Cloud9 Instance
+#### Create Cloud9 Instance
 
-AWS Cloud9 là một môi trường phát triển tích hợp (IDE) cho phép bạn viết, chạy và gỡ lỗi mã của mình trên trình duyệt. Cloud9 bao gồm một trình soạn thảo mã, trình gỡ lỗi và giao diện dòng lệnh. Cloud9 được đóng gói sẵn với các công cụ cần thiết cho các ngôn ngữ lập trình phổ biến, bao gồm JavaScript, Python, PHP, v.v..
+AWS Cloud9 is an integrated development environment (IDE) that allows you to write, run, and debug your code in a browser. Cloud9 includes a code editor, debugger, and command line interface. Cloud9 comes pre-packaged with essential tools for popular programming languages, including JavaScript, Python, PHP, and more.
 
 {{%notice tip%}}
-Trong quá trình làm các bước trong workshop này, hãy dùng IAM User có quyền **Administrator Access** thay vì sử dụng root account. \
-Workshop này sẽ được thực hiện tại Region Singapore.
+During the steps in this workshop, use an IAM User with **Administrator Access** privileges instead of using the root account. \
+This workshop will be conducted in Region Singapore.
 {{%/notice%}}
 
-1. Truy cập vào [giao diện dịch vụ Cloud9](https://ap-southeast-1.console.aws.amazon.com/cloud9/home/product)
+1. Go to [Cloud9 service interface](https://ap-southeast-1.console.aws.amazon.com/cloud9/home/product)
  + Click **Create environment**.
 
-2. Điền tên **StepFunctions**, sau đó click **Next step**.
+![AWS Step Functions](/images/2.1/0001.png?featherlight=false&width=90pc)
 
-3. Giữ nguyên tùy chọn cơ bản, kéo màn hình xuống dưới cùng, click **Next step**.
+2. Enter the name **StepFunctions**, then click **Next step**.
 
-![StepFunctions](/images/SF/003.png?width==90pc)
+![AWS Step Functions](/images/2.1/0002.png?featherlight=false&width=90pc)
 
-4. Click **Create environment**, chờ vài phút để môi trường Cloud9 instance được khởi tạo hoàn tất.
+3. Keep the basic option, drag the screen to the bottom, and click **Next step**.
 
-5. Click biểu tượng **X** để đóng bớt các tab không cần thiết.
-  + Click biểu tượng **+**, sau đó click chọn **New Terminal** để mở giao diện dòng lệnh mới.
+![AWS Step Functions](/images/2.1/0003.png?featherlight=false&width=90pc)
 
-![StepFunctions](/images/SF/004.png?width==90pc)
+![AWS Step Functions](/images/2.1/0004.png?featherlight=false&width=90pc)
 
-Bước tiếp theo chúng ta sẽ tạo các dịch vụ mẫu cho workflow của chúng ta.
+4. Click **Create environment**, and wait a few minutes for the Cloud9 instance environment to be completely initialized.
+
+![AWS Step Functions](/images/2.1/0005.png?featherlight=false&width=90pc)
+
+5. Click the **X** icon to close unnecessary tabs.
+  + Click the **+** icon, then click **New Terminal** to open a new command line interface.
+
+![AWS Step Functions](/images/2.1/0006.png?featherlight=false&width=90pc)
+
+The next step is to create sample services for our workflow.
+
+![AWS Step Functions](/images/2.1/0007.png?featherlight=false&width=90pc)

@@ -7,10 +7,10 @@ pre = "<b>1.1 </b>"
 +++
 
 
-#### Service Orchestration ( Dịch vụ điều phối )
+#### Service Orchestration ( Service Orchestration )
 
-Chúng ta sử dụng thuật ngữ Orchestration để mô tả hành động điều phối các dịch vụ phân tán thông qua việc quản lý quy trình làm việc tập trung, tương tự như cách nhạc trưởng hiểu từng bộ phận của dàn nhạc và chỉ đạo từng bộ phận nhạc cụ hoạt động cùng nhau để tạo ra màn trình diễn của mình.
+We use the term Orchestration to describe the act of coordinating distributed services through centralized workflow management, similar to how a conductor understands each part of an orchestra and directs each. Instruments work together to create their performance.
 
-Lợi ích chính của Orchestration đối với việc điều phối dịch vụ là nó quản lý logic tập trung, thay vì quản lý logic phân tán ở mức dịch vụ ( bản thân mỗi dịch vụ tự quyết định mình cần làm gì tiếp theo ). Chúng ta có thể hiểu toàn bộ quy trình từ đầu đến cuối thông qua một giao diện làm việc duy nhất.
+The main benefit of Orchestration to service orchestration is that it manages the logic centrally, rather than managing the distributed logic at the service level (each service itself decides what to do next). We can understand the entire process from start to finish through a single working interface.
 
-Cách tiếp cận này hoạt động tốt khi các dịch vụ có mức độ phối hợp cao, cần thực hiện chạy thử lại , xử lý lỗi cụ thể , chạy tác vụ song song hoặc đợi một số tác vụ hoàn thành trước khi tiếp tục thực hiện các tác vụ tiếp theo trong workflow ( quy trình làm việc ).
+This approach works well when services are highly coordinated, need to perform retry runs, handle specific errors, run tasks in parallel, or wait for several tasks to complete before continuing. subsequent tasks in the workflow (workflow).

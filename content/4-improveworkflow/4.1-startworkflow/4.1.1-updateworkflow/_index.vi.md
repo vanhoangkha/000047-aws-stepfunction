@@ -59,9 +59,9 @@ module.exports.handler = async(event) => {
 }
 ```
 
-![StepFunctions](/images/SF/068.png?width=90pc)
+![AWS Step Functions](/images/4.1.1/0001.png?featherlight=false&width=90pc)
 
-2. Thay thế nội dung của file **template.yaml** với nội dung dưới đây.
+1. Thay thế nội dung của file **template.yaml** với nội dung dưới đây.
   + Ấn **Ctrl + S** để lưu thay đổi.
 ```
 AWSTemplateFormatVersion: "2010-09-09"
@@ -205,13 +205,15 @@ Outputs:
     Description: "Data Checking Function ARN"
     Value: !GetAtt DataCheckingFunction.Arn
 ```
-![StepFunctions](/images/SF/069.png?width=90pc)
+![AWS Step Functions](/images/4.1.1/0002.png?featherlight=false&width=90pc)
 
-3. Chạy lệnh dưới đây để thực hiện build và deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
+1. Chạy lệnh dưới đây để thực hiện build và deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
 ```
 sam build && sam deploy
 ```
-![StepFunctions](/images/SF/070.png?width=90pc)
+![AWS Step Functions](/images/4.1.1/0003.png?featherlight=false&width=90pc)
 
 Bây giờ chúng ta đã tích hợp dịch vụ **Account Applications** của mình với state machine , chúng ta sẽ kích hoạt tất cả các thực thi state machine trong tương lai bằng cách gửi các đăng ký mới đến dịch vụ (bằng cách gọi Lambda Function **SubmitApplication** ) thay vì thực thi trực tiếp thông qua giao diện web.
 
+
+![AWS Step Functions](/images/4.1.1/0004.png?featherlight=false&width=90pc)

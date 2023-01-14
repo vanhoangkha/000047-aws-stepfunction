@@ -14,44 +14,51 @@ Giờ đây, chúng ta có thể gửi đơn đăng ký không hợp lệ, đơn
 ```
 aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "name": "Spock", "address": "InvalidAddressFormat" }' /dev/stdout 
 ```
-![StepFunctions](/images/SF/082.png?width=90pc)
+![AWS Step Functions](/images/4.2.2/0001.png?featherlight=false&width=90pc)
 
-2. Kiểm tra xem đăng ký của chúng ta có bị gắn cờ để kiểm tra lại hay không bằng lệnh dưới đây
+1. Kiểm tra xem đăng ký của chúng ta có bị gắn cờ để kiểm tra lại hay không bằng lệnh dưới đây
 ```
 aws lambda invoke --function-name sfn-workshop-FindApplications --payload '{ "state": "FLAGGED_FOR_REVIEW" }' /dev/stdout 
 
 ```
+![AWS Step Functions](/images/4.2.2/0002.png?featherlight=false&width=90pc)
 
-![StepFunctions](/images/SF/083.png?width=90pc)
+1. Quét khối và copy id của đơn đăng ký bị gắn cờ.
 
-3. Quét khối và copy id của đơn đăng ký bị gắn cờ.
-
-![StepFunctions](/images/SF/084.png?width=90pc)
+![AWS Step Functions](/images/4.2.2/0003.png?featherlight=false&width=90pc)
 
 
-4. Quay lại giao diện dịch vụ Step Functions , click vào State machine **ApplicationProcessingStateMachine-xxxxxxx**.
+2. Quay lại giao diện dịch vụ Step Functions , click vào State machine **ApplicationProcessingStateMachine-xxxxxxx**.
 
-![StepFunctions](/images/SF/085.png?width=90pc)
+![AWS Step Functions](/images/4.2.2/0004.png?featherlight=false&width=90pc)
 
-5. Tại tab Executions, chúng ta có thể thấy trạng thái của lần thực thi này đang thể hiện là **Running**. Click chọn lần thực thi mới nhất.
+3. Tại tab Executions, chúng ta có thể thấy trạng thái của lần thực thi này đang thể hiện là **Running**. Click chọn lần thực thi mới nhất.
   + Chúng ta sẽ thấy  trạng thái **Pending Review** đang **in-progress**. Điều này có nghĩa là state machine của chúng ta đang tạm dừng và chờ phản hồi trước khi tiếp tục thực thi.
 
-![StepFunctions](/images/SF/086.png?width=90pc)
+![AWS Step Functions](/images/4.2.2/0005.png?featherlight=false&width=90pc)
 
-6. Quay trở lại Cloud9 console, chúng ta sẽ cần phản hồi và thực hiện approve đơn đăng ký. ( Hiện chúng ta chưa xây dựng giao diện web cho việc này, chúng ta chỉ gọi 1 Lambda Function trong dịch vụ **Account Applications** để thực hiện thao tác approve.)
+4. Quay trở lại Cloud9 console, chúng ta sẽ cần phản hồi và thực hiện approve đơn đăng ký. ( Hiện chúng ta chưa xây dựng giao diện web cho việc này, chúng ta chỉ gọi 1 Lambda Function trong dịch vụ **Account Applications** để thực hiện thao tác approve.)
   + Chạy câu lệnh dưới đây và thay thế **REPLACE_WITH_APPLICATION_ID** với giá trị ID đăng ký bạn đã copy lại ở bước 3.
 
 ```
 aws lambda invoke --function-name sfn-workshop-ReviewApplication --payload '{ "id": "REPLACE_WITH_APPLICATION_ID", "decision": "APPROVE" }' /dev/stdout 
 ```
 
-![StepFunctions](/images/SF/087.png?width=90pc)
+![AWS Step Functions](/images/4.2.2/0006.png?featherlight=false&width=90pc)
 
-7. Quay trở lại giao diện Step Functions chúng ta có thể thấy việc thực thi đã được tiếp tục và hoàn tất ( do chúng ta đã approve đơn đăng ký).
+1. Quay trở lại giao diện Step Functions chúng ta có thể thấy việc thực thi đã được tiếp tục và hoàn tất ( do chúng ta đã approve đơn đăng ký).
   + Click vào state **Review Approved?**.
   + Click vào **Step input**.
   + Chúng ta có thể thấy quyết định approve đã được đưa vào phần dữ liệu input. (thông qua phản hồi  **SendTaskSuccess** mà  Lambda function **Review Application** - functions/account-Applications/review.js đã gọi).
 
-![StepFunctions](/images/SF/088.png?width=90pc)
+![AWS Step Functions](/images/4.2.2/0007.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/4.2.2/0008.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/4.2.2/0009.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/4.2.2/00010.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/4.2.2/00011.png?featherlight=false&width=90pc)
 
 Để hoàn tất việc triển khai quy trình làm việc, chúng ta sẽ thay thế các bước **Approve Application** và **Reject Application** để gọi các Lambda function ApproveApplication và RejectApplication mà chúng ta đã tạo.

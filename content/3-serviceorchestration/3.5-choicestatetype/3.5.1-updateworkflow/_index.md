@@ -1,5 +1,5 @@
 +++
-title = "Cập nhật workflow"
+title = "Update workflow"
 date = 2021
 weight = 1
 chapter = false
@@ -7,17 +7,17 @@ pre = "<b>3.5.1 </b>"
 +++
 
 
-#### Cập nhật workflow
+#### Update workflow
 
-Các bước chúng ta sẽ làm trong phần này :
-+ Thêm trạng thái  mới có tên là **Pending Review**.
-+ Thêm trạng thái **Review Required ?** Sử dụng **Choice state** để chuyển sang trạng thái **Pending Review** nếu kiểm tra tên hoặc địa chỉ trả về kết quả bị gắn cờ.
-+ Cập nhật bước **Check Address** để chuyển sang trạng thái **Review Required?**.
+The steps we will do in this section:
++ Add a new status called **Pending Review**.
++ Add status **Review Required ?** Use **Choice state** to switch to **Pending Review** state if checking the name or address returns flagged results.
++ Update **Check Address** step to switch to **Review Required?** status.
 
-1. Quay trở lại giao diện dòng lệnh của Cloud9 instance, thay thế nội dung của file **state-machine/account-application-workflow.asl.json** với nội dung dưới đây.
-  + Ấn **Ctrl + S** để lưu thay đổi.
+1. Return to the command line interface of the Cloud9 instance, and replace the contents of the file **state-machine/account-application-workflow.asl.json** with the content below.
+  + Press **Ctrl + S** to save changes.
 
- ```
+```
  {
     "StartAt": "Check Name",
     "States": {
@@ -73,32 +73,30 @@ Các bước chúng ta sẽ làm trong phần này :
 }
  ```
 
-![StepFunctions](/images/SF/057.png?width=90pc)
+![AWS Step Functions](/images/3.5.1/0001.png?featherlight=false&width=90pc)
 
-2. Thực hiện triển khai cập nhật bằng câu lệnh sau:
+1. Perform the update deployment with the following command:
 ```
 sam deploy
 ```
 
-![StepFunctions](/images/SF/058.png?width=90pc)
+![AWS Step Functions](/images/3.5.1/0002.png?featherlight=false&width=90pc)
 
-3. Kiểm tra quá trình triển khai cập nhật thành công.
+1. Check the successful update deployment.
 
-![StepFunctions](/images/SF/059.png?width=90pc)
+![AWS Step Functions](/images/3.5.1/0003.png?featherlight=false&width=90pc)
 
-Chúng ta vừa thêm hai trạng thái mới vào workflow làm việc của mình: **Review Required** Và **Pending Review**. Trạng thái **Review Requried?** Kiểm tra đầu vào của nó (là đầu ra từ trạng thái **Check Address**) và sẽ chạy qua một loạt các quy tắc kiểm tra ( rules ). 
-
+We just added two new statuses to our workflow: **Review Required** and **Pending Review**. **Review Requried state?** Checks its input (which is the output from **Check Address** state) and will run through a series of checks ( rules ).
 
 {{%notice tip%}}
-Bạn có thể thấy rằng có một loạt hai quy tắc lựa chọn trong định nghĩa của trạng thái, mỗi quy tắc chỉ định state ( trạng thái ) sẽ chuyển đến tiếp theo nếu quy tắc của nó khớp thành công. Cũng có một tên trạng thái mặc định được chỉ định để chuyển đổi sang trong trường hợp không có quy tắc phù hợp nào.
+You can see that there are a series of two selection rules in the definition of the state, each specifying the state to go to the next if its rule matches successfully. There is also a default state name specified to switch to in case there are no matching rules.
 {{%/notice%}}
 
-Một trong những quy tắc Lựa chọn của chúng ta nói rằng nếu giá trị bên trong đầu vào tại checks.name.flagged là true, thì trạng thái tiếp theo sẽ là **Pending Review**. Quy tắc lựa chọn khác cũng tương tự, kiểm tra checks.address.flagged để xem liệu nó có true hay không, trong trường hợp đó, nó cũng chuyển sang trạng thái **Pending Review**. Cuối cùng, giá trị mặc định của **Choice state** của chúng ta cho biết rằng nếu không có quy tắc lựa chọn nào phù hợp, thì state machine sẽ chuyển sang trạng thái **Approve Application**.
+One of our Selection rules says that if the value inside the input at checks.name.flagged is true, the next state will be **Pending Review**. The other selection rule is the same, check checks.address.flagged to see if it is true, in which case it goes to **Pending Review** as well. Finally, the default value of our **Choice state** indicates that if no selection rule matches, the state machine will transition to the **Approve Application** state.
 
-Bước tiếp theo chúng ta sẽ thử thực thi workflow để xem kết quả.
+The next step we will try to execute the workflow to see the results.
 
 
 {{%notice info%}}
-Nếu bạn quan tâm nhiều tới hành vi và các loại so sánh được hỗ trợ bởi **Choice state**, hãy xem hướng dẫn dành cho nhà phát triển tại [https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-choice-state.html](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-choice-state.html)
+If you're more interested in the behavior and comparison types supported by **Choice state**, check out the developer guide at [https://docs.aws.amazon.com/step-functions /latest/dg/amazon-states-language-choice-state.html](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-choice-state.html)
 {{%/notice%}}
-

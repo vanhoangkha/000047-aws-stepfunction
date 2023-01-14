@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Update workflow :: AWS Step Functions</title>
 
     
-    <link href="/css/nucleus.css?1642672391" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1642672391" rel="stylesheet">
-    <link href="/css/hybrid.css?1642672391" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1642672391" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1642672391" rel="stylesheet">
-    <link href="/css/auto-complete.css?1642672391" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1642672391" rel="stylesheet">
-    <link href="/css/theme.css?1642672391" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1642672391" rel="stylesheet">
+    <link href="/css/nucleus.css?1673730818" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1673730818" rel="stylesheet">
+    <link href="/css/hybrid.css?1673730818" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1673730818" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1673730818" rel="stylesheet">
+    <link href="/css/auto-complete.css?1673730818" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1673730818" rel="stylesheet">
+    <link href="/css/theme.css?1673730818" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1673730818" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1642672391" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1673730818" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1642672391"></script>
+    <script src="/js/jquery-3.3.1.min.js?1673730818"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1642672391"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1642672391"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1673730818"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1673730818"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1642672391"></script>
+<script type="text/javascript" src="/js/search.js?1673730818"></script>
 
     
   </div>
@@ -553,7 +553,7 @@
   
     
     <li data-nav-id="/vi/3-serviceorchestration/3.2-taskstate/3.2.1-updateworkflow/" title="Update workflow" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>20-01-2021</font></i>
+        <i><font color=orange>15-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1535,7 +1535,6 @@
         </left>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-
     </section>
   </div>
 </nav>
@@ -1633,63 +1632,65 @@
 <li>Click chọn <strong>Process_New_Account_Applications</strong>.</li>
 <li>Click <strong>Edit</strong>.</li>
 </ul>
-<p><img src="/images/SF/031.png?width=90pc" alt="StepFunctions"></p>
+<p><img src="/images/3.2.1/0001.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
 <ol start="2">
 <li>Tiếp theo, chúng ta sẽ cập nhật định nghĩa của state machine. Lưu ý rằng sau khi dán nội dung bên dưới, bạn sẽ thấy một vài dòng có chỉ báo lỗi vì định nghĩa máy trạng thái mới của chúng tôi có một số chuỗi giữ chỗ được ghi là ‘REPLACE_WITH_DATA_CHECKING_LAMBDA_ARN’. <strong>Chúng ta sẽ khắc phục sự cố này trong bước tiếp theo</strong>. Thay thế định nghĩa hiện có  bằng định nghĩa  sau:</li>
 </ol>
-<pre><code>{
-    &quot;StartAt&quot;: &quot;Check Name&quot;,
-    &quot;States&quot;: {
-        &quot;Check Name&quot;: {
-            &quot;Type&quot;: &quot;Task&quot;,
-            &quot;Parameters&quot;: {
-                &quot;command&quot;: &quot;CHECK_NAME&quot;,
-                &quot;data&quot;: {
-                    &quot;name.$&quot;: &quot;$.application.name&quot;
+<pre tabindex="0"><code>{
+    &#34;StartAt&#34;: &#34;Check Name&#34;,
+    &#34;States&#34;: {
+        &#34;Check Name&#34;: {
+            &#34;Type&#34;: &#34;Task&#34;,
+            &#34;Parameters&#34;: {
+                &#34;command&#34;: &#34;CHECK_NAME&#34;,
+                &#34;data&#34;: {
+                    &#34;name.$&#34;: &#34;$.application.name&#34;
                 }
             },
-            &quot;Resource&quot;: &quot;REPLACE_WITH_DATA_CHECKING_LAMBDA_ARN&quot;,
-            &quot;Next&quot;: &quot;Check Address&quot;
+            &#34;Resource&#34;: &#34;REPLACE_WITH_DATA_CHECKING_LAMBDA_ARN&#34;,
+            &#34;Next&#34;: &#34;Check Address&#34;
         },
-        &quot;Check Address&quot;: {
-            &quot;Type&quot;: &quot;Task&quot;,
-            &quot;Parameters&quot;: {
-                &quot;command&quot;: &quot;CHECK_ADDRESS&quot;,
-                &quot;data&quot;: {
-                    &quot;address.$&quot;: &quot;$.application.address&quot;
+        &#34;Check Address&#34;: {
+            &#34;Type&#34;: &#34;Task&#34;,
+            &#34;Parameters&#34;: {
+                &#34;command&#34;: &#34;CHECK_ADDRESS&#34;,
+                &#34;data&#34;: {
+                    &#34;address.$&#34;: &#34;$.application.address&#34;
                 }
             },
-            &quot;Resource&quot;: &quot;REPLACE_WITH_DATA_CHECKING_LAMBDA_ARN&quot;,
-            &quot;Next&quot;: &quot;Approve Application&quot;
+            &#34;Resource&#34;: &#34;REPLACE_WITH_DATA_CHECKING_LAMBDA_ARN&#34;,
+            &#34;Next&#34;: &#34;Approve Application&#34;
         },
-        &quot;Approve Application&quot;: {
-            &quot;Type&quot;: &quot;Pass&quot;,
-            &quot;End&quot;: true
+        &#34;Approve Application&#34;: {
+            &#34;Type&#34;: &#34;Pass&#34;,
+            &#34;End&#34;: true
         }
     }
 }
-
-</code></pre><p><img src="/images/SF/032.png?width=90pc" alt="StepFunctions"></p>
-<ol start="3">
+</code></pre><p><img src="/images/3.2.1/0002.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Quay trở lại giao diện Terminal của Cloud9, chạy lệnh dưới đây, để xác định được <strong>ARN</strong> của <strong>DataCheckingFunction</strong>. ( Đảm bảo rằng bạn đang ở vị trí thư mục <strong>workshop-dir</strong>. )</li>
 </ol>
-<pre><code>REGION=$(grep region samconfig.toml | awk -F\= '{gsub(/&quot;/, &quot;&quot;, $2); gsub(/ /, &quot;&quot;, $2); print $2}')
-STACK_NAME=$(grep stack_name samconfig.toml | awk -F\= '{gsub(/&quot;/, &quot;&quot;, $2); gsub(/ /, &quot;&quot;, $2); print $2}')
-aws cloudformation describe-stacks --region $REGION --stack-name $STACK_NAME --query 'Stacks[0].Outputs[?OutputKey==`DataCheckingFunctionArn`].OutputValue' --output text                
+<pre tabindex="0"><code>REGION=$(grep region samconfig.toml | awk -F\= &#39;{gsub(/&#34;/, &#34;&#34;, $2); gsub(/ /, &#34;&#34;, $2); print $2}&#39;)
+STACK_NAME=$(grep stack_name samconfig.toml | awk -F\= &#39;{gsub(/&#34;/, &#34;&#34;, $2); gsub(/ /, &#34;&#34;, $2); print $2}&#39;)
+aws cloudformation describe-stacks --region $REGION --stack-name $STACK_NAME --query &#39;Stacks[0].Outputs[?OutputKey==`DataCheckingFunctionArn`].OutputValue&#39; --output text                
 </code></pre>
 <div class="notices tip" ><p>Bộ lệnh có vẻ phức tạp trên chỉ để giúp bạn lấy ARN nhahn hơn bằng cách tự động lấy các giá trị cấu hình ra khỏi file samconfig.toml (file này ghi nhớ những thứ như Region và tên cloudformation stack mà chúng ta đang sử dụng SAM để triển khai), sau đó sử dụng các cấu hình đó để cấu hình giá trị cho lệnh AWS CLI để hiển thị ARN của Lambda functions <strong>DataCheckingFunction</strong> chúng ta đã triển khai.</p>
 </div>
 
-<p><img src="/images/SF/033.png?width=90pc" alt="StepFunctions"></p>
-<ol start="4">
+<p><img src="/images/3.2.1/0003.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Copy và lưu lại kết quả của bước 3.</li>
+</ol>
+<p><img src="/images/3.2.1/0004.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol start="2">
 <li>Trong mục <strong>Definition</strong> của state machine, cập nhật thông số ARN của Lambda function của bước 3 như hình dưới :</li>
 </ol>
 <ul>
 <li>Click <strong>Save</strong>.</li>
 </ul>
-<p><img src="/images/SF/034.png?width=90pc" alt="StepFunctions"></p>
-<ol start="6">
+<p><img src="/images/3.2.1/0005.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol start="3">
 <li>Chúng ta nhận được cảnh báo rằng  IAM role của chúng ta có thể cần thay đổi để cho phép state machine thực thi. Đây là một lời nhắc nhở hữu ích. Trên thực tế, chúng ta đã thay đổi state machine của mình và sẽ yêu cầu thay đổi quyền. Bây giờ, chúng ta yêu cầu khả năng Lambda function <strong>Data Checking</strong>. Chúng ta sẽ giải quyết vấn đề này ở bước lớn tiếp theo.Click <strong>Save anyway</strong>.</li>
 </ol>
 
@@ -2477,19 +2478,19 @@ aws cloudformation describe-stacks --region $REGION --stack-name $STACK_NAME --q
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1642672391"></script>
-    <script src="/js/jquery.sticky.js?1642672391"></script>
-    <script src="/js/featherlight.min.js?1642672391"></script>
-    <script src="/js/highlight.pack.js?1642672391"></script>
+    <script src="/js/clipboard.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1673730818"></script>
+    <script src="/js/jquery.sticky.js?1673730818"></script>
+    <script src="/js/featherlight.min.js?1673730818"></script>
+    <script src="/js/highlight.pack.js?1673730818"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1642672391"></script>
-    <script src="/js/learn.js?1642672391"></script>
-    <script src="/js/hugo-learn.js?1642672391"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1673730818"></script>
+    <script src="/js/learn.js?1673730818"></script>
+    <script src="/js/hugo-learn.js?1673730818"></script>
 
-    <link href="/mermaid/mermaid.css?1642672391" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1642672391"></script>
+    <link href="/mermaid/mermaid.css?1673730818" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1673730818"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

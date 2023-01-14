@@ -1,5 +1,5 @@
 +++
-title = "Cập nhật SAM template"
+title = "Update SAM template"
 date = 2021
 weight = 2
 chapter = false
@@ -7,21 +7,21 @@ pre = "<b>3.3.2 </b>"
 +++
 
 
-#### Cập nhật SAM template
+#### Update SAM template
 
 
-1. Quay trở lại giao diện dòng lệnh của Cloud9 instance, tại thư mục **workshop-dir**, chạy câu lệnh sau để tạo file mới chứa định nghĩa của state machine.
+1. Return to the command line interface of the Cloud9 instance, at the **workshop-dir** directory, run the following command to create a new file containing the definition of the state machine.
 
 ```
 mkdir -p statemachine && pushd statemachine && touch account-application-workflow.asl.json && popd
 ```
-  + Lệnh trên tạo một file **statemachine/account-application-workflow.asl.json** không có nội dung trong thư mục workshop-dir.
+  + The above command creates a file **statemachine/account-application-workflow.asl.json** with no content in the workshop-dir directory.
 
-![StepFunctions](/images/SF/040.png?width=90pc)
+![AWS Step Functions](/images/3.3.2/0001.png?featherlight=false&width=90pc)
 
-2. Click vào thư mục **statemachine** và mở file **account-application-workflow.asl.json**.
-  + Thay thế nội dung dưới đây.
-  + Ấn **Ctrl+S** để lưu tập tin.
+1. Click on the **statemachine** folder and open the **account-application-workflow.asl.json** file.
+  + Replace the content below.
+  + Press **Ctrl+S** to save the file.
 
 ```
     {
@@ -57,11 +57,11 @@ mkdir -p statemachine && pushd statemachine && touch account-application-workflo
     }
 ```
 
-![StepFunctions](/images/SF/041.png?width=90pc)
+![AWS Step Functions](/images/3.3.2/0002.png?featherlight=false&width=90pc)
 
-1. Tiếp theo chúng ta mở file **template.yaml** trong thư mục workshop-dir.
-  + Thay thế nội dụng JSON dưới đây.
-  + Ấn **Ctrl+S** để lưu tập tin.
+1. Next we open the file **template.yaml** in the workshop-dir directory.
+  + Replace the JSON content below.
+  + Press **Ctrl+S** to save the file.
 
 ```
 AWSTemplateFormatVersion: "2010-09-09"
@@ -203,18 +203,19 @@ Outputs:
     Value: !GetAtt DataCheckingFunction.Arn
 ```
 
-![StepFunctions](/images/SF/042.png?width=90pc)
+![AWS Step Functions](/images/3.3.2/0003.png?featherlight=false&width=90pc)
 
-4. Chạy câu lệnh sau để triển khai lại ứng dụng.
+1. Run the following command to redeploy the application.
 ```
 sam build && sam deploy
 ```
-
-![StepFunctions](/images/SF/043.png?width=90pc)
+![AWS Step Functions](/images/3.3.2/0004.png?featherlight=false&width=90pc)
 
 
 {{%notice tip%}}
-Bạn có thể tải về những file đã chỉnh sửa và chạy thành công ở dưới đây:
+You can download the edited and successfully run files below:
 {{%/notice%}}
 
 {{%attachments style="orange" title="Updated SAM" pattern=".*"/%}}
+
+![AWS Step Functions](/images/3.3.2/0005.png?featherlight=false&width=90pc)

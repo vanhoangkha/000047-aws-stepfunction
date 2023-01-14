@@ -1,5 +1,5 @@
 +++
-title = "Cập nhật Permissions"
+title = "Update Permissions"
 date = 2021
 weight = 3
 chapter = false
@@ -7,22 +7,22 @@ pre = "<b>3.3 </b>"
 +++
 
 
-#### Cập nhật Permissions
+#### Update Permissions
 
-Thay vì tiếp tục làm việc trong bảng điều khiển web và thực hiện sửa lỗi  bằng tay, chúng ta sẽ sử dụng công cụ AWS SAM để xác định state machine cùng với các tài nguyên khác được sử dụng trong workshop này và thiết lập quyền để state machine này thực thi thành công.
+Instead of continuing to work in the web console and performing manual debugging, we will use the AWS SAM tool to define the state machine along with other resources used in this workshop and set permissions for This state machine executes successfully.
 
-Các bước chính chúng ta sẽ làm :
-  + Khai báo state machine của chúng ta bên trong một file mới  tại statemachine/ account-application-workflow.asl.json
+The main steps we will do:
+  Declare our state machine inside a new file at statemachine/ account-application-workflow.asl.json
 
-  + Cập nhật file SAM template của chúng ta template.yaml để bao gồm tài nguyên  triển khai state machine mới.
+  + Updated our SAM template file template.yaml to include the new state machine deployment resource.
 
-  + Thêm một IAM role mới cho state machine  để đảm nhận khi nó thực thi. Vai trò cấp quyền cho state machine gọi Lambda function **Data Checking**.
+  Add a new IAM role for the state machine to take on as it executes. The role that grants permission to the state machine calls the Lambda function **Data Checking**.
 
 {{%notice tip%}}
-Trước khi chúng ta di chuyển định nghĩa state machine sang file template.yaml, chúng  ta xóa state machine trong giao diện console của Step Functions để không bị nhầm lẫn khi một state machine tương tự được triển khai.
+Before we move the state machine definition to the template.yaml file, we delete the state machine in the Step Functions console so that there is no confusion when a similar state machine is deployed.
 {{%/notice%}}
 
-#### Nội dung
-1. [Xóa state machine](3.3.1-deleteoldworkflow/)
-2. [Cập nhật SAM template](3.3.2-updatesamtemplate/)
-3. [Kiểm tra workflow](3.3.3-checkworkflow/)
+#### Content
+1. [Delete state machine](3.3.1-deleteoldworkflow/)
+2. [Update SAM template](3.3.2-updatesamtemplate/)
+3. [Checkworkflow](3.3.3-checkworkflow/)

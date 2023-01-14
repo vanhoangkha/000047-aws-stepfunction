@@ -1,37 +1,37 @@
 +++
-title = "Bắt đầu với AWS Step Functions"
+title = "Getting Started with AWS Step Functions"
 date = 2021
 weight = 1
 chapter = false
 +++
 
-# Bắt đầu với AWS Step Functions
+# Get started with AWS Step Functions
 
-#### Tổng quan
+#### Overview
 
-Trong workshop này, bạn sẽ học cách điều phối quy trình công việc giữa các dịch vụ  bằng cách sử dụng một dịch vụ đơn giản nhưng mạnh mẽ, được quản lý hoàn toàn bởi AWS, AWS Step Functions. Chúng ta sẽ triển khai một cặp dịch vụ dưới dạng các AWS Lambda functions đơn giản và sắp xếp chúng lại với nhau thành một quy trình công việc ví dụ liên quan đến việc thực thi song song, logic phân nhánh và tạm dừng / tiếp tục các công việc.
+In this workshop, you will learn how to orchestrate workflows between services using a simple, yet powerful, fully managed AWS service, AWS Step Functions. We'll implement a pair of services as simple AWS Lambda functions and bundle them together into an example workflow involving parallel execution, branching logic, and pause/resume jobs.
 
-#### Mục tiêu
+#### Target
 
-Thông qua workshop chúng ta sẽ nắm được:
+Through the workshop we will learn:
 
-+ Lợi ích của việc triển khai tổ chức dịch vụ bằng việc sử dụng dịch vụ AWS Step Functions.
-+ Cơ bản về việc sử dụng AWS Step Functions state machines:
-  + Làm việc với Lambda Functions sử dụng **Task** state.
-  + Thực hiện logic phân nhánh sử dụng **Choice** state.
-  + Thực hiện công việc song song sử dụng **Parallel** state.
-  + Thực hiện **Pause/Resume** dựa trên token & callback sử dụng **waitForTaskToken**.
-+ Visualizing, debugging and auditing workflow sử dụng AWS Step Functions console.
++ Benefits of implementing a service organization using the AWS Step Functions service.
+Basics of using AWS Step Functions state machines:
+  + Working with Lambda Functions using **Task** state.
+  + Implement branching logic using **Choice** state.
+  + Perform parallel work using **Parallel** state.
+  + Implement **Pause/Resume** based on token & callback using **waitForTaskToken**.
+Visualizing, debugging and auditing workflows using the AWS Step Functions console.
 
-#### Phiên bản tiếng Anh
+#### English version
 [Intro to Service Coordination using AWS Step Functions](https://step-functions-workshop.go-aws.com/)
 
-#### Nội dung
-1. [Giới thiệu workshop](1-intro/)
-2. [Chuẩn bị](2-prepare/)
-3. [Dịch vụ điều phối ](3-serviceorchestration/)
-4. [Cải tiến workflow](4-improveworkflow/)
-5. [Xử lý lỗi](5-errorhandling/)
-6. [Xử lý state song song](6-stateparallel/)
-7. [Tìm hiểu thêm](7-furtherlearning/)
-8. [Dọn dẹp tài nguyên](8-cleanup/)
+#### Content
+1. [Introduction to the workshop](1-intro/)
+2. [Prepare](2-prepare/)
+3. [Service Dispatch ](3-serviceorchestration/)
+4. [Improve Workflow](4-improveworkflow/)
+5. [Error handling](5-errorhandling/)
+6. [Parallel state processing](6-stateparallel/)
+7. [Learn More](7-furtherlearning/)
+8. [Resource Cleanup](8-cleanup/)

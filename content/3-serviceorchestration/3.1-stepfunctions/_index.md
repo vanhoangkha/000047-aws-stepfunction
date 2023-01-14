@@ -9,18 +9,18 @@ pre = "<b>3.1 </b>"
 
 #### AWS Step Functions
 
-AWS Step Functions cho phép bạn điều phối các dịch vụ thông qua quy trình làm việc được quản lý hoàn toàn để bạn có thể xây dựng và cập nhật ứng dụng một cách nhanh chóng. Quy trình làm việc được tạo thành từ một loạt các bước, với đầu ra của một bước đóng vai trò là đầu vào cho bước tiếp theo. 
+AWS Step Functions allows you to orchestrate services through a fully managed workflow so you can build and update applications quickly. A workflow is made up of a series of steps, with the output of one step serving as the input to the next.
 
-Việc phát triển ứng dụng đơn giản và trực quan hơn bằng cách sử dụng Step Functions vì nó chuyển quy trình làm việc của bạn thành một sơ đồ **state machine** dễ hiểu, dễ giải thích cho người khác và dễ thay đổi. Bạn có thể theo dõi từng bước trong quá trình thực thi quy trình công việc khi chúng xảy ra (và cả sau đó), điều này giúp bạn nhanh chóng xác định các vấn đề và khắc phục chúng. Step Functions tự động kích hoạt và theo dõi từng bước, đồng thời có thể thử lại các bước khi có lỗi, để quy trình làm việc ứng dụng của bạn thực thi một cách đáng tin cậy và theo thứ tự bạn mong đợi.
+Application development is simpler and more intuitive using Step Functions as it turns your workflow into a **state machine** diagram that is easy to understand, explain to others, and easy to change. You can track each step of the workflow execution as they happen (and afterwards), which helps you quickly identify problems and fix them. Step Functions automatically fires and tracks each step, and can retry steps in the event of an error, so your application workflow executes reliably and in the order you expect.
 
-Có rất nhiều điều để khám phá trong phần mô tả ở trên và vào cuối workshop này, bạn sẽ thấy tất cả những lợi ích đó. Nhưng cách tốt nhất để hiểu một dịch vụ mới là sử dụng nó, vì vậy chúng ta sẽ đi sâu vào Step Functions bằng cách bắt đầu với các khái niệm và bước cơ bản mà chúng ta cần để kết nối các dịch vụ của mình với nhau.
+There is a lot to explore in the description above and at the end of this workshop you will see all the benefits. But the best way to understand a new service is to use it, so we will dive into Step Functions by starting with the basic concepts and steps we need to connect our services to together.
 
-Step Functions hoạt động bằng cách biểu diễn quy trình làm việc của chúng ta dưới dạng **state machine**. Khái niệm **state machine** chỉ là sự hình thức hóa những thứ mà bạn  đã có hiểu biết trực quan rất rõ ràng từ việc viết bất kỳ mã lập trình cơ bản nào.
+Step Functions works by representing our workflow as **state machine**. The concept of **state machine** is just a formalization of things that you already have a very clear intuitive understanding from writing any basic programming code.
 
-**State machine**  là một cách  mô tả một tập hợp các bước quy trình làm việc được chia thành các trạng thái được đặt tên. Mỗi state machine có một trạng thái khởi động và luôn chỉ có một trạng thái hoạt động (trong quá trình thực thi). Trạng thái hoạt động có một số đầu vào và thường thực hiện một số hành động bằng cách sử dụng đầu vào đó, điều này tạo ra kết quả đầu ra. **State machine** chuyển đổi từ trạng thái này sang trạng thái tiếp theo dựa trên trạng thái của chúng và các kết nối rõ ràng mà chúng ta cho phép giữa các trạng thái.
+**State machine** is a way of describing a set of workflow steps divided into named states. Each state machine has one startup state and always only one active state (during execution). The active state takes some input and usually performs some action using that input, which produces the output. **State machine** transitions from one state to the next based on their state and the explicit connections we allow between states.
 
-Hãy bắt tay thực hành để bạn có thể thấy cách hoạt động của **Step Functions**. Chúng ta sẽ bắt đầu bằng cách viết Step Functions state machine để tạo mô hình  đơn giản hóa của quy trình làm việc đăng ký tài khoản. Với AWS Step Functions, có một số loại trạng thái (hoặc các bước) khác nhau mà chúng ta có thể sử dụng để tạo state machine  quy trình làm việc của mình và đơn giản nhất là Trạng thái **Pass**. Trạng thái Pass chỉ đơn giản là chuyển đầu vào của nó đến đầu ra của nó, không thực hiện công việc nào. Các trạng thái vượt qua rất hữu ích khi xây dựng và gỡ lỗi cho state machine, vì vậy chúng ta sẽ sử dụng chúng ở bước này để bắt đầu phác thảo quy trình làm việc của mình.
+Let's get hands-on so you can see how **Step Functions** works. We'll start by writing a Step Functions state machine to create a simplified model of the account registration workflow. With AWS Step Functions, there are several different types of states (or steps) that we can use to create our workflow state machine, and the simplest is the **Pass** State. The Pass state simply passes its input to its output, doing no work. Passing states are very useful when building and debugging state machines, so we'll use them in this step to start outlining our workflow.
 
-#### Nội dung
-1. [Khởi tạo workflow](3.1.1-workflow/)
-2. [Kiểm tra workflow](3.1.2-tryworkflow/)
+#### Content
+1. [Initialize workflow](3.1.1-workflow/)
+2. [Check Workflow](3.1.2-tryworkflow/)

@@ -1,5 +1,5 @@
 +++
-title = "Kiểm tra workflow"
+title = "Check workflow"
 date = 2021
 weight = 2
 chapter = false
@@ -7,23 +7,24 @@ pre = "<b>3.1.2 </b>"
 +++
 
 
-#### Kiểm tra workflow
+#### Check workflow
 
-Tại thời điểm này, mặc dù chúng ta đã tạo một state machine hợp lệ, nhưng nó không thực sự làm được gì vì trạng thái Pass mà chúng tôi đang sử dụng trong định nghĩa của chúng tôi chỉ chuyển đầu vào thẳng tới đầu ra của nó mà không thực hiện bất kỳ công việc nào. State machine của chúng ta chỉ chuyển đổi qua ba trạng thái Pass và kết thúc. Tuy nhiên, hãy nhanh chóng thử thực thi  để chúng ta có thể thấy điều này.
-
-
+At this point, even though we've created a valid state machine, it doesn't do anything because the Pass state we're using in our definition just passes the input straight to the output of it without doing any work. Our state machine just transitions through the three Pass states and ends. However, let's quickly try the execution so we can see this.
 
 1. Click **Start execution**.
 
-![StepFunctions](/images/SF/028.png?width=90pc)
+![AWS Step Functions](/images/3.1.2/0001.png?featherlight=false&width=90pc)
 
-2. Mỗi khi chúng ta yêu cầu Step Functions thực thi một state machine, chúng ta có thể cung cấp một số đầu vào ban đầu. Chúng ta hãy giữ nguyên đầu vào ví dụ ban đầu và click **Start execution**.
+2. Every time we ask Step Functions to execute a state machine, we can provide some initial input. Let's keep the original example input and click **Start execution**.
 
+![AWS Step Functions](/images/3.1.2/0002.png?featherlight=false&width=90pc)
 
-![StepFunctions](/images/SF/029.png?width=90pc)
+3. You will now see the details page of the execution we just enabled. Click on any step name in the visualization and note how we can see the input and output values ​​for each state during the execution.
 
-3. Bây giờ bạn sẽ thấy trang chi tiết về quá trình thực thi mà chúng ta vừa kích hoạt. Nhấp vào bất kỳ tên bước nào trong hình ảnh trực quan và lưu ý cách chúng ta có thể xem các giá trị đầu vào và đầu ra cho mỗi trạng thái trong quá trình thực thi.
+![AWS Step Functions](/images/3.1.2/0004.png?featherlight=false&width=90pc)
 
-![StepFunctions](/images/SF/030.png?width=90pc)
+![AWS Step Functions](/images/3.1.2/0005.png?featherlight=false&width=90pc)
 
-Bây giờ bạn đã hiểu cách xác định và thực thi state machine, hãy cập nhật định nghĩa state machine của chúng ta để thực sự thực hiện một số công việc bằng cách gọi đến dịch vụ **Data Checking** để kiểm tra tên và địa chỉ. Đối với định nghĩa mới của chúng ta, chúng ta sẽ sử dụng trạng thái **Task** để thực hiện công việc.
+![AWS Step Functions](/images/3.1.2/0006.png?featherlight=false&width=90pc)
+
+Now that you understand how to define and execute a state machine, let's update our state machine definition to do some work by calling the **Data Checking** service to check the name and address. For our new definition, we will use the **Task** state to do the work.

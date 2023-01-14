@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Kiểm tra workflow :: AWS Step Functions</title>
 
     
-    <link href="/css/nucleus.css?1642672391" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1642672391" rel="stylesheet">
-    <link href="/css/hybrid.css?1642672391" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1642672391" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1642672391" rel="stylesheet">
-    <link href="/css/auto-complete.css?1642672391" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1642672391" rel="stylesheet">
-    <link href="/css/theme.css?1642672391" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1642672391" rel="stylesheet">
+    <link href="/css/nucleus.css?1673730818" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1673730818" rel="stylesheet">
+    <link href="/css/hybrid.css?1673730818" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1673730818" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1673730818" rel="stylesheet">
+    <link href="/css/auto-complete.css?1673730818" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1673730818" rel="stylesheet">
+    <link href="/css/theme.css?1673730818" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1673730818" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1642672391" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1673730818" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1642672391"></script>
+    <script src="/js/jquery-3.3.1.min.js?1673730818"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1642672391"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1642672391"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1673730818"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1673730818"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1642672391"></script>
+<script type="text/javascript" src="/js/search.js?1673730818"></script>
 
     
   </div>
@@ -705,7 +705,7 @@
   
     
     <li data-nav-id="/vi/3-serviceorchestration/3.3-updatepermission/3.3.3-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>20-01-2021</font></i>
+        <i><font color=orange>15-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1535,7 +1535,6 @@
         </left>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-
     </section>
   </div>
 </nav>
@@ -1633,41 +1632,44 @@
 <li>Click vào state machine <strong>ApplicationProcessingStateMachine-xxxxxxxxxxxx</strong>.</li>
 <li>Đây là phiên bản được triển khai lại của state machine của chúng ta. Phiên bản mới  không thay đổi, ngoại trừ việc chúng ta đã cấp IAM role của nó để gọi lambda function <strong>Data Checking</strong>. Hãy thử thực hiện lại nó với một số đầu vào mẫu để xem điều gì sẽ xảy ra.</li>
 </ul>
-<p><img src="/images/SF/044.png?width=90pc" alt="StepFunctions"></p>
+<p><img src="/images/3.3.3/0001.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
 <ol start="2">
 <li>Click <strong>Start execution</strong> để thực hiện lại workflow.</li>
 <li>Điền nội dung JSON dưới đây vào mục input.</li>
 </ol>
-<pre><code>{
-    &quot;application&quot;: { 
-        &quot;name&quot;: &quot;Spock&quot;, 
-        &quot;address&quot;: &quot;123 Enterprise Street&quot; 
+<pre tabindex="0"><code>{
+    &#34;application&#34;: { 
+        &#34;name&#34;: &#34;Spock&#34;, 
+        &#34;address&#34;: &#34;123 Enterprise Street&#34; 
     }
 }
 </code></pre><ul>
 <li>Click <strong>Start execution</strong>.</li>
 </ul>
-<p><img src="/images/SF/045.png?width=90pc" alt="StepFunctions"></p>
+<p><img src="/images/3.3.3/0002.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
 
-<div class="notices tip" ><p>Sau một lúc, bạn sẽ thấy rằng việc thực thi không thành công. Tuy nhiên, lần này, chúng ta không có bất kỳ trạng thái màu đỏ nào, bởi vì lần này chúng ta gặp phải lỗi khác.<br>
+<div class="notices tip" ><p>Sau một lúc, bạn sẽ thấy rằng việc thực thi không thành công. Tuy nhiên, lần này, chúng ta không có bất kỳ trạng thái màu đỏ nào, bởi vì lần này chúng ta gặp phải lỗi khác. <br>
 Trạng thái <strong>Check Name</strong> đã thực thi thành công, tuy nhiên trạng thái <strong>Check Address</strong> thì có màu xám. Nếu bạn nhìn vào mã màu ở cuối phần hình ảnh hóa, bạn sẽ thấy rằng điều này có nghĩa là trạng thái đã bị hủy. Hãy cùng xem tại sao.</p>
 </div>
 
-<p><img src="/images/SF/046.png?width=90pc" alt="StepFunctions"></p>
-<ol start="4">
+<p><img src="/images/3.3.3/0003.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Kéo màn hình xuống dưới tới phần <strong>Execution event history</strong>.</li>
 </ol>
 <ul>
 <li>Click vào lần thực thi cuối cùng.</li>
 <li>Chúng ta sẽ thấy lỗi như bên dưới</li>
 </ul>
-<pre><code>{
- &quot;error&quot;: &quot;States.Runtime&quot;,
- &quot;cause&quot;: &quot;An error occurred while executing the state 'Check Address' (entered at the event id #7). The JSONPath '$.application.address' specified for the field 'address.$' could not be found in the input '{\&quot;flagged\&quot;:false}'&quot;
+<pre tabindex="0"><code>{
+ &#34;error&#34;: &#34;States.Runtime&#34;,
+ &#34;cause&#34;: &#34;An error occurred while executing the state &#39;Check Address&#39; (entered at the event id #7). The JSONPath &#39;$.application.address&#39; specified for the field &#39;address.$&#39; could not be found in the input &#39;{\&#34;flagged\&#34;:false}&#39;&#34;
 }
-</code></pre><p><img src="/images/SF/047.png?width=90pc" alt="StepFunctions"></p>
+</code></pre><p><img src="/images/3.3.3/0004.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
 <p>Nếu bạn nhìn lại định nghĩa state machine của chúng ta cho trạng thái <strong>Check Address</strong> , bạn sẽ thấy rằng nó mong đợi có một đối tượng <strong>application</strong> trong đầu vào của nó và nó cố gắng chuyển <strong>application.address</strong> xuống Lambda function <strong>Data Checking</strong>.</p>
-<p><img src="/images/SF/048.png?width=90pc" alt="StepFunctions"></p>
+<p><img src="/images/3.3.3/0005.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img src="/images/3.3.3/0006.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img src="/images/3.3.3/0007.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img src="/images/3.3.3/0008.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
 <p>Thông báo lỗi cho chúng ta biết rằng state machine không thể tìm thấy application.address trong đầu vào của trạng thái. Để hiểu lý do tại sao, chúng ta cần tìm hiểu thêm một chút về cách một trạng thái hoạt động tạo ra đầu ra của nó và chuyển nó đến đầu vào của trạng thái kế tiếp trong bước tiếp theo.</p>
 
 
@@ -2457,19 +2459,19 @@ Trạng thái <strong>Check Name</strong> đã thực thi thành công, tuy nhi�
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1642672391"></script>
-    <script src="/js/jquery.sticky.js?1642672391"></script>
-    <script src="/js/featherlight.min.js?1642672391"></script>
-    <script src="/js/highlight.pack.js?1642672391"></script>
+    <script src="/js/clipboard.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1673730818"></script>
+    <script src="/js/jquery.sticky.js?1673730818"></script>
+    <script src="/js/featherlight.min.js?1673730818"></script>
+    <script src="/js/highlight.pack.js?1673730818"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1642672391"></script>
-    <script src="/js/learn.js?1642672391"></script>
-    <script src="/js/hugo-learn.js?1642672391"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1673730818"></script>
+    <script src="/js/learn.js?1673730818"></script>
+    <script src="/js/hugo-learn.js?1673730818"></script>
 
-    <link href="/mermaid/mermaid.css?1642672391" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1642672391"></script>
+    <link href="/mermaid/mermaid.css?1673730818" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1673730818"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

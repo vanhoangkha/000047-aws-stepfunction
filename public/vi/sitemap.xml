@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>/vi/2-prepare/2.3-exploreservice/2.3.1-account/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
@@ -15,9 +14,7 @@
                 hreflang="vi"
                 href="/vi/2-prepare/2.3-exploreservice/2.3.1-account/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.1-stepfunctions/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -30,9 +27,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.1-stepfunctions/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -45,9 +40,7 @@
                 hreflang="vi"
                 href="/vi/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.4-stateinputoutput/3.4.1-updateworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -60,9 +53,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.4-stateinputoutput/3.4.1-updateworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.5-choicestatetype/3.5.1-updateworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -75,9 +66,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.5-choicestatetype/3.5.1-updateworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/4-improveworkflow/4.1-startworkflow/4.1.1-updateworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -90,9 +79,7 @@
                 hreflang="vi"
                 href="/vi/4-improveworkflow/4.1-startworkflow/4.1.1-updateworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/4-improveworkflow/4.2-pauseworkflow/4.2.1-updateworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -105,9 +92,7 @@
                 hreflang="vi"
                 href="/vi/4-improveworkflow/4.2-pauseworkflow/4.2.1-updateworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/6-stateparallel/6.1-updateworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -120,9 +105,7 @@
                 hreflang="vi"
                 href="/vi/6-stateparallel/6.1-updateworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/1-intro/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -135,9 +118,7 @@
                 hreflang="vi"
                 href="/vi/1-intro/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.1-stepfunctions/3.1.1-workflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -150,9 +131,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.1-stepfunctions/3.1.1-workflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/4-improveworkflow/4.1-startworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -165,9 +144,7 @@
                 hreflang="vi"
                 href="/vi/4-improveworkflow/4.1-startworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/1-intro/1.1-orches/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -180,24 +157,7 @@
                 hreflang="vi"
                 href="/vi/1-intro/1.1-orches/"
                 />
-  </url>
-  
-  <url>
-    <loc>/vi/5-errorhandling/5.1-retry/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/5-errorhandling/5.1-retry/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="/vi/5-errorhandling/5.1-retry/"
-                />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/2-prepare/2.1-cloud9/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -210,9 +170,20 @@
                 hreflang="vi"
                 href="/vi/2-prepare/2.1-cloud9/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>/vi/5-errorhandling/5.1-retry/</loc>
+    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/5-errorhandling/5.1-retry/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/5-errorhandling/5.1-retry/"
+                />
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.2-taskstate/3.2.1-updateworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -225,9 +196,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.2-taskstate/3.2.1-updateworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.3-updatepermission/3.3.1-deleteoldworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -240,24 +209,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.3-updatepermission/3.3.1-deleteoldworkflow/"
                 />
-  </url>
-  
-  <url>
-    <loc>/vi/2-prepare/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/2-prepare/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="/vi/2-prepare/"
-                />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.3-updatepermission/3.3.2-updatesamtemplate/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -270,9 +222,20 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.3-updatepermission/3.3.2-updatesamtemplate/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>/vi/2-prepare/</loc>
+    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/2-prepare/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/2-prepare/"
+                />
+  </url><url>
     <loc>/vi/2-prepare/2.3-exploreservice/2.3.2-datacheck/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -285,9 +248,7 @@
                 hreflang="vi"
                 href="/vi/2-prepare/2.3-exploreservice/2.3.2-datacheck/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.1-stepfunctions/3.1.2-tryworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -300,9 +261,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.1-stepfunctions/3.1.2-tryworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.2-taskstate/3.2.2-tryworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -315,9 +274,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.2-taskstate/3.2.2-tryworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.4-stateinputoutput/3.4.2-checkworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -330,9 +287,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.4-stateinputoutput/3.4.2-checkworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.5-choicestatetype/3.5.2-checkworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -345,9 +300,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.5-choicestatetype/3.5.2-checkworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/4-improveworkflow/4.1-startworkflow/4.1.2-checkworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -360,9 +313,7 @@
                 hreflang="vi"
                 href="/vi/4-improveworkflow/4.1-startworkflow/4.1.2-checkworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/4-improveworkflow/4.2-pauseworkflow/4.2.2-checkworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -375,9 +326,7 @@
                 hreflang="vi"
                 href="/vi/4-improveworkflow/4.2-pauseworkflow/4.2.2-checkworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/6-stateparallel/6.2-checkworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -390,9 +339,7 @@
                 hreflang="vi"
                 href="/vi/6-stateparallel/6.2-checkworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.2-taskstate/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -405,9 +352,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.2-taskstate/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/1-intro/1.2-businessdomain/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -420,24 +365,7 @@
                 hreflang="vi"
                 href="/vi/1-intro/1.2-businessdomain/"
                 />
-  </url>
-  
-  <url>
-    <loc>/vi/5-errorhandling/5.2-catch/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/5-errorhandling/5.2-catch/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="/vi/5-errorhandling/5.2-catch/"
-                />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/4-improveworkflow/4.2-pauseworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -450,9 +378,7 @@
                 hreflang="vi"
                 href="/vi/4-improveworkflow/4.2-pauseworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/2-prepare/2.2-createservice/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -465,24 +391,20 @@
                 hreflang="vi"
                 href="/vi/2-prepare/2.2-createservice/"
                 />
-  </url>
-  
-  <url>
-    <loc>/vi/1-intro/1.3-detailworkflow/</loc>
+  </url><url>
+    <loc>/vi/5-errorhandling/5.2-catch/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-intro/1.3-detailworkflow/"
+                href="/5-errorhandling/5.2-catch/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-intro/1.3-detailworkflow/"
+                href="/vi/5-errorhandling/5.2-catch/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.3-updatepermission/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -495,9 +417,20 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.3-updatepermission/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>/vi/1-intro/1.3-detailworkflow/</loc>
+    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-intro/1.3-detailworkflow/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-intro/1.3-detailworkflow/"
+                />
+  </url><url>
     <loc>/vi/3-serviceorchestration/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -510,9 +443,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/4-improveworkflow/4.3-finishworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -525,9 +456,7 @@
                 hreflang="vi"
                 href="/vi/4-improveworkflow/4.3-finishworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/2-prepare/2.3-exploreservice/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -540,9 +469,7 @@
                 hreflang="vi"
                 href="/vi/2-prepare/2.3-exploreservice/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.3-updatepermission/3.3.3-checkworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -555,9 +482,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.3-updatepermission/3.3.3-checkworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/4-improveworkflow/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -570,9 +495,7 @@
                 hreflang="vi"
                 href="/vi/4-improveworkflow/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.4-stateinputoutput/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -585,9 +508,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.4-stateinputoutput/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/3-serviceorchestration/3.5-choicestatetype/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -600,9 +521,7 @@
                 hreflang="vi"
                 href="/vi/3-serviceorchestration/3.5-choicestatetype/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/5-errorhandling/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -615,9 +534,7 @@
                 hreflang="vi"
                 href="/vi/5-errorhandling/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/6-stateparallel/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -630,9 +547,7 @@
                 hreflang="vi"
                 href="/vi/6-stateparallel/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/7-furtherlearning/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -645,9 +560,7 @@
                 hreflang="vi"
                 href="/vi/7-furtherlearning/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/8-cleanup/</loc>
     <lastmod>2021-07-09T14:40:59+07:00</lastmod>
     <xhtml:link
@@ -660,9 +573,7 @@
                 hreflang="vi"
                 href="/vi/8-cleanup/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -674,9 +585,7 @@
                 hreflang="vi"
                 href="/vi/categories/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/vi/tags/</loc>
     <xhtml:link
                 rel="alternate"
@@ -689,5 +598,4 @@
                 href="/vi/tags/"
                 />
   </url>
-  
 </urlset>

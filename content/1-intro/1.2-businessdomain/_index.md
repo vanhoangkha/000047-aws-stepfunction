@@ -1,5 +1,5 @@
 +++
-title = "Lĩnh vực kinh doanh"
+title = "Business domain"
 date = 2021
 weight = 2
 chapter = false
@@ -7,15 +7,15 @@ pre = "<b>1.2 </b>"
 +++
 
 
-#### Lĩnh vực kinh doanh ( Business domain )
+#### Business domain ( Business domain )
 
-Sẽ dễ dàng hơn khi tìm hiểu về dịch vụ điều phối khi chúng ta thiết lập workflow dựa trên một lĩnh vực kinh doanh cụ thể. Trong workshop này chúng ta sẽ xoay quanh một số các dịch vụ ( hoạt động dưới dạng những Lambda Functions đơn giản), giả lập một quy trình đơn giản hóa trong lĩnh vực ngân hàng ( banking ). Workshop sẽ tạo ra một workflow để quản lý qui trình tạo tài khoản ngân hàng mới bằng cách kiểm tra một số thông tin của người đăng ký tự động cũng như kết hợp với kiểm soát viên.
+It's easier to learn about orchestration services when we set up workflows based on a specific business area. In this workshop we will revolve around a number of services (operating as simple Lambda Functions), simulating a simplified process in the banking sector. The workshop will create a workflow to manage the new bank account creation process by checking some of the subscriber's information automatically as well as in conjunction with the controller.
 
-Hệ thống mẫu của chúng ta sẽ bao gồm:
- + Dịch vụ **Account Applications**: Xử lý các đơn đăng ký mới.Yêu cầu trả lời từ dịch vụ **Data Checking** để cung cấp việc kiểm tra thông tin tên và địa chỉ người đăng ký.
- + Dịch vụ **Data Checking**: Kiểm tra thông tin tên và địa chỉ người đăng ký.
- + Dịch vụ **Accounts**: chịu trách nhiệm mở và vận hành tài khoản ngân hàng, trong workshop này chúng ta sẽ không triển khai hoàn chỉnh dịch vụ này mà tập trung vào 2 dịch vụ **Account Applications** và **Data Checking**. Dịch vụ **Accounts** sẽ là đích đến khi đơn đăng ký mở tài khoản mới được duyệt.
+Our sample system will include:
+ + Service **Account Applications**: Process new applications. Request a reply from **Data Checking** service to provide verification of registrant's name and address information.
+ + Service **Data Checking**: Check the name and address of the registrant.
+ + **Accounts** service: responsible for opening and operating bank accounts, in this workshop we will not fully implement this service but focus on 2 services **Account Applications** and * *Data Checking**. **Accounts** service will be the destination when the application to open a new account is approved.
 
-Trong hình dưới đây chúng ta có thể thấy được các bước trong quy trình đăng ký tài khoản , và chúng ta sẽ dùng dịch vụ điều phối để tạo workflow chi tiết cho các bước này:
+In the image below we can see the steps in the account registration process, and we will use a dispatch service to create a detailed workflow for these steps:
 
 ![StepFunctions](/images/SF/001.png?width=60pc)

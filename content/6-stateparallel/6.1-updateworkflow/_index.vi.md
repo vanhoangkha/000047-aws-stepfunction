@@ -203,11 +203,13 @@ pre = "<b>6.1 </b>"
 }
 ```
 
-![StepFunctions](/images/SF/102.png?width=90pc)
+![AWS Step Functions](/images/6.1/0001.png?featherlight=false&width=90pc)
 
 
-2. Chạy lệnh dưới đây để thực hiện deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
+1. Chạy lệnh dưới đây để thực hiện deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
 ```
 sam deploy
 ```
-![StepFunctions](/images/SF/103.png?width=90pc)
+![AWS Step Functions](/images/6.1/0002.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/6.1/0003.png?featherlight=false&width=90pc)

@@ -6,50 +6,48 @@ chapter = false
 pre = "<b>2.3.1 </b>"
 +++
 
+#### Check **Account Application** service.
 
-#### Kiểm tra dịch vụ **Account Application**.
+Using AWS SAM CLI, we can call any Lambda Function in our service with parameters depending on what we want to do. Let's try to run these commands one by one to understand what we can do with applications or user data.
 
-Sử dụng AWS SAM CLI, chúng tôi có thể gọi bất kỳ Lambda Function nào trong dịch vụ của mình với các tham số tùy thuộc vào những gì chúng tôi muốn làm. Hãy thử chạy lần lượt từng lệnh này để hiểu những gì chúng ta có thể làm với các đơn đăng ký hoặc dữ liệu người dùng.
+Below, we are using the AWS CLI, via **aws lambda invoke**, to directly call a deployed AWS Lambda Function with the desired content. We haven't started using AWS Step Functions yet. Here, we're just testing the Lambda Functions that we'll start organizing into a workflow using StepFunctions in this workshop.
 
-Dưới đây, chúng ta đang sử dụng AWS CLI, thông qua **aws lambda invoke**, để gọi trực tiếp một  AWS Lambda Function đã triển khai với nội dung mong muốn. Chúng ta vẫn chưa bắt đầu sử dụng chức năng của AWS Step Functions. Ở đây, chúng ta chỉ đang kiểm tra các  Lambda Function mà chúng ta sẽ bắt đầu sắp xếp thành workflow bằng cách sử dụng  StepFunctions trong workshop này.
-
-1. Chạy câu lệnh dưới đây trong giao diện dòng lệnh để gửi một đăng ký mới.
+1. Run the command below in the command line interface to submit a new registration.
 ```
-aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "name": "Spock", "address": "123 Enterprise Street" }' /dev/stdout 
+aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "name": "Spock", "address": "123 Enterprise Street" }' /dev/stdout
 ```
+![AWS Step Functions](/images/2.3.1/0001.png?featherlight=false&width=90pc)
 
-![StepFunctions](/images/SF/012.png?width==90pc)
+2. Copy the application ID, in the result of the above command to use for the next step.
+  + Example: **application_869a2256-fe54-4731-9522-4cbbc1a184ad**
 
-2. Copy ID của đơn đăng ký, trong kết quả của câu lệnh trên để sử dụng cho bước tiếp theo.
-  + Ví dụ : **application_869a2256-fe54-4731-9522-4cbbc1a184ad**
-
-3. Gắn cờ một đăng ký để được kiểm tra bởi kiểm soát viên. ( lưu ý thay thế **REPLACE_WITH_ID** bằng giá trị ID của đơn đăng ký bạn đã lưu lại ở bước thứ 2.)
+3. Flag a registration to be inspected by a controller. (note to replace **REPLACE_WITH_ID** with the ID value of the application you saved in step 2.)
 ```
 aws lambda invoke --function-name sfn-workshop-FlagApplication --payload '{ "id": "REPLACE_WITH_ID", "flagType": "REVIEW" }' /dev/stdout
 ```
-  + Ví dụ lệnh sau khi thay đổi REPLACE_WITH_ID.
+  + Example command after changing REPLACE_WITH_ID.
   ```
   aws lambda invoke --function-name sfn-workshop-FlagApplication --payload '{ "id": "application_869a2256-fe54-4731-9522-4cbbc1a184ad", "flagType": "REVIEW" }' /dev/stdout
   ```
 
-![StepFunctions](/images/SF/013.png?width==90pc)
+![AWS Step Functions](/images/2.3.1/0002.png?featherlight=false&width=90pc)
 
-4. Liệt kê tất cả đăng ký hiện đang được gắn cờ để review.
+4. List all subscriptions currently flagged for review.
 
 ```
 aws lambda invoke --function-name sfn-workshop-FindApplications --payload '{ "state": "FLAGGED_FOR_REVIEW" }' /dev/stdout
 ```
 
-![StepFunctions](/images/SF/014.png?width==90pc)
+![AWS Step Functions](/images/2.3.1/0003.png?featherlight=false&width=90pc)
 
-5. Thực hiện Approve một đơn đăng ký bị gắn cờ:( lưu ý thay thế **REPLACE_WITH_ID** bằng giá trị ID của đơn đăng ký bạn đã lưu lại ở bước thứ 2.)
+5. Approve a flagged application: (note to replace **REPLACE_WITH_ID** with the application ID value you saved in step 2.)
 
 ```
 aws lambda invoke --function-name sfn-workshop-ApproveApplication --payload '{ "id": "REPLACE_WITH_ID" }' /dev/stdout
 ```
-  + Ví dụ lệnh sau khi thay đổi REPLACE_WITH_ID.
+  + Example command after changing REPLACE_WITH_ID.
   ```
   aws lambda invoke --function-name sfn-workshop-ApproveApplication --payload '{ "id": "application_869a2256-fe54-4731-9522-4cbbc1a184ad" }' /dev/stdout
   ```
 
-![StepFunctions](/images/SF/015.png?width==90pc)
+![AWS Step Functions](/images/2.3.1/0004.png?featherlight=false&width=90pc)

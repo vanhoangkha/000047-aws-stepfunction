@@ -9,13 +9,13 @@ pre = "<b>3.2.1 </b>"
 
 #### Update workflow
 
-1. Truy cập [giao diện AWS Step Functions](https://console.aws.amazon.com/states/home?region=ap-southeast-1).
-  + Click chọn **Process_New_Account_Applications**.
+1. Go to the [AWS Step Functions interface](https://console.aws.amazon.com/states/home?region=ap-southeast-1).
+  + Click **Process_New_Account_Applications**.
   + Click **Edit**.
 
-![StepFunctions](/images/SF/031.png?width=90pc)
+![AWS Step Functions](/images/3.2.1/0001.png?featherlight=false&width=90pc)
 
-2. Tiếp theo, chúng ta sẽ cập nhật định nghĩa của state machine. Lưu ý rằng sau khi dán nội dung bên dưới, bạn sẽ thấy một vài dòng có chỉ báo lỗi vì định nghĩa máy trạng thái mới của chúng tôi có một số chuỗi giữ chỗ được ghi là ‘REPLACE_WITH_DATA_CHECKING_LAMBDA_ARN’. **Chúng ta sẽ khắc phục sự cố này trong bước tiếp theo**. Thay thế định nghĩa hiện có  bằng định nghĩa  sau:
+2. Next, we will update the definition of the state machine. Note that after pasting the content below, you'll see a few lines with an error indicator because our new state machine definition has some placeholder strings written as 'REPLACE_WITH_DATA_CHECKING_LAMBDA_ARN'. **We will fix this in the next step**. Replace the existing definition with the following:
 ```
 {
     "StartAt": "Check Name",
@@ -50,25 +50,28 @@ pre = "<b>3.2.1 </b>"
 }
 
 ```
-![StepFunctions](/images/SF/032.png?width=90pc)
+![AWS Step Functions](/images/3.2.1/0002.png?featherlight=false&width=90pc)
 
-3. Quay trở lại giao diện Terminal của Cloud9, chạy lệnh dưới đây, để xác định được **ARN** của **DataCheckingFunction**. ( Đảm bảo rằng bạn đang ở vị trí thư mục **workshop-dir**. )
+1. Return to the Cloud9 Terminal interface, run the command below, to determine the **ARN** of **DataCheckingFunction**. (Make sure you are in the **workshop-dir** folder location. )
 
 ```
 REGION=$(grep region samconfig.toml | awk -F\= '{gsub(/"/, "", $2); gsub(/ /, "", $2); print $2}')
 STACK_NAME=$(grep stack_name samconfig.toml | awk -F\= '{gsub(/"/, "", $2); gsub(/ /, "", $2); print $2}')
-aws cloudformation describe-stacks --region $REGION --stack-name $STACK_NAME --query 'Stacks[0].Outputs[?OutputKey==`DataCheckingFunctionArn`].OutputValue' --output text                
+aws cloudformation describe-stacks --region $REGION --stack-name $STACK_NAME --query 'Stacks[0].Outputs[?OutputKey==`DataCheckingFunctionArn`].OutputValue' --output text
 ```
 {{%notice tip%}}
-Bộ lệnh có vẻ phức tạp trên chỉ để giúp bạn lấy ARN nhahn hơn bằng cách tự động lấy các giá trị cấu hình ra khỏi file samconfig.toml (file này ghi nhớ những thứ như Region và tên cloudformation stack mà chúng ta đang sử dụng SAM để triển khai), sau đó sử dụng các cấu hình đó để cấu hình giá trị cho lệnh AWS CLI để hiển thị ARN của Lambda functions **DataCheckingFunction** chúng ta đã triển khai.
+The above seemingly complicated set of commands is just to help you get the ARN faster by automatically pulling the configuration values ​​out of the samconfig.toml file (this file remembers things like Region and the name of the cloudformation stack we're using. SAM for deployment), then use those profiles to configure the value for the AWS CLI command to display the ARN of the Lambda functions **DataCheckingFunction** we deployed.
 {{%/notice%}}
 
-![StepFunctions](/images/SF/033.png?width=90pc)
+![AWS Step Functions](/images/3.2.1/0003.png?featherlight=false&width=90pc)
 
-4. Copy và lưu lại kết quả của bước 3.
-5. Trong mục **Definition** của state machine, cập nhật thông số ARN của Lambda function của bước 3 như hình dưới :
+1. Copy and save the result of step 3.
+
+![AWS Step Functions](/images/3.2.1/0004.png?featherlight=false&width=90pc)
+
+2. In the **Definition** section of the state machine, update the Lambda function ARN parameter of step 3 as shown below:
   + Click **Save**.
 
-![StepFunctions](/images/SF/034.png?width=90pc)
+![AWS Step Functions](/images/3.2.1/0005.png?featherlight=false&width=90pc)
 
-6. Chúng ta nhận được cảnh báo rằng  IAM role của chúng ta có thể cần thay đổi để cho phép state machine thực thi. Đây là một lời nhắc nhở hữu ích. Trên thực tế, chúng ta đã thay đổi state machine của mình và sẽ yêu cầu thay đổi quyền. Bây giờ, chúng ta yêu cầu khả năng Lambda function **Data Checking**. Chúng ta sẽ giải quyết vấn đề này ở bước lớn tiếp theo.Click **Save anyway**.
+3. We get a warning that our IAM role may need to change to allow the state machine to execute. This is a helpful reminder. Actually, we have changed our state machine and will ask to change permissions. Now, we require the Lambda function **Data Checking** capability. We will deal with this in the next big step. Click **Save anyway**.

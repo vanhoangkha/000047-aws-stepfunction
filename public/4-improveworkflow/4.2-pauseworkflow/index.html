@@ -3,30 +3,30 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Tạm dừng workflow để chờ kiểm tra hoàn tất :: AWS Step Functions</title>
+    <title>Pause workflow to wait for the test to complete :: AWS Step Functions</title>
 
     
-    <link href="/css/nucleus.css?1642672390" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1642672390" rel="stylesheet">
-    <link href="/css/hybrid.css?1642672390" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1642672390" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1642672390" rel="stylesheet">
-    <link href="/css/auto-complete.css?1642672390" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1642672390" rel="stylesheet">
-    <link href="/css/theme.css?1642672390" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1642672390" rel="stylesheet">
+    <link href="/css/nucleus.css?1673730818" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1673730818" rel="stylesheet">
+    <link href="/css/hybrid.css?1673730818" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1673730818" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1673730818" rel="stylesheet">
+    <link href="/css/auto-complete.css?1673730818" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1673730818" rel="stylesheet">
+    <link href="/css/theme.css?1673730818" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1673730818" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1642672390" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1673730818" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1642672390"></script>
+    <script src="/js/jquery-3.3.1.min.js?1673730818"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1642672390"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1642672390"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1673730818"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1673730818"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1642672390"></script>
+<script type="text/javascript" src="/js/search.js?1673730818"></script>
 
     
   </div>
@@ -82,13 +82,13 @@
  
   
     
-    <li data-nav-id="/1-intro/" title="Giới thiệu Workshop" class="dd-item 
+    <li data-nav-id="/1-intro/" title="Introduction to the Workshop" class="dd-item 
         
         
         
         ">
       <a href="/1-intro/">
-          <b>1. </b>Giới thiệu Workshop
+          <b>1. </b>Introduction to the Workshop
           
             <i class="fas fa-check read-icon"></i>
           
@@ -141,13 +141,13 @@
  
   
     
-    <li data-nav-id="/1-intro/1.2-businessdomain/" title="Lĩnh vực kinh doanh" class="dd-item 
+    <li data-nav-id="/1-intro/1.2-businessdomain/" title="Business domain" class="dd-item 
         
         
         
         ">
       <a href="/1-intro/1.2-businessdomain/">
-          <b>1.2 </b>Lĩnh vực kinh doanh
+          <b>1.2 </b>Business domain
           
             <i class="fas fa-check read-icon"></i>
           
@@ -169,13 +169,13 @@
  
   
     
-    <li data-nav-id="/1-intro/1.3-detailworkflow/" title="Chi tiết workflow" class="dd-item 
+    <li data-nav-id="/1-intro/1.3-detailworkflow/" title="Workflow details" class="dd-item 
         
         
         
         ">
       <a href="/1-intro/1.3-detailworkflow/">
-          <b>1.3 </b>Chi tiết workflow
+          <b>1.3 </b>Workflow details
           
             <i class="fas fa-check read-icon"></i>
           
@@ -204,13 +204,13 @@
  
   
     
-    <li data-nav-id="/2-prepare/" title="Chuẩn bị" class="dd-item 
+    <li data-nav-id="/2-prepare/" title="Preparing" class="dd-item 
         
         
         
         ">
       <a href="/2-prepare/">
-          <b>2. </b>Chuẩn bị
+          <b>2. </b>Preparing
           
             <i class="fas fa-check read-icon"></i>
           
@@ -235,13 +235,13 @@
  
   
     
-    <li data-nav-id="/2-prepare/2.1-cloud9/" title="Tạo Cloud9 Instance" class="dd-item 
+    <li data-nav-id="/2-prepare/2.1-cloud9/" title="Create Cloud9 Instance" class="dd-item 
         
         
         
         ">
       <a href="/2-prepare/2.1-cloud9/">
-          <b>2.1 </b>Tạo Cloud9 Instance
+          <b>2.1 </b>Create Cloud9 Instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -263,13 +263,13 @@
  
   
     
-    <li data-nav-id="/2-prepare/2.2-createservice/" title="Tạo các dịch vụ mẫu" class="dd-item 
+    <li data-nav-id="/2-prepare/2.2-createservice/" title="Create sample services" class="dd-item 
         
         
         
         ">
       <a href="/2-prepare/2.2-createservice/">
-          <b>2.2 </b>Tạo các dịch vụ mẫu
+          <b>2.2 </b>Create sample services
           
             <i class="fas fa-check read-icon"></i>
           
@@ -291,13 +291,13 @@
  
   
     
-    <li data-nav-id="/2-prepare/2.3-exploreservice/" title="Kiểm tra dịch vụ mẫu" class="dd-item 
+    <li data-nav-id="/2-prepare/2.3-exploreservice/" title="Test Sample Service" class="dd-item 
         
         
         
         ">
       <a href="/2-prepare/2.3-exploreservice/">
-          <b>2.3 </b>Kiểm tra dịch vụ mẫu
+          <b>2.3 </b>Test Sample Service
           
             <i class="fas fa-check read-icon"></i>
           
@@ -394,13 +394,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/" title="Dịch vụ điều phối" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/" title="Dispatch Service" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/">
-          <b>3. </b>Dịch vụ điều phối
+          <b>3. </b>Dispatch Service
           
             <i class="fas fa-check read-icon"></i>
           
@@ -456,13 +456,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/3.1-stepfunctions/3.1.1-workflow/" title="Khởi tạo workflow" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/3.1-stepfunctions/3.1.1-workflow/" title="Initialize workflow" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/3.1-stepfunctions/3.1.1-workflow/">
-          <b>3.1.1 </b>Khởi tạo workflow
+          <b>3.1.1 </b>Initialize workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -484,13 +484,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/3.1-stepfunctions/3.1.2-tryworkflow/" title="Kiểm tra workflow" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/3.1-stepfunctions/3.1.2-tryworkflow/" title="Check workflow" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/3.1-stepfunctions/3.1.2-tryworkflow/">
-          <b>3.1.2 </b>Kiểm tra workflow
+          <b>3.1.2 </b>Check workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -521,13 +521,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/3.2-taskstate/" title="Kiểu Task State" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/3.2-taskstate/" title="Task State Type" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/3.2-taskstate/">
-          <b>3.2 </b>Kiểu Task State
+          <b>3.2 </b>Task State Type
           
             <i class="fas fa-check read-icon"></i>
           
@@ -580,13 +580,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/3.2-taskstate/3.2.2-tryworkflow/" title="Kiểm tra workflow" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/3.2-taskstate/3.2.2-tryworkflow/" title="Check the workflow" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/3.2-taskstate/3.2.2-tryworkflow/">
-          <b>3.2.2 </b>Kiểm tra workflow
+          <b>3.2.2 </b>Check the workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -617,13 +617,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/3.3-updatepermission/" title="Cập nhật Permissions" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/3.3-updatepermission/" title="Update Permissions" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/3.3-updatepermission/">
-          <b>3.3 </b>Cập nhật Permissions
+          <b>3.3 </b>Update Permissions
           
             <i class="fas fa-check read-icon"></i>
           
@@ -648,13 +648,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/3.3-updatepermission/3.3.1-deleteoldworkflow/" title="Xóa state machine" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/3.3-updatepermission/3.3.1-deleteoldworkflow/" title="Delete state machine" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/3.3-updatepermission/3.3.1-deleteoldworkflow/">
-          <b>3.3.1 </b>Xóa state machine
+          <b>3.3.1 </b>Delete state machine
           
             <i class="fas fa-check read-icon"></i>
           
@@ -676,13 +676,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/3.3-updatepermission/3.3.2-updatesamtemplate/" title="Cập nhật SAM template" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/3.3-updatepermission/3.3.2-updatesamtemplate/" title="Update SAM template" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/3.3-updatepermission/3.3.2-updatesamtemplate/">
-          <b>3.3.2 </b>Cập nhật SAM template
+          <b>3.3.2 </b>Update SAM template
           
             <i class="fas fa-check read-icon"></i>
           
@@ -704,13 +704,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/3.3-updatepermission/3.3.3-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/3.3-updatepermission/3.3.3-checkworkflow/" title="Check the workflow" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/3.3-updatepermission/3.3.3-checkworkflow/">
-          <b>3.3.3 </b>Kiểm tra workflow
+          <b>3.3.3 </b>Check the workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -772,13 +772,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/3.4-stateinputoutput/3.4.1-updateworkflow/" title="Cập nhật workflow" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/3.4-stateinputoutput/3.4.1-updateworkflow/" title="Update workflow" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/3.4-stateinputoutput/3.4.1-updateworkflow/">
-          <b>3.4.1 </b>Cập nhật workflow
+          <b>3.4.1 </b>Update workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -800,13 +800,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/3.4-stateinputoutput/3.4.2-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/3.4-stateinputoutput/3.4.2-checkworkflow/" title="Check workflow" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/3.4-stateinputoutput/3.4.2-checkworkflow/">
-          <b>3.4.2 </b>Kiểm tra workflow
+          <b>3.4.2 </b>Check workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -837,13 +837,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/3.5-choicestatetype/" title="Kiểu Choice State" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/3.5-choicestatetype/" title="Style selection status" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/3.5-choicestatetype/">
-          <b>3.5 </b>Kiểu Choice State
+          <b> 3.5 </b>Style selection status
           
             <i class="fas fa-check read-icon"></i>
           
@@ -868,13 +868,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/3.5-choicestatetype/3.5.1-updateworkflow/" title="Cập nhật workflow" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/3.5-choicestatetype/3.5.1-updateworkflow/" title="Update workflow" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/3.5-choicestatetype/3.5.1-updateworkflow/">
-          <b>3.5.1 </b>Cập nhật workflow
+          <b>3.5.1 </b>Update workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -896,13 +896,13 @@
  
   
     
-    <li data-nav-id="/3-serviceorchestration/3.5-choicestatetype/3.5.2-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
+    <li data-nav-id="/3-serviceorchestration/3.5-choicestatetype/3.5.2-checkworkflow/" title="Check workflow" class="dd-item 
         
         
         
         ">
       <a href="/3-serviceorchestration/3.5-choicestatetype/3.5.2-checkworkflow/">
-          <b>3.5.2 </b>Kiểm tra workflow
+          <b>3.5.2 </b>Check workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -940,13 +940,13 @@
  
   
     
-    <li data-nav-id="/4-improveworkflow/" title="Cải tiến workflow" class="dd-item 
+    <li data-nav-id="/4-improveworkflow/" title="Workflow Improvement" class="dd-item 
         parent
         
         
         ">
       <a href="/4-improveworkflow/">
-          <b>4. </b>Cải tiến workflow
+          <b>4. </b>Workflow Improvement
           
             <i class="fas fa-check read-icon"></i>
           
@@ -971,13 +971,13 @@
  
   
     
-    <li data-nav-id="/4-improveworkflow/4.1-startworkflow/" title="Kích hoạt workflow" class="dd-item 
+    <li data-nav-id="/4-improveworkflow/4.1-startworkflow/" title="Activate workflow" class="dd-item 
         
         
         
         ">
       <a href="/4-improveworkflow/4.1-startworkflow/">
-          <b>4.1 </b>Kích hoạt workflow
+          <b>4.1 </b>Activate workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1002,13 +1002,13 @@
  
   
     
-    <li data-nav-id="/4-improveworkflow/4.1-startworkflow/4.1.1-updateworkflow/" title="Cập nhật workflow" class="dd-item 
+    <li data-nav-id="/4-improveworkflow/4.1-startworkflow/4.1.1-updateworkflow/" title="Update workflow" class="dd-item 
         
         
         
         ">
       <a href="/4-improveworkflow/4.1-startworkflow/4.1.1-updateworkflow/">
-          <b>4.1.1 </b>Cập nhật workflow
+          <b>4.1.1 </b>Update workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1030,13 +1030,13 @@
  
   
     
-    <li data-nav-id="/4-improveworkflow/4.1-startworkflow/4.1.2-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
+    <li data-nav-id="/4-improveworkflow/4.1-startworkflow/4.1.2-checkworkflow/" title="Check workflow" class="dd-item 
         
         
         
         ">
       <a href="/4-improveworkflow/4.1-startworkflow/4.1.2-checkworkflow/">
-          <b>4.1.2 </b>Kiểm tra workflow
+          <b>4.1.2 </b>Check workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1067,13 +1067,13 @@
  
   
     
-    <li data-nav-id="/4-improveworkflow/4.2-pauseworkflow/" title="Tạm dừng workflow để chờ kiểm tra hoàn tất" class="dd-item 
-        
+    <li data-nav-id="/4-improveworkflow/4.2-pauseworkflow/" title="Pause workflow to wait for the test to complete" class="dd-item 
+        parent
         active
         
         ">
       <a href="/4-improveworkflow/4.2-pauseworkflow/">
-          <b>4.2 </b>Tạm dừng workflow để chờ kiểm tra hoàn tất
+          <b>4.2 </b>Pause workflow to wait for the test to complete
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1098,13 +1098,13 @@
  
   
     
-    <li data-nav-id="/4-improveworkflow/4.2-pauseworkflow/4.2.1-updateworkflow/" title="Cập nhật workflow" class="dd-item 
+    <li data-nav-id="/4-improveworkflow/4.2-pauseworkflow/4.2.1-updateworkflow/" title="Update workflow" class="dd-item 
         
         
         
         ">
       <a href="/4-improveworkflow/4.2-pauseworkflow/4.2.1-updateworkflow/">
-          <b>4.2.1 </b>Cập nhật workflow
+          <b>4.2.1 </b>Update workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1126,13 +1126,13 @@
  
   
     
-    <li data-nav-id="/4-improveworkflow/4.2-pauseworkflow/4.2.2-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
+    <li data-nav-id="/4-improveworkflow/4.2-pauseworkflow/4.2.2-checkworkflow/" title="Check the workflow" class="dd-item 
         
         
         
         ">
       <a href="/4-improveworkflow/4.2-pauseworkflow/4.2.2-checkworkflow/">
-          <b>4.2.2 </b>Kiểm tra workflow
+          <b>4.2.2 </b>Check the workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1163,13 +1163,13 @@
  
   
     
-    <li data-nav-id="/4-improveworkflow/4.3-finishworkflow/" title="Hoàn tất workflow" class="dd-item 
+    <li data-nav-id="/4-improveworkflow/4.3-finishworkflow/" title="Finish workflow" class="dd-item 
         
         
         
         ">
       <a href="/4-improveworkflow/4.3-finishworkflow/">
-          <b>4.3 </b>Hoàn tất workflow
+          <b>4.3 </b>Finish workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1198,13 +1198,13 @@
  
   
     
-    <li data-nav-id="/5-errorhandling/" title="Xử lý lỗi" class="dd-item 
+    <li data-nav-id="/5-errorhandling/" title="Error handling" class="dd-item 
         
         
         
         ">
       <a href="/5-errorhandling/">
-          <b>5. </b>Xử lý lỗi
+          <b>5. </b>Error handling
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1229,13 +1229,13 @@
  
   
     
-    <li data-nav-id="/5-errorhandling/5.1-retry/" title="Thêm tính năng retry" class="dd-item 
+    <li data-nav-id="/5-errorhandling/5.1-retry/" title="Add retry feature" class="dd-item 
         
         
         
         ">
       <a href="/5-errorhandling/5.1-retry/">
-          <b>5.1 </b>Thêm tính năng retry
+          <b>5.1 </b>Add retry feature
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1257,13 +1257,13 @@
  
   
     
-    <li data-nav-id="/5-errorhandling/5.2-catch/" title="Thêm tính năng catch" class="dd-item 
+    <li data-nav-id="/5-errorhandling/5.2-catch/" title="Add catch feature" class="dd-item 
         
         
         
         ">
       <a href="/5-errorhandling/5.2-catch/">
-          <b>5.2 </b>Thêm tính năng catch
+          <b>5.2 </b>Add catch feature
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1292,13 +1292,13 @@
  
   
     
-    <li data-nav-id="/6-stateparallel/" title="Xử lý state song song" class="dd-item 
+    <li data-nav-id="/6-stateparallel/" title="Parallel state processing" class="dd-item 
         
         
         
         ">
       <a href="/6-stateparallel/">
-          <b>6. </b>Xử lý state song song
+          <b>6. </b>Parallel state processing
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1323,13 +1323,13 @@
  
   
     
-    <li data-nav-id="/6-stateparallel/6.1-updateworkflow/" title="Cập nhật workflow" class="dd-item 
+    <li data-nav-id="/6-stateparallel/6.1-updateworkflow/" title="Update workflow" class="dd-item 
         
         
         
         ">
       <a href="/6-stateparallel/6.1-updateworkflow/">
-          <b>6.1 </b>Cập nhật workflow
+          <b>6.1 </b>Update workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1351,13 +1351,13 @@
  
   
     
-    <li data-nav-id="/6-stateparallel/6.2-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
+    <li data-nav-id="/6-stateparallel/6.2-checkworkflow/" title="Check workflow" class="dd-item 
         
         
         
         ">
       <a href="/6-stateparallel/6.2-checkworkflow/">
-          <b>6.2 </b>Kiểm tra workflow
+          <b>6.2 </b>Check workflow
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1386,13 +1386,13 @@
  
   
     
-    <li data-nav-id="/7-furtherlearning/" title="Tìm hiểu thêm" class="dd-item 
+    <li data-nav-id="/7-furtherlearning/" title="Learn More" class="dd-item 
         
         
         
         ">
       <a href="/7-furtherlearning/">
-          <b>7. </b>Tìm hiểu thêm
+          <b>7. </b>Learn More
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1412,13 +1412,13 @@
  
   
     
-    <li data-nav-id="/8-cleanup/" title="Dọn dẹp tài nguyên" class="dd-item 
+    <li data-nav-id="/8-cleanup/" title="Clean up resources" class="dd-item 
         
         
         
         ">
       <a href="/8-cleanup/">
-          <b>8. </b>Dọn dẹp tài nguyên
+          <b>8. </b>Clean up resources
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>20-01-2021</font></i>
+        <i><font color=orange>15-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1535,7 +1535,6 @@
         </left>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-
     </section>
   </div>
 </nav>
@@ -1574,7 +1573,7 @@
             
           
           
-            <a href='/'>Bắt đầu với AWS Step Functions</a> > <a href='/4-improveworkflow/'>Cải tiến workflow</a> > Tạm dừng workflow để chờ kiểm tra hoàn tất
+            <a href='/'>Getting Started with AWS Step Functions</a> > <a href='/4-improveworkflow/'>Workflow Improvement</a> > Pause workflow to wait for the test to complete
           
         
           
@@ -1611,7 +1610,7 @@
           
             <h1>
               
-              Tạm dừng workflow để chờ kiểm tra hoàn tất
+              Pause workflow to wait for the test to complete
             </h1>
           
 
@@ -1619,43 +1618,43 @@
 
 
 
-	<h4 id="tạm-dừng-workflow-để-chờ-kiểm-tra-hoàn-tất">Tạm dừng workflow để chờ kiểm tra hoàn tất</h4>
-<p><strong>Step Functions</strong> thực hiện công việc của mình bằng cách tích hợp trực tiếp với các dịch vụ AWS khác nhau và bạn có thể kiểm soát các dịch vụ AWS này bằng cách sử dụng ba cách tích hợp dịch vụ dưới đây:</p>
+	<h4 id="pause-the-workflow-to-wait-for-the-test-to-complete">Pause the workflow to wait for the test to complete</h4>
+<p><strong>Step Functions</strong> does its job by integrating directly with various AWS services, and you can control these AWS services using the following three service integrations:</p>
+<p>Call a service and let Step Functions move to the next state as soon as it receives the HTTP response. You&rsquo;ve seen this kind of integration in action through what we use to call the Lambda function that checks the data and gets back a response.</p>
 <ul>
 <li>
-<p>Gọi một dịch vụ và để cho Step Functions chuyển sang trạng thái tiếp theo ngay sau khi nó nhận được  HTTP response. Bạn đã thấy loại tích hợp này hoạt động thông qua việc chúng ta sử dụng để gọi Lambda function kiểm tra dữ liệu và nhận lại phản hồi.</p>
+<p>Call a service and let Step Functions wait for the job to complete. This is typically used to trigger workloads in a batch fashion, pause, then resume execution once the job is complete. We are not using this integration in the current workshop.</p>
 </li>
 <li>
-<p>Gọi một dịch vụ và để Step Functions chờ công việc hoàn tất. Điều này thường được sử dụng  để kích hoạt khối lượng công việc theo kiểu hàng loạt ( batch ), tạm dừng, sau đó tiếp tục thực thi sau khi công việc hoàn thành. Chúng ta không sử dụng cách tích hợp này trong workshop hiện tại.</p>
-</li>
-<li>
-<p>Gọi một dịch vụ có task token và để Step Functions chờ cho đến khi mã thông báo đó được phản hồi cùng với payload ( nội dung ). Đây là cách tích hợp mà chúng ta muốn sử dụng ở đây, vì chúng ta muốn thực hiện gọi dịch vụ, sau đó chờ phản hồi rồi mới tiếp tục thực thi.</p>
+<p>Call a service that has a task token and let Step Functions wait until that token is returned along with the payload. This is the integration we want to use here, because we want to make a service call, then wait for a response, and then continue executing.</p>
 </li>
 </ul>
 
-<div class="notices info" ><p>Phản hồi ( call back ) cung cấp một cách để tạm dừng một quy trình công việc cho đến khi một task token được chuyển lại. Một nhiệm vụ có thể cần phải đợi sự chấp thuận của kiểm soát viên, tích hợp với bên thứ ba hoặc gọi các hệ thống kế thừa. Đối với những tác vụ như thế này, bạn có thể tạm dừng việc thực thi Step Functions state machine và đợi một quy trình hoặc quy trình công việc bên ngoài hoàn thành.</p>
+<div class="notices info" ><p>The response ( call back ) provides a way to pause a workflow until a task token is transferred again. A task may need to wait for controller approval, integrate with a third party, or invoke legacy systems. For tasks like this, you can pause the execution of the Step Functions state machine and wait for an external process or workflow to complete.</p>
 </div>
 
-<p>Bạn có thể điều chỉnh trạng thái Task tạo task token duy nhất ( task token ) (một ID duy nhất tham chiếu trạng thái Task cụ thể trong một lần thực thi cụ thể),  gọi dịch vụ AWS mong muốn , sau đó tạm dừng thực thi cho đến khi dịch vụ Step Functions nhận được task token vụ trở lại thông qua lệnh gọi API từ một số quy trình khác.</p>
-<p>Trong bước này chúng ta sẽ :</p>
+<p>You can modify the Task state to generate a unique task token (a unique ID that references a specific Task state during a particular execution), call the desired AWS service, and then suspend execution. executes until the Step Functions service receives the task token back through an API call from some other process.</p>
+<p>In this step we will:</p>
 <ul>
 <li>
-<p>Đặt trạng thái <strong>Pending Review</strong> của chúng ta gọi Lambda function <strong>Account Applications</strong> bằng cách sử dụng cú pháp định nghĩa trạng thái Tác vụ bao gồm hậu tố .waitForTaskToken. Thao tác này sẽ tạo task token mà chúng ta có thể chuyển cho dịch vụ <strong>Account Applications</strong> cùng với ID đăng ký mà chúng ta muốn gắn cờ.</p>
+<p>Setting our <strong>Pending Review</strong> state calls the Lambda function <strong>Account Applications</strong> using the Task state definition syntax including the .waitForTaskToken suffix. This will generate a task token that we can pass to the <strong>Account Applications</strong> service along with the registration ID we want to flag.</p>
 </li>
 <li>
-<p>Làm cho các <strong>Account Applications</strong> Lambda function cập nhật hồ sơ đăng ký để đánh dấu nó là <strong>Pending Review</strong> và lưu trữ task token cùng với hồ sơ. Sau đó, khi kiểm soát viên xem xét đăng ký đang chờ xử lý, dịch vụ <strong>Account Applications</strong> sẽ thực hiện gọi lại API Step Functions, gọi điểm cuối <strong>SendTaskSuccesss</strong>, chuyển lại task token cùng với đầu ra có liên quan từ bước này, trong trường hợp của chúng ta, sẽ là dữ liệu để cho biết liệu kiểm soát viên đã chấp thuận hay từ chối đăng ký. Thông tin này sẽ cho phép state machine quyết định phải làm gì tiếp theo dựa trên quyết định của kiểm soát viên.</p>
+<p>Make the <strong>Account Applications</strong> Lambda function update the registration record to mark it as <strong>Pending Review</strong> and store the task token with the record. Then, when the controller considers the pending registration, the <strong>Account Applications</strong> service executes the Step Functions API callback, calls the <strong>SendTaskSuccesss</strong> endpoint, passing the task token back with the output. relevant from this step, in our case, will be the data to indicate whether the controller has approved or denied the registration. This information will allow the state machine to decide what to do next based on the controller&rsquo;s decision.</p>
+<ul>
+<li>
+<p>Create a new Lambda function <strong>ReviewApplication</strong> (and the required IAM permissions for it) to implement logic that allows the controller to make a decision for a flagged booking, calling the Step Functions API again with the result is the decision of the controller.</p>
 </li>
 <li>
-<p>Tạo một Lambda function <strong>ReviewApplication</strong> mới (và các quyền IAM cần thiết cho nó) để triển khai logic cho phép kiểm soát viên đưa ra quyết định cho một đăng ký được gắn cờ, gọi lại API Step Functions với kết quả là quyết định của kiểm soát viên.</p>
-</li>
-<li>
-<p>Thêm một trạng thái Lựa chọn khác có tên là <strong>Review Approved?</strong> sẽ kiểm tra kết quả từ trạng thái <strong>Pending Review</strong> và chuyển sang trạng thái <strong>Approve Application</strong> hoặc trạng thái <strong>Reject Application</strong> mà chúng ta cũng sẽ thêm .</p>
+<p>Add another Selection state named <strong>Review Approved?</strong> which will check the result from <strong>Pending Review</strong> and switch to <strong>Approve Application</strong> or **Reject Application status ** which we will also add .</p>
 </li>
 </ul>
-<h4 id="nội-dung">Nội dung</h4>
+</li>
+</ul>
+<h4 id="content">Content</h4>
 <ol>
-<li><a href="4.2.1-updateworkflow/">Cập nhật state machine</a></li>
-<li><a href="4.2.2-checkworkflow/">Kiểm tra workflow</a></li>
+<li><a href="4.2.1-updateworkflow/">Update state machine</a></li>
+<li><a href="4.2.2-checkworkflow/">Checkworkflow</a></li>
 </ol>
 
 
@@ -2428,10 +2427,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/4-improveworkflow/4.1-startworkflow/4.1.2-checkworkflow/" title="Kiểm tra workflow"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/4-improveworkflow/4.1-startworkflow/4.1.2-checkworkflow/" title="Check workflow"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/4-improveworkflow/4.2-pauseworkflow/4.2.1-updateworkflow/" title="Cập nhật workflow" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/4-improveworkflow/4.2-pauseworkflow/4.2.1-updateworkflow/" title="Update workflow" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -2441,19 +2440,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1642672390"></script>
-    <script src="/js/perfect-scrollbar.min.js?1642672390"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1642672390"></script>
-    <script src="/js/jquery.sticky.js?1642672390"></script>
-    <script src="/js/featherlight.min.js?1642672390"></script>
-    <script src="/js/highlight.pack.js?1642672390"></script>
+    <script src="/js/clipboard.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1673730818"></script>
+    <script src="/js/jquery.sticky.js?1673730818"></script>
+    <script src="/js/featherlight.min.js?1673730818"></script>
+    <script src="/js/highlight.pack.js?1673730818"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1642672390"></script>
-    <script src="/js/learn.js?1642672390"></script>
-    <script src="/js/hugo-learn.js?1642672390"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1673730818"></script>
+    <script src="/js/learn.js?1673730818"></script>
+    <script src="/js/hugo-learn.js?1673730818"></script>
 
-    <link href="/mermaid/mermaid.css?1642672390" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1642672390"></script>
+    <link href="/mermaid/mermaid.css?1673730818" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1673730818"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

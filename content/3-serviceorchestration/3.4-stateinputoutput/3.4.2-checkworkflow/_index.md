@@ -1,5 +1,5 @@
 +++
-title = "Kiểm tra workflow"
+title = "Check workflow"
 date = 2021
 weight = 2
 chapter = false
@@ -7,36 +7,44 @@ pre = "<b>3.4.2 </b>"
 +++
 
 
-#### Kiểm tra workflow
+#### Check workflow
 
 
-1. Truy cập vào [giao diện State machines](https://ap-southeast-1.console.aws.amazon.com/states/home?region=ap-southeast-1#/statemachines)
-  + Click vào state machine **ApplicationProcessingStateMachine-xxxxxxxxxxxx**.
+1. Go to [State machines interface](https://ap-southeast-1.console.aws.amazon.com/states/home?region=ap-southeast-1#/statemachines)
+  + Click on state machine **ApplicationProcessingStateMachine-xxxxxxxxxxxx**.
  
-![StepFunctions](/images/SF/052.png?width=90pc)
+![AWS Step Functions](/images/3.4.2/0001.png?featherlight=false&width=90pc)
 
-2. Click vào lần thực thi cuối cùng của state machine. ( đang bị failed )
- + Click **New execution** để thực thi một lần mới.
+2. Click on the last execution of the state machine. ( is being failed )
+ + Click **New execution** to execute a new time.
 
-![StepFunctions](/images/SF/053.png?width=90pc)
+![AWS Step Functions](/images/3.4.2/0002.png?featherlight=false&width=90pc)
 
-3. Để phần input như cũ và click **Start execution**.
+3. Leave the input as it is and click **Start execution**.
 
-![StepFunctions](/images/SF/054.png?width=90pc)
+![AWS Step Functions](/images/3.4.2/0003.png?featherlight=false&width=90pc)
 
-4. Chúng ta sẽ thấy workflow được thực thi thành công.
+![AWS Step Functions](/images/3.4.2/0004.png?featherlight=false&width=90pc)
+
+4. We should see the workflow executed successfully.
   + Click state **Check Address**.
   + Click **Step Input**.
-![StepFunctions](/images/SF/055.png?width=90pc)
 
-5. Click **Step Output** để kiểm tra kết quả đầu ra.
+![AWS Step Functions](/images/3.4.2/0005.png?featherlight=false&width=90pc)
 
-![StepFunctions](/images/SF/056.png?width=90pc)
+5. Click **Step Output** to check the output.
+
+![AWS Step Functions](/images/3.4.2/0006.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/3.4.2/0007.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/3.4.2/0008.png?featherlight=false&width=90pc)
+
 
 {{%notice tip%}}
-Lưu ý cách trạng thái **Check Name** giữ đầu vào ban đầu của chúng ta và thêm kết quả của nó vào bên trong **$ .checks.name** và cách **Check Address** lấy đầu ra đó làm đầu vào và thêm kết quả kiểm tra địa chỉ của chính nó vào bên trong **$ .checks.address**. Đó là sức mạnh của ResultPath.
+Notice how **Check Name** state holds our original input and adds its result inside **$ .checks.name** and how **Check Address** takes that output as input and add its own address check result inside **$ .checks.address**. That's the power of ResultPath.
 {{%/notice%}}
 
-Tại thời điểm này, chúng ta có một workflow thực thi thành công, nhưng workflow này vẫn thiếu một số logic quan trọng. workflow làm việc của chúng ta đi trực tiếp từ **Check Address** đến **Approve Application**. Những gì chúng ta muốn là chỉ tự động phê duyệt một ứng dụng nếu cả tên và địa chỉ không bị gắn cờ, và nếu đơn bị gắn cờ chúng ta sẽ xếp đơn đăng ký để kiểm soát viên thực hiện kiểm tra lại.
+At this point, we have a successful workflow, but the workflow is still missing some important logic. Our workflow goes directly from **Check Address** to **Approve Application**. What we want is to automatically approve an application only if both the name and address are not flagged, and if the application is flagged we will queue the application for the controller to do the re-check.
 
-Chúng ta sẽ kết hợp một bước đợi phản hồi của kiểm soát viên trên các đơn đăng ký bị gắn cờ. Nhưng trước đó, chúng ta cần học cách kiểm tra trạng thái của workflow làm việc và thực thi một số logic phân nhánh dựa trên các kiểm tra mà chúng ta xác định. Để thực hiện việc này, chúng tôi sẽ cần thêm một loại trạng thái mới vào state machine của mình được gọi là trạng thái Lựa chọn ( Choice state ).
+We will incorporate the step of waiting for a controller response on flagged applications. But before that, we need to learn how to check the status of the working workflow and execute some branching logic based on the checks we define. To do this, we will need to add a new type of state to our state machine called Choice state.

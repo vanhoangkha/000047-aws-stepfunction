@@ -1,5 +1,5 @@
 +++
-title = "Cập nhật workflow"
+title = "Update workflow"
 date = 2021
 weight = 1
 chapter = false
@@ -7,11 +7,12 @@ pre = "<b>4.1.1 </b>"
 +++
 
 
-#### Cập nhật workflow
+#### Update workflow
 
 
-1. Quay trở lại giao diện dòng lệnh của Cloud9 instance, thay thế nội dung của file **functions/account-applications/submit.js** với nội dung dưới đây.
-  + Ấn **Ctrl + S** để lưu thay đổi.
+1. Return to the command line interface of the Cloud9 instance, replace the contents of the **functions/account-applications/submit.js** file with the content below.
+  + Press **Ctrl + S** to save changes.
+
 ```
 'use strict';
 const REGION = process.env.REGION
@@ -59,10 +60,11 @@ module.exports.handler = async(event) => {
 }
 ```
 
-![StepFunctions](/images/SF/068.png?width=90pc)
+![AWS Step Functions](/images/4.1.1/0001.png?featherlight=false&width=90pc)
 
-2. Thay thế nội dung của file **template.yaml** với nội dung dưới đây.
-  + Ấn **Ctrl + S** để lưu thay đổi.
+1. Replace the content of the file **template.yaml** with the content below.
+  + Press **Ctrl + S** to save changes.
+
 ```
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
@@ -205,13 +207,15 @@ Outputs:
     Description: "Data Checking Function ARN"
     Value: !GetAtt DataCheckingFunction.Arn
 ```
-![StepFunctions](/images/SF/069.png?width=90pc)
+![AWS Step Functions](/images/4.1.1/0002.png?featherlight=false&width=90pc)
 
-3. Chạy lệnh dưới đây để thực hiện build và deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
+1. Chạy lệnh dưới đây để thực hiện build và deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
 ```
 sam build && sam deploy
 ```
-![StepFunctions](/images/SF/070.png?width=90pc)
+![AWS Step Functions](/images/4.1.1/0003.png?featherlight=false&width=90pc)
 
 Bây giờ chúng ta đã tích hợp dịch vụ **Account Applications** của mình với state machine , chúng ta sẽ kích hoạt tất cả các thực thi state machine trong tương lai bằng cách gửi các đăng ký mới đến dịch vụ (bằng cách gọi Lambda Function **SubmitApplication** ) thay vì thực thi trực tiếp thông qua giao diện web.
 
+
+![AWS Step Functions](/images/4.1.1/0004.png?featherlight=false&width=90pc)

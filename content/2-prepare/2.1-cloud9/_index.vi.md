@@ -19,17 +19,27 @@ Workshop này sẽ được thực hiện tại Region Singapore.
 1. Truy cập vào [giao diện dịch vụ Cloud9](https://ap-southeast-1.console.aws.amazon.com/cloud9/home/product)
  + Click **Create environment**.
 
+![AWS Step Functions](/images/2.1/0001.png?featherlight=false&width=90pc) 
+
 2. Điền tên **StepFunctions**, sau đó click **Next step**.
+
+![AWS Step Functions](/images/2.1/0002.png?featherlight=false&width=90pc) 
 
 3. Giữ nguyên tùy chọn cơ bản, kéo màn hình xuống dưới cùng, click **Next step**.
 
-![StepFunctions](/images/SF/003.png?width==90pc)
+![AWS Step Functions](/images/2.1/0003.png?featherlight=false&width=90pc) 
+
+![AWS Step Functions](/images/2.1/0004.png?featherlight=false&width=90pc) 
 
 4. Click **Create environment**, chờ vài phút để môi trường Cloud9 instance được khởi tạo hoàn tất.
+
+![AWS Step Functions](/images/2.1/0005.png?featherlight=false&width=90pc) 
 
 5. Click biểu tượng **X** để đóng bớt các tab không cần thiết.
   + Click biểu tượng **+**, sau đó click chọn **New Terminal** để mở giao diện dòng lệnh mới.
 
-![StepFunctions](/images/SF/004.png?width==90pc)
+![AWS Step Functions](/images/2.1/0006.png?featherlight=false&width=90pc) 
 
 Bước tiếp theo chúng ta sẽ tạo các dịch vụ mẫu cho workflow của chúng ta.
+
+![AWS Step Functions](/images/2.1/0007.png?featherlight=false&width=90pc) 

@@ -5,8 +5,6 @@ weight = 2
 chapter = false
 pre = "<b>2. </b>"
 +++
-
-
 #### Chuẩn bị Workshop 
 
 Trong phần này chúng ta sẽ thực hiện tạo môi trường Cloud9 cũng như chuẩn bị các dịch vụ mẫu sẽ được sử dụng trong workflow của chúng ta.

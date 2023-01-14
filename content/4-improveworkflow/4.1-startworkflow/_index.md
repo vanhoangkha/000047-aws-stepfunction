@@ -1,5 +1,5 @@
 +++
-title = "Kích hoạt workflow"
+title = "Activate workflow"
 date = 2021
 weight = 1
 chapter = false
@@ -7,15 +7,21 @@ pre = "<b>4.1 </b>"
 +++
 
 
-#### Kích hoạt workflow
+#### Activate workflow
 
-Ở trạng thái **Pending Review**, chúng ta muốn state machine gọi đến dịch vụ **Account Applications** để gắn cờ các đăng ký cần kiểm tra lại, sau đó tạm dừng và đợi cuộc gọi lại từ dịch vụ **Account Applications**, điều này sẽ xảy ra sau khi kiểm soát viên kiểm tra và đưa ra quyết định.
+In the **Pending Review** state, we want the state machine to call the **Account Applications** service to flag the subscriptions that need rechecking, then pause and wait for the callback from the service ** Account Applications**, this will happen after the controller checks and makes a decision.
 
-Để Step Functions của chúng ta thông báo cho dịch vụ **Account Applications** rằng một đăng ký sẽ được gắn cờ, bạn cần phải chuyển cho nó một ID đăng ký. Và cách để Step Functions có thể chuyển một ID trở lại dịch vụ **Account Applications** là **thực hiện thêm vào thuộc tính ID như một phần của thông tin đăng ký khi bắt đầu thực thi workflow.**
+In order for our Step Functions to notify the **Account Applications** service that a subscription will be flagged, you need to pass it a subscription ID. And the way Step Functions can pass an ID back to the **Account Applications** service is to **implement the ID attribute as part of the registration information at the start of workflow execution.**
 
-Để thực hiện việc này, chúng ta sẽ tích hợp dịch vụ **Account Applications** với Step Functions xử lý đơn đăng ký, bắt đầu một quá trình thực thi mới mỗi khi đơn đăng ký mới được gửi đến dịch vụ. Khi chúng ta bắt đầu thực thi, ngoài việc chuyển tên và địa chỉ của người dùng làm đầu vào (để kiểm tra tên và địa chỉ ), chúng ta cũng sẽ chuyển ID đăng ký để Step Functions có thể thực thi chức năng **FlagApplication** của dịch vụ **Account Applications** nhằm gắn cờ các đơn đăng ký cần xem xét.
+To do this, we will integrate the **Account Applications** service with the Step Functions that process the application, starting a new execution every time a new application is submitted to the service. When we start the execution, in addition to passing the user's name and address as input (to check the name and address), we will also pass the registration ID so that Step Functions can execute the function ** FlagApplication** of the **Account Applications** service to flag applications for review.
 
+In this step we will:
+  + Pass ARN of state machine as environment variable for lambda function **SubmitApplication**.
 
-#### Nội dung
-1. [Cập nhật state machine](4.1.1-updateworkflow/)
-2. [Kiểm tra workflow](4.1.2-checkworkflow/)
+  + Updated Lambda function **SubmitApplication** to execute our Step Functions state machine when a new application is submitted, passing the subscriber details into the state machine input.
+
+  + Grant the Lambda function **SubmitApplication** permission to execute our state machine.
+
+#### Content
+1. [Update state machine](4.1.1-updateworkflow/)
+2. [Checkworkflow](4.1.2-checkworkflow/)

@@ -1,5 +1,5 @@
 +++
-title = "Kiểm tra workflow"
+title = "Check the workflow"
 date = 2021
 weight = 2
 chapter = false
@@ -7,37 +7,44 @@ pre = "<b>3.2.2 </b>"
 +++
 
 
-#### Kiểm tra workflow
-Cảnh báo mà chúng ta thấy ngay khi cập nhật định nghĩa state machine của mình là chính xác. Chúng ta sẽ cần cập nhật các quyền của IAM role của mình để state machine có thể hoạt động. Nhưng dù sao chúng ta hãy thử một lần thực thi khác để xem lỗi không đủ quyền sẽ như thế nào.
+#### Check workflow
+The warning we see as soon as we update our state machine definition is correct. We will need to update our IAM role permissions for the state machine to work. But anyway let's try another execution to see what the insufficient permission error will look like.
 
 1. Click **Start execution**.
 
-![StepFunctions](/images/SF/035.png?width=90pc)
+![AWS Step Functions](/images/3.2.2/0001.png?featherlight=false&width=90pc)
 
-2. Dán nội dung JSON bên dưới vào phần input. Sau đó click **Start execution**.
+2. Paste the JSON content below into the input. Then click **Start execution**.
 ```
 {
-    "application": { 
-        "name": "Spock", 
-        "address": "123 Enterprise Street" 
+    "application": {
+        "name": "Spock",
+        "address": "123 Enterprise Street"
     }
 }
 
 ```
-
-![StepFunctions](/images/SF/036.png?width=90pc)
+![AWS Step Functions](/images/3.2.2/0002.png?featherlight=false&width=90pc)
 
 {{%notice tip%}}
-Sau một lúc, bạn sẽ thấy kết quả của việc thực thi không thành công này. "Execution status" hiển thị "Failed" và bạn sẽ thấy báo đỏ trong phần biểu diễn qui trình của state machine bên dưới, làm nổi bật trạng thái gặp lỗi.
+After a while, you will see the result of this failed execution. The "Execution status" displays "Failed" and you'll see a red alert in the state machine process representation below, highlighting the failed status.
 {{%/notice%}}
 
-![StepFunctions](/images/SF/037.png?width=90pc)
+![AWS Step Functions](/images/3.2.2/0003.png?featherlight=false&width=90pc)
 
-3. Click vào state **Check Name**, sau đó click tab **Exception**. Chúng ta có thể xem được chi tiết lỗi như hình dưới:
+3. Click the **Check Name** state, then click the **Exception** tab. We can see the error details as shown below:
 
 
-![StepFunctions](/images/SF/038.png?width=90pc)
+![AWS Step Functions](/images/3.2.2/0004.png?featherlight=false&width=90pc)
 
-Khi state machine  thực thi, nó đảm nhận IAM role để xác định loại hành động nào nó được phép thực hiện bên môi trường AWS. Hiện tại, chúng ta chưa thêm bất kỳ quyền rõ ràng nào để cho phép Role này gọi Lambda function **Data Checking** của chúng ta, vì vậy chúng ta gặp lỗi khi state machine này cố gắng chạy.
+![AWS Step Functions](/images/3.2.2/0005.png?featherlight=false&width=90pc)
 
-Chúng ta sẽ cùng khắc phục điều này bằng cách thêm các quyền thích hợp vào Role mà Step Functions của chúng ta đảm nhận trong quá trình thực thi ở bước kế tiếp.
+![AWS Step Functions](/images/3.2.2/0006.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/3.2.2/0007.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/3.2.2/0008.png?featherlight=false&width=90pc)
+
+When the state machine executes, it assumes the IAM role to determine what types of actions it is allowed to perform within the AWS environment. Currently, we haven't added any explicit permissions to allow this Role to call our Lambda function **Data Checking**, so we get an error when this state machine tries to run.
+
+We will work around this by adding the appropriate permissions to the Role that our Step Functions assume during execution in the next step.

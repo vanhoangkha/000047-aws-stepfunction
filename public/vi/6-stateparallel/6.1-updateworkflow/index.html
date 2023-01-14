@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Cập nhật workflow :: AWS Step Functions</title>
 
     
-    <link href="/css/nucleus.css?1642672391" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1642672391" rel="stylesheet">
-    <link href="/css/hybrid.css?1642672391" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1642672391" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1642672391" rel="stylesheet">
-    <link href="/css/auto-complete.css?1642672391" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1642672391" rel="stylesheet">
-    <link href="/css/theme.css?1642672391" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1642672391" rel="stylesheet">
+    <link href="/css/nucleus.css?1673730818" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1673730818" rel="stylesheet">
+    <link href="/css/hybrid.css?1673730818" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1673730818" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1673730818" rel="stylesheet">
+    <link href="/css/auto-complete.css?1673730818" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1673730818" rel="stylesheet">
+    <link href="/css/theme.css?1673730818" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1673730818" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1642672391" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1673730818" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1642672391"></script>
+    <script src="/js/jquery-3.3.1.min.js?1673730818"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1642672391"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1642672391"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1673730818"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1673730818"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1642672391"></script>
+<script type="text/javascript" src="/js/search.js?1673730818"></script>
 
     
   </div>
@@ -1324,7 +1324,7 @@
   
     
     <li data-nav-id="/vi/6-stateparallel/6.1-updateworkflow/" title="Cập nhật workflow" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>20-01-2021</font></i>
+        <i><font color=orange>15-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1535,7 +1535,6 @@
         </left>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-
     </section>
   </div>
 </nav>
@@ -1626,200 +1625,201 @@
 <ul>
 <li>Ấn <strong>Ctrl + S</strong> để lưu thay đổi.</li>
 </ul>
-<pre><code>{
-    &quot;StartAt&quot;: &quot;Check Applicant Data&quot;,
-    &quot;States&quot;: {
-        &quot;Check Applicant Data&quot;: {
-            &quot;Type&quot;: &quot;Parallel&quot;,
-            &quot;Branches&quot;: [
+<pre tabindex="0"><code>{
+    &#34;StartAt&#34;: &#34;Check Applicant Data&#34;,
+    &#34;States&#34;: {
+        &#34;Check Applicant Data&#34;: {
+            &#34;Type&#34;: &#34;Parallel&#34;,
+            &#34;Branches&#34;: [
                 {
-                    &quot;StartAt&quot;: &quot;Check Name&quot;,
-                    &quot;States&quot;: {
-                        &quot;Check Name&quot;: {
-                            &quot;Type&quot;: &quot;Task&quot;,
-                            &quot;Parameters&quot;: {
-                                &quot;command&quot;: &quot;CHECK_NAME&quot;,
-                                &quot;data&quot;: {
-                                    &quot;name.$&quot;: &quot;$.application.name&quot;
+                    &#34;StartAt&#34;: &#34;Check Name&#34;,
+                    &#34;States&#34;: {
+                        &#34;Check Name&#34;: {
+                            &#34;Type&#34;: &#34;Task&#34;,
+                            &#34;Parameters&#34;: {
+                                &#34;command&#34;: &#34;CHECK_NAME&#34;,
+                                &#34;data&#34;: {
+                                    &#34;name.$&#34;: &#34;$.application.name&#34;
                                 }
                             },
-                            &quot;Resource&quot;: &quot;${DataCheckingFunctionArn}&quot;,
-                            &quot;Retry&quot;: [
+                            &#34;Resource&#34;: &#34;${DataCheckingFunctionArn}&#34;,
+                            &#34;Retry&#34;: [
                                 {
-                                    &quot;ErrorEquals&quot;: [
-                                        &quot;Lambda.ServiceException&quot;,
-                                        &quot;Lambda.AWSLambdaException&quot;,
-                                        &quot;Lambda.SdkClientException&quot;,
-                                        &quot;Lambda.TooManyRequestsException&quot;
+                                    &#34;ErrorEquals&#34;: [
+                                        &#34;Lambda.ServiceException&#34;,
+                                        &#34;Lambda.AWSLambdaException&#34;,
+                                        &#34;Lambda.SdkClientException&#34;,
+                                        &#34;Lambda.TooManyRequestsException&#34;
                                     ]
                                 }
                             ],
-                            &quot;End&quot;: true
+                            &#34;End&#34;: true
                         }
                     }
                 },
                 {
-                    &quot;StartAt&quot;: &quot;Check Address&quot;,
-                    &quot;States&quot;: {
-                        &quot;Check Address&quot;: {
-                            &quot;Type&quot;: &quot;Task&quot;,
-                            &quot;Parameters&quot;: {
-                                &quot;command&quot;: &quot;CHECK_ADDRESS&quot;,
-                                &quot;data&quot;: {
-                                    &quot;address.$&quot;: &quot;$.application.address&quot;
+                    &#34;StartAt&#34;: &#34;Check Address&#34;,
+                    &#34;States&#34;: {
+                        &#34;Check Address&#34;: {
+                            &#34;Type&#34;: &#34;Task&#34;,
+                            &#34;Parameters&#34;: {
+                                &#34;command&#34;: &#34;CHECK_ADDRESS&#34;,
+                                &#34;data&#34;: {
+                                    &#34;address.$&#34;: &#34;$.application.address&#34;
                                 }
                             },
-                            &quot;Resource&quot;: &quot;${DataCheckingFunctionArn}&quot;,
-                            &quot;Retry&quot;: [
+                            &#34;Resource&#34;: &#34;${DataCheckingFunctionArn}&#34;,
+                            &#34;Retry&#34;: [
                                 {
-                                    &quot;ErrorEquals&quot;: [
-                                        &quot;Lambda.ServiceException&quot;,
-                                        &quot;Lambda.AWSLambdaException&quot;,
-                                        &quot;Lambda.SdkClientException&quot;,
-                                        &quot;Lambda.TooManyRequestsException&quot;
+                                    &#34;ErrorEquals&#34;: [
+                                        &#34;Lambda.ServiceException&#34;,
+                                        &#34;Lambda.AWSLambdaException&#34;,
+                                        &#34;Lambda.SdkClientException&#34;,
+                                        &#34;Lambda.TooManyRequestsException&#34;
                                     ]
                                 }
                             ],
-                            &quot;End&quot;: true
+                            &#34;End&#34;: true
                         }
                     }
                 }
             ],
-            &quot;Catch&quot;: [
+            &#34;Catch&#34;: [
                 {
-                    &quot;ErrorEquals&quot;: [
-                        &quot;UnprocessableDataException&quot;
+                    &#34;ErrorEquals&#34;: [
+                        &#34;UnprocessableDataException&#34;
                     ],
-                    &quot;ResultPath&quot;: &quot;$.error-info&quot;,
-                    &quot;Next&quot;: &quot;Flag Application As Unprocessable&quot;
+                    &#34;ResultPath&#34;: &#34;$.error-info&#34;,
+                    &#34;Next&#34;: &#34;Flag Application As Unprocessable&#34;
                 }
             ],
-            &quot;ResultPath&quot;: &quot;$.checks&quot;,
-            &quot;Next&quot;: &quot;Review Required?&quot;
+            &#34;ResultPath&#34;: &#34;$.checks&#34;,
+            &#34;Next&#34;: &#34;Review Required?&#34;
         },
-        &quot;Review Required?&quot;: {
-            &quot;Type&quot;: &quot;Choice&quot;,
-            &quot;Choices&quot;: [
+        &#34;Review Required?&#34;: {
+            &#34;Type&#34;: &#34;Choice&#34;,
+            &#34;Choices&#34;: [
                 {
-                    &quot;Variable&quot;: &quot;$.checks[0].flagged&quot;,
-                    &quot;BooleanEquals&quot;: true,
-                    &quot;Next&quot;: &quot;Pending Review&quot;
+                    &#34;Variable&#34;: &#34;$.checks[0].flagged&#34;,
+                    &#34;BooleanEquals&#34;: true,
+                    &#34;Next&#34;: &#34;Pending Review&#34;
                 },
                 {
-                    &quot;Variable&quot;: &quot;$.checks[1].flagged&quot;,
-                    &quot;BooleanEquals&quot;: true,
-                    &quot;Next&quot;: &quot;Pending Review&quot;
+                    &#34;Variable&#34;: &#34;$.checks[1].flagged&#34;,
+                    &#34;BooleanEquals&#34;: true,
+                    &#34;Next&#34;: &#34;Pending Review&#34;
                 }
             ],
-            &quot;Default&quot;: &quot;Approve Application&quot;
+            &#34;Default&#34;: &#34;Approve Application&#34;
         },
-        &quot;Pending Review&quot;: {
-            &quot;Type&quot;: &quot;Task&quot;,
-            &quot;Resource&quot;: &quot;arn:aws:states:::lambda:invoke.waitForTaskToken&quot;,
-            &quot;Parameters&quot;: {
-                &quot;FunctionName&quot;: &quot;${FlagApplicationFunctionName}&quot;,
-                &quot;Payload&quot;: {
-                    &quot;id.$&quot;: &quot;$.application.id&quot;,
-                    &quot;flagType&quot;: &quot;REVIEW&quot;,
-                    &quot;taskToken.$&quot;: &quot;$$.Task.Token&quot;
+        &#34;Pending Review&#34;: {
+            &#34;Type&#34;: &#34;Task&#34;,
+            &#34;Resource&#34;: &#34;arn:aws:states:::lambda:invoke.waitForTaskToken&#34;,
+            &#34;Parameters&#34;: {
+                &#34;FunctionName&#34;: &#34;${FlagApplicationFunctionName}&#34;,
+                &#34;Payload&#34;: {
+                    &#34;id.$&#34;: &#34;$.application.id&#34;,
+                    &#34;flagType&#34;: &#34;REVIEW&#34;,
+                    &#34;taskToken.$&#34;: &#34;$$.Task.Token&#34;
                 }
             },
-            &quot;ResultPath&quot;: &quot;$.review&quot;,
-            &quot;Retry&quot;: [
+            &#34;ResultPath&#34;: &#34;$.review&#34;,
+            &#34;Retry&#34;: [
                 {
-                    &quot;ErrorEquals&quot;: [
-                        &quot;Lambda.ServiceException&quot;,
-                        &quot;Lambda.AWSLambdaException&quot;,
-                        &quot;Lambda.SdkClientException&quot;,
-                        &quot;Lambda.TooManyRequestsException&quot;
+                    &#34;ErrorEquals&#34;: [
+                        &#34;Lambda.ServiceException&#34;,
+                        &#34;Lambda.AWSLambdaException&#34;,
+                        &#34;Lambda.SdkClientException&#34;,
+                        &#34;Lambda.TooManyRequestsException&#34;
                     ]
                 }
             ],
-            &quot;Next&quot;: &quot;Review Approved?&quot;
+            &#34;Next&#34;: &#34;Review Approved?&#34;
         },
-        &quot;Review Approved?&quot;: {
-            &quot;Type&quot;: &quot;Choice&quot;,
-            &quot;Choices&quot;: [
+        &#34;Review Approved?&#34;: {
+            &#34;Type&#34;: &#34;Choice&#34;,
+            &#34;Choices&#34;: [
                 {
-                    &quot;Variable&quot;: &quot;$.review.decision&quot;,
-                    &quot;StringEquals&quot;: &quot;APPROVE&quot;,
-                    &quot;Next&quot;: &quot;Approve Application&quot;
+                    &#34;Variable&#34;: &#34;$.review.decision&#34;,
+                    &#34;StringEquals&#34;: &#34;APPROVE&#34;,
+                    &#34;Next&#34;: &#34;Approve Application&#34;
                 },
                 {
-                    &quot;Variable&quot;: &quot;$.review.decision&quot;,
-                    &quot;StringEquals&quot;: &quot;REJECT&quot;,
-                    &quot;Next&quot;: &quot;Reject Application&quot;
+                    &#34;Variable&#34;: &#34;$.review.decision&#34;,
+                    &#34;StringEquals&#34;: &#34;REJECT&#34;,
+                    &#34;Next&#34;: &#34;Reject Application&#34;
                 }
             ]
         },
-        &quot;Reject Application&quot;: {
-            &quot;Type&quot;: &quot;Task&quot;,
-            &quot;Parameters&quot;: {
-                &quot;id.$&quot;: &quot;$.application.id&quot;
+        &#34;Reject Application&#34;: {
+            &#34;Type&#34;: &#34;Task&#34;,
+            &#34;Parameters&#34;: {
+                &#34;id.$&#34;: &#34;$.application.id&#34;
             },
-            &quot;Resource&quot;: &quot;${RejectApplicationFunctionArn}&quot;,
-            &quot;Retry&quot;: [
+            &#34;Resource&#34;: &#34;${RejectApplicationFunctionArn}&#34;,
+            &#34;Retry&#34;: [
                 {
-                    &quot;ErrorEquals&quot;: [
-                        &quot;Lambda.ServiceException&quot;,
-                        &quot;Lambda.AWSLambdaException&quot;,
-                        &quot;Lambda.SdkClientException&quot;,
-                        &quot;Lambda.TooManyRequestsException&quot;
+                    &#34;ErrorEquals&#34;: [
+                        &#34;Lambda.ServiceException&#34;,
+                        &#34;Lambda.AWSLambdaException&#34;,
+                        &#34;Lambda.SdkClientException&#34;,
+                        &#34;Lambda.TooManyRequestsException&#34;
                     ]
                 }
             ],
-            &quot;End&quot;: true
+            &#34;End&#34;: true
         },
-        &quot;Approve Application&quot;: {
-            &quot;Type&quot;: &quot;Task&quot;,
-            &quot;Parameters&quot;: {
-                &quot;id.$&quot;: &quot;$.application.id&quot;
+        &#34;Approve Application&#34;: {
+            &#34;Type&#34;: &#34;Task&#34;,
+            &#34;Parameters&#34;: {
+                &#34;id.$&#34;: &#34;$.application.id&#34;
             },
-            &quot;Resource&quot;: &quot;${ApproveApplicationFunctionArn}&quot;,
-            &quot;Retry&quot;: [
+            &#34;Resource&#34;: &#34;${ApproveApplicationFunctionArn}&#34;,
+            &#34;Retry&#34;: [
                 {
-                    &quot;ErrorEquals&quot;: [
-                        &quot;Lambda.ServiceException&quot;,
-                        &quot;Lambda.AWSLambdaException&quot;,
-                        &quot;Lambda.SdkClientException&quot;,
-                        &quot;Lambda.TooManyRequestsException&quot;
+                    &#34;ErrorEquals&#34;: [
+                        &#34;Lambda.ServiceException&#34;,
+                        &#34;Lambda.AWSLambdaException&#34;,
+                        &#34;Lambda.SdkClientException&#34;,
+                        &#34;Lambda.TooManyRequestsException&#34;
                     ]
                 }
             ],
-            &quot;End&quot;: true
+            &#34;End&#34;: true
         },
-        &quot;Flag Application As Unprocessable&quot;: {
-            &quot;Type&quot;: &quot;Task&quot;,
-            &quot;Resource&quot;: &quot;arn:aws:states:::lambda:invoke&quot;,
-            &quot;Parameters&quot;: {
-                &quot;FunctionName&quot;: &quot;${FlagApplicationFunctionName}&quot;,
-                &quot;Payload&quot;: {
-                    &quot;id.$&quot;: &quot;$.application.id&quot;,
-                    &quot;flagType&quot;: &quot;UNPROCESSABLE_DATA&quot;,
-                    &quot;errorInfo.$&quot;: &quot;$.error-info&quot;
+        &#34;Flag Application As Unprocessable&#34;: {
+            &#34;Type&#34;: &#34;Task&#34;,
+            &#34;Resource&#34;: &#34;arn:aws:states:::lambda:invoke&#34;,
+            &#34;Parameters&#34;: {
+                &#34;FunctionName&#34;: &#34;${FlagApplicationFunctionName}&#34;,
+                &#34;Payload&#34;: {
+                    &#34;id.$&#34;: &#34;$.application.id&#34;,
+                    &#34;flagType&#34;: &#34;UNPROCESSABLE_DATA&#34;,
+                    &#34;errorInfo.$&#34;: &#34;$.error-info&#34;
                 }
             },
-            &quot;ResultPath&quot;: &quot;$.review&quot;,
-            &quot;Retry&quot;: [
+            &#34;ResultPath&#34;: &#34;$.review&#34;,
+            &#34;Retry&#34;: [
                 {
-                    &quot;ErrorEquals&quot;: [
-                        &quot;Lambda.ServiceException&quot;,
-                        &quot;Lambda.AWSLambdaException&quot;,
-                        &quot;Lambda.SdkClientException&quot;,
-                        &quot;Lambda.TooManyRequestsException&quot;
+                    &#34;ErrorEquals&#34;: [
+                        &#34;Lambda.ServiceException&#34;,
+                        &#34;Lambda.AWSLambdaException&#34;,
+                        &#34;Lambda.SdkClientException&#34;,
+                        &#34;Lambda.TooManyRequestsException&#34;
                     ]
                 }
             ],
-            &quot;End&quot;: true
+            &#34;End&#34;: true
         }
     }
 }
-</code></pre><p><img src="/images/SF/102.png?width=90pc" alt="StepFunctions"></p>
-<ol start="2">
+</code></pre><p><img src="/images/6.1/0001.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Chạy lệnh dưới đây để thực hiện deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:</li>
 </ol>
-<pre><code>sam deploy
-</code></pre><p><img src="/images/SF/103.png?width=90pc" alt="StepFunctions"></p>
+<pre tabindex="0"><code>sam deploy
+</code></pre><p><img src="/images/6.1/0002.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img src="/images/6.1/0003.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
 
 
 
@@ -2601,19 +2601,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1642672391"></script>
-    <script src="/js/jquery.sticky.js?1642672391"></script>
-    <script src="/js/featherlight.min.js?1642672391"></script>
-    <script src="/js/highlight.pack.js?1642672391"></script>
+    <script src="/js/clipboard.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1673730818"></script>
+    <script src="/js/jquery.sticky.js?1673730818"></script>
+    <script src="/js/featherlight.min.js?1673730818"></script>
+    <script src="/js/highlight.pack.js?1673730818"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1642672391"></script>
-    <script src="/js/learn.js?1642672391"></script>
-    <script src="/js/hugo-learn.js?1642672391"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1673730818"></script>
+    <script src="/js/learn.js?1673730818"></script>
+    <script src="/js/hugo-learn.js?1673730818"></script>
 
-    <link href="/mermaid/mermaid.css?1642672391" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1642672391"></script>
+    <link href="/mermaid/mermaid.css?1673730818" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1673730818"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

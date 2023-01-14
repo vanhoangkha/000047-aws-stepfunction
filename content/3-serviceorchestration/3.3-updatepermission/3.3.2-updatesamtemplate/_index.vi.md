@@ -17,9 +17,9 @@ mkdir -p statemachine && pushd statemachine && touch account-application-workflo
 ```
   + Lệnh trên tạo một file **statemachine/account-application-workflow.asl.json** không có nội dung trong thư mục workshop-dir.
 
-![StepFunctions](/images/SF/040.png?width=90pc)
+![AWS Step Functions](/images/3.3.2/0001.png?featherlight=false&width=90pc)
 
-2. Click vào thư mục **statemachine** và mở file **account-application-workflow.asl.json**.
+1. Click vào thư mục **statemachine** và mở file **account-application-workflow.asl.json**.
   + Thay thế nội dung dưới đây.
   + Ấn **Ctrl+S** để lưu tập tin.
 
@@ -57,9 +57,9 @@ mkdir -p statemachine && pushd statemachine && touch account-application-workflo
     }
 ```
 
-![StepFunctions](/images/SF/041.png?width=90pc)
+![AWS Step Functions](/images/3.3.2/0002.png?featherlight=false&width=90pc)
 
-3. Tiếp theo chúng ta mở file **template.yaml** trong thư mục workshop-dir.
+1. Tiếp theo chúng ta mở file **template.yaml** trong thư mục workshop-dir.
   + Thay thế nội dụng JSON dưới đây.
   + Ấn **Ctrl+S** để lưu tập tin.
 
@@ -203,14 +203,13 @@ Outputs:
     Value: !GetAtt DataCheckingFunction.Arn
 ```
 
-![StepFunctions](/images/SF/042.png?width=90pc)
+![AWS Step Functions](/images/3.3.2/0003.png?featherlight=false&width=90pc)
 
-4. Chạy câu lệnh sau để triển khai lại ứng dụng.
+1. Chạy câu lệnh sau để triển khai lại ứng dụng.
 ```
 sam build && sam deploy
 ```
-
-![StepFunctions](/images/SF/043.png?width=90pc)
+![AWS Step Functions](/images/3.3.2/0004.png?featherlight=false&width=90pc)
 
 
 {{%notice tip%}}
@@ -218,3 +217,5 @@ Bạn có thể tải về những file đã chỉnh sửa và chạy thành cô
 {{%/notice%}}
 
 {{%attachments style="orange" title="Updated SAM" pattern=".*"/%}}
+
+![AWS Step Functions](/images/3.3.2/0005.png?featherlight=false&width=90pc)

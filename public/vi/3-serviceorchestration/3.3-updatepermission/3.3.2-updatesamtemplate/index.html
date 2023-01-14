@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Cập nhật SAM template :: AWS Step Functions</title>
 
     
-    <link href="/css/nucleus.css?1642672391" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1642672391" rel="stylesheet">
-    <link href="/css/hybrid.css?1642672391" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1642672391" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1642672391" rel="stylesheet">
-    <link href="/css/auto-complete.css?1642672391" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1642672391" rel="stylesheet">
-    <link href="/css/theme.css?1642672391" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1642672391" rel="stylesheet">
+    <link href="/css/nucleus.css?1673730818" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1673730818" rel="stylesheet">
+    <link href="/css/hybrid.css?1673730818" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1673730818" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1673730818" rel="stylesheet">
+    <link href="/css/auto-complete.css?1673730818" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1673730818" rel="stylesheet">
+    <link href="/css/theme.css?1673730818" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1673730818" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1642672391" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1673730818" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1642672391"></script>
+    <script src="/js/jquery-3.3.1.min.js?1673730818"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1642672391"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1642672391"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1673730818"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1673730818"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1642672391"></script>
+<script type="text/javascript" src="/js/search.js?1673730818"></script>
 
     
   </div>
@@ -677,7 +677,7 @@
   
     
     <li data-nav-id="/vi/3-serviceorchestration/3.3-updatepermission/3.3.2-updatesamtemplate/" title="Cập nhật SAM template" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>20-01-2021</font></i>
+        <i><font color=orange>15-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1535,7 +1535,6 @@
         </left>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-
     </section>
   </div>
 </nav>
@@ -1629,58 +1628,58 @@
 <ol>
 <li>Quay trở lại giao diện dòng lệnh của Cloud9 instance, tại thư mục <strong>workshop-dir</strong>, chạy câu lệnh sau để tạo file mới chứa định nghĩa của state machine.</li>
 </ol>
-<pre><code>mkdir -p statemachine &amp;&amp; pushd statemachine &amp;&amp; touch account-application-workflow.asl.json &amp;&amp; popd
+<pre tabindex="0"><code>mkdir -p statemachine &amp;&amp; pushd statemachine &amp;&amp; touch account-application-workflow.asl.json &amp;&amp; popd
 </code></pre><ul>
 <li>Lệnh trên tạo một file <strong>statemachine/account-application-workflow.asl.json</strong> không có nội dung trong thư mục workshop-dir.</li>
 </ul>
-<p><img src="/images/SF/040.png?width=90pc" alt="StepFunctions"></p>
-<ol start="2">
+<p><img src="/images/3.3.2/0001.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Click vào thư mục <strong>statemachine</strong> và mở file <strong>account-application-workflow.asl.json</strong>.</li>
 </ol>
 <ul>
 <li>Thay thế nội dung dưới đây.</li>
 <li>Ấn <strong>Ctrl+S</strong> để lưu tập tin.</li>
 </ul>
-<pre><code>    {
-        &quot;StartAt&quot;: &quot;Check Name&quot;,
-        &quot;States&quot;: {
-            &quot;Check Name&quot;: {
-                &quot;Type&quot;: &quot;Task&quot;,
-                &quot;Parameters&quot;: {
-                    &quot;command&quot;: &quot;CHECK_NAME&quot;,
-                    &quot;data&quot;: {
-                        &quot;name.$&quot;: &quot;$.application.name&quot;
+<pre tabindex="0"><code>    {
+        &#34;StartAt&#34;: &#34;Check Name&#34;,
+        &#34;States&#34;: {
+            &#34;Check Name&#34;: {
+                &#34;Type&#34;: &#34;Task&#34;,
+                &#34;Parameters&#34;: {
+                    &#34;command&#34;: &#34;CHECK_NAME&#34;,
+                    &#34;data&#34;: {
+                        &#34;name.$&#34;: &#34;$.application.name&#34;
                     }
                 },
-                &quot;Resource&quot;: &quot;${DataCheckingFunctionArn}&quot;,
-                &quot;Next&quot;: &quot;Check Address&quot;
+                &#34;Resource&#34;: &#34;${DataCheckingFunctionArn}&#34;,
+                &#34;Next&#34;: &#34;Check Address&#34;
             },
-            &quot;Check Address&quot;: {
-                &quot;Type&quot;: &quot;Task&quot;,
-                &quot;Parameters&quot;: {
-                    &quot;command&quot;: &quot;CHECK_ADDRESS&quot;,
-                    &quot;data&quot;: {
-                        &quot;address.$&quot;: &quot;$.application.address&quot;
+            &#34;Check Address&#34;: {
+                &#34;Type&#34;: &#34;Task&#34;,
+                &#34;Parameters&#34;: {
+                    &#34;command&#34;: &#34;CHECK_ADDRESS&#34;,
+                    &#34;data&#34;: {
+                        &#34;address.$&#34;: &#34;$.application.address&#34;
                     }
                 },
-                &quot;Resource&quot;: &quot;${DataCheckingFunctionArn}&quot;,
-                &quot;Next&quot;: &quot;Approve Application&quot;
+                &#34;Resource&#34;: &#34;${DataCheckingFunctionArn}&#34;,
+                &#34;Next&#34;: &#34;Approve Application&#34;
             },
-            &quot;Approve Application&quot;: {
-                &quot;Type&quot;: &quot;Pass&quot;,
-                &quot;End&quot;: true
+            &#34;Approve Application&#34;: {
+                &#34;Type&#34;: &#34;Pass&#34;,
+                &#34;End&#34;: true
             }
         }
     }
-</code></pre><p><img src="/images/SF/041.png?width=90pc" alt="StepFunctions"></p>
-<ol start="3">
+</code></pre><p><img src="/images/3.3.2/0002.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Tiếp theo chúng ta mở file <strong>template.yaml</strong> trong thư mục workshop-dir.</li>
 </ol>
 <ul>
 <li>Thay thế nội dụng JSON dưới đây.</li>
 <li>Ấn <strong>Ctrl+S</strong> để lưu tập tin.</li>
 </ul>
-<pre><code>AWSTemplateFormatVersion: &quot;2010-09-09&quot;
+<pre tabindex="0"><code>AWSTemplateFormatVersion: &#34;2010-09-09&#34;
 Transform: AWS::Serverless-2016-10-31
 Description: Template for step-functions-workshop
 
@@ -1774,7 +1773,7 @@ Resources:
             TableName: !Ref ApplicationsTable
 
   ApplicationsTable:
-    Type: 'AWS::DynamoDB::Table'
+    Type: &#39;AWS::DynamoDB::Table&#39;
     Properties:
       TableName: !Sub StepFunctionWorkshop-AccountApplications-${AWS::StackName}
       AttributeDefinitions:
@@ -1800,29 +1799,29 @@ Resources:
                   ProjectionType: ALL
 Outputs:
   SubmitApplicationFunctionArn:
-    Description: &quot;Submit Application Function ARN&quot;
+    Description: &#34;Submit Application Function ARN&#34;
     Value: !GetAtt SubmitApplicationFunction.Arn
   FlagApplicationFunctionArn:
-    Description: &quot;Flag Application Function ARN&quot;
+    Description: &#34;Flag Application Function ARN&#34;
     Value: !GetAtt FlagApplicationFunction.Arn
   FindApplicationsFunctionArn:
-    Description: &quot;Find Applications Function ARN&quot;
+    Description: &#34;Find Applications Function ARN&#34;
     Value: !GetAtt FindApplicationsFunction.Arn
   ApproveApplicationFunctionArn:
-    Description: &quot;Approve Application Function ARN&quot;
+    Description: &#34;Approve Application Function ARN&#34;
     Value: !GetAtt ApproveApplicationFunction.Arn
   RejectApplicationFunctionArn:
-    Description: &quot;Reject Application Function ARN&quot;
+    Description: &#34;Reject Application Function ARN&#34;
     Value: !GetAtt RejectApplicationFunction.Arn
   DataCheckingFunctionArn:
-    Description: &quot;Data Checking Function ARN&quot;
+    Description: &#34;Data Checking Function ARN&#34;
     Value: !GetAtt DataCheckingFunction.Arn
-</code></pre><p><img src="/images/SF/042.png?width=90pc" alt="StepFunctions"></p>
-<ol start="4">
+</code></pre><p><img src="/images/3.3.2/0003.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Chạy câu lệnh sau để triển khai lại ứng dụng.</li>
 </ol>
-<pre><code>sam build &amp;&amp; sam deploy
-</code></pre><p><img src="/images/SF/043.png?width=90pc" alt="StepFunctions"></p>
+<pre tabindex="0"><code>sam build &amp;&amp; sam deploy
+</code></pre><p><img src="/images/3.3.2/0004.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
 
 <div class="notices tip" ><p>Bạn có thể tải về những file đã chỉnh sửa và chạy thành công ở dưới đây:</p>
 </div>
@@ -1867,6 +1866,7 @@ Outputs:
 </section>
 
 
+<p><img src="/images/3.3.2/0005.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
 
 
 
@@ -2655,19 +2655,19 @@ Outputs:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1642672391"></script>
-    <script src="/js/jquery.sticky.js?1642672391"></script>
-    <script src="/js/featherlight.min.js?1642672391"></script>
-    <script src="/js/highlight.pack.js?1642672391"></script>
+    <script src="/js/clipboard.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1673730818"></script>
+    <script src="/js/jquery.sticky.js?1673730818"></script>
+    <script src="/js/featherlight.min.js?1673730818"></script>
+    <script src="/js/highlight.pack.js?1673730818"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1642672391"></script>
-    <script src="/js/learn.js?1642672391"></script>
-    <script src="/js/hugo-learn.js?1642672391"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1673730818"></script>
+    <script src="/js/learn.js?1673730818"></script>
+    <script src="/js/hugo-learn.js?1673730818"></script>
 
-    <link href="/mermaid/mermaid.css?1642672391" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1642672391"></script>
+    <link href="/mermaid/mermaid.css?1673730818" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1673730818"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -110,9 +110,9 @@ Trong bước này chúng ta sẽ :
 }
 ```
 
-![StepFunctions](/images/SF/089.png?width=90pc)
+![AWS Step Functions](/images/4.3/0001.png?featherlight=false&width=90pc)
 
-2. Thay thế nội dung của file **template.yaml** với nội dung dưới đây.
+1. Thay thế nội dung của file **template.yaml** với nội dung dưới đây.
   + Ấn **Ctrl + S** để lưu thay đổi.
 ```
 AWSTemplateFormatVersion: "2010-09-09"
@@ -286,12 +286,14 @@ Outputs:
     Description: "Data Checking Function ARN"
     Value: !GetAtt DataCheckingFunction.Arn
 ```
-![StepFunctions](/images/SF/090.png?width=90pc)
+![AWS Step Functions](/images/4.3/0002.png?featherlight=false&width=90pc)
 
-3. Chạy lệnh dưới đây để thực hiện build và deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
+1. Chạy lệnh dưới đây để thực hiện build và deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
 ```
 sam build && sam deploy
 ```
-![StepFunctions](/images/SF/091.png?width=90pc)
+![AWS Step Functions](/images/4.3/0003.png?featherlight=false&width=90pc)
 
 Chúc mừng bạn đã hoàn tất tạo một qui trình làm việc cơ bản trên Step Functions state machine.Trong phần tiếp theo chúng ta sẽ tìm hiểu về cách xử lý khi có sự cố xảy ra trong lúc state machine thực thi.
+
+![AWS Step Functions](/images/4.3/0004.png?featherlight=false&width=90pc)

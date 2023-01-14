@@ -1,5 +1,5 @@
 +++
-title = "Cập nhật workflow"
+title = "Update workflow"
 date = 2021
 weight = 1
 chapter = false
@@ -7,14 +7,14 @@ pre = "<b>3.4.1 </b>"
 +++
 
 
-#### Cập nhật workflow
+#### Update workflow
 
-Trong bước này chúng ta sẽ thêm thuộc tính ResultPath vào trạng thái **Check Name** và **Check Address** bên trong state machine của chúng ta được xác định trong **state-machine / account-application-workflow.asl.json**.
+In this step we will add ResultPath property to **Check Name** and **Check Address** state inside our machine state defined in **state-machine/account-application-workflow.asl .json**.
 
-1. Quay trở lại giao diện dòng lệnh của Cloud9 instance, thay thế nội dung của file **state-machine/account-application-workflow.asl.json** với nội dung dưới đây.
-  + Ấn **Ctrl + S** để lưu thay đổi.
+1. Return to the command line interface of the Cloud9 instance, and replace the contents of the file **state-machine/account-application-workflow.asl.json** with the content below.
+  + Press **Ctrl + S** to save changes.
 
- ```
+```
  {
     "StartAt": "Check Name",
     "States": {
@@ -50,18 +50,17 @@ Trong bước này chúng ta sẽ thêm thuộc tính ResultPath vào trạng th
 }
  ```
 
-![StepFunctions](/images/SF/049.png?width=90pc)
+![AWS Step Functions](/images/3.3.4/0001.png?featherlight=false&width=90pc)
 
-2. Thực hiện triển khai cập nhật bằng câu lệnh sau:
+2. Perform the update deployment with the following command:
 ```
 sam deploy
 ```
 
-![StepFunctions](/images/SF/050.png?width=90pc)
+![AWS Step Functions](/images/3.3.4/0002.png?featherlight=false&width=90pc)
 
-3. Kiểm tra quá trình triển khai cập nhật thành công.
+3. Check the successful update deployment.
 
-![StepFunctions](/images/SF/051.png?width=90pc)
+![AWS Step Functions](/images/3.3.4/0003.png?featherlight=false&width=90pc)
 
-Bước tiếp theo chúng ta sẽ thử thực thi workflow để xem kết quả.
-
+In the next step we will try to execute the workflow to see the results.

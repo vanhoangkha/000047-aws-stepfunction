@@ -14,7 +14,7 @@ aws lambda invoke --function-name sfn-workshop-DataChecking --payload '{"command
 ```
   + Kết quả trả về ** {"flagged":false}** , như vậy tên này phù hợp.
 
-![StepFunctions](/images/SF/016.png?width==90pc)
+![AWS Step Functions](/images/2.3.2/0001.png?featherlight=false&width=90pc)
 
 2. Chạy câu lệnh dưới đây, lần này tên chúng ta sẽ cố tính đặt không phù hợp.
 
@@ -23,7 +23,7 @@ aws lambda invoke --function-name sfn-workshop-DataChecking --payload '{"command
 ```
   + Kết quả trả về **{"flagged":true}**, như vậy tên này không phù hợp.
 
-![StepFunctions](/images/SF/017.png?width==90pc)
+![AWS Step Functions](/images/2.3.2/0002.png?featherlight=false&width=90pc)
 
 3. Chạy câu lệnh dưới đây trong giao diện dòng lệnh để kiểm tra địa chỉ có phù hợp hay không.
 ```
@@ -31,7 +31,7 @@ aws lambda invoke --function-name sfn-workshop-DataChecking --payload '{"command
 ```
   + Kết quả trả về ** {"flagged":false}** , như vậy địa chỉ này phù hợp.
 
-![StepFunctions](/images/SF/018.png?width==90pc)
+![AWS Step Functions](/images/2.3.2/0003.png?featherlight=false&width=90pc)
 
 4. Chạy câu lệnh dưới đây, lần này tên chúng ta sẽ cố tính đặt không phù hợp.
 
@@ -40,7 +40,7 @@ aws lambda invoke --function-name sfn-workshop-DataChecking --payload '{"command
 ```
   + Kết quả trả về **{"flagged":true}**, như vậy địa chỉ này không phù hợp.
 
-![StepFunctions](/images/SF/019.png?width==90pc)
+![AWS Step Functions](/images/2.3.2/0004.png?featherlight=false&width=90pc)
 
 Như bạn có thể thấy, dịch vụ **Data Checking** chỉ trả về một phản hồi kiểu JSON đơn giản với một biến, được gắn cờ trả về true nếu giá trị cần kiểm soát viên kiểm tra lại.
 

@@ -1,5 +1,5 @@
 +++
-title = "Tạo các dịch vụ mẫu"
+title = "Create sample services"
 date = 2021
 weight = 2
 chapter = false
@@ -7,38 +7,34 @@ pre = "<b>2.2 </b>"
 +++
 
 
-#### Tạo các dịch vụ mẫu - Tổng quan
+#### Creating sample services - Overview
 
-Trong workshop này, chúng tôi sẽ sử dụng  AWS Serverless Application Model (SAM) để viết, triển khai và kiểm tra chức năng trong các dịch vụ của mình. Bạn không cần phải có  kinh nghiệm nào với AWS SAM; workshop sẽ giải thích khi chúng ta tiếp tục, qua đó bạn cũng có thể tìm hiểu cách SAM giúp bạn xây dựng hệ thống serverless.
+In this workshop, we will use the AWS Serverless Application Model (SAM) to write, deploy, and test functionality in our services. You do not need to have any experience with AWS SAM; The workshop will explain as we go on, so you can also learn how SAM helps you build a serverless system.
 
-Trong bước này chúng ta sẽ tạo một số Lambda function, khi được gọi chung, có thể được coi là dịch vụ **Account Application** của chúng ta. Cụ thể, chúng ta sẽ thực hiện các chức năng cho phép  gửi các đăng ký mới (chỉ bao gồm một hồ sơ có tên và địa chỉ), gắn cờ các đăng ký để xem xét và đánh dấu các đăng ký là được chấp thuận hoặc bị từ chối. Chúng ta cũng sẽ bổ sung thêm khả năng liệt kê tất cả các đăng ký ở một trạng thái nhất định (như ĐÃ ĐƯỢC GỬI hoặc ĐÃ ĐƯỢC GẮN CỜ) để tránh rắc rối khi kiểm tra trực tiếp kho dữ liệu của dịch vụ. 
+In this step we will create a Lambda function that, when called together, can be thought of as our **Account Application** service. Specifically, we will implement functions that will allow new registrations to be submitted (including a profile with name and address only), flag registrations for review, and mark registrations as approved or rejected. We'll also add the ability to list all subscriptions in a certain state (like DEPOSTED or FLASHED) to avoid the hassle of checking the service's datastore directly.
 
-#### Cài đặt AWS SAM CLI
-1. Trong giao diện terminal của Cloud9 instance, chạy lệnh dưới đây.
-  + Đặt password sudo mới cho ec2-user của Cloud9 instance, ví dụ **123456**.
+#### Install AWS SAM CLI
+1. In the terminal interface of the Cloud9 instance, run the command below.
+  + Set a new sudo password for the ec2-user of the Cloud9 instance, for example **123456**.
 
 ```
 sudo passwd ec2-user
 ```
 
-![StepFunctions](/images/SF/005.png?width==90pc)
+![AWS Step Functions](/images/2.2/0001.png?featherlight=false&width=90pc)
 
-2. Trong giao diện terminal của Cloud9 instance, chạy lệnh dưới đây.
+2. In the terminal interface of the Cloud9 instance, run the command below.
 
 ```
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
-  + Điền [sudo] password cho ec2-user : **123456**.
-  + Ấn phím **Enter**.
++ Enter [sudo] password for ec2-user: **123456**.
+  + Press the **Enter** key.
 
-![StepFunctions](/images/SF/006.png?width==90pc)
+![AWS Step Functions](/images/2.2/0002.png?featherlight=false&width=90pc) 
 
-3. Kiểm tra quá trình cài đặt diễn ra thành công.
-
-![StepFunctions](/images/SF/007.png?width==90pc)
-
-4. Trong giao diện terminal của Cloud9 instance, chạy lệnh dưới đây để tiến hành cấu hình PATH cho homebrew và clone repo của workshop.
+3. In the terminal interface of the Cloud9 instance, run the command below to configure the PATH for homebrew and clone the workshop's repo.
 ```
 # Then get brew into our $PATH
 test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
@@ -51,79 +47,87 @@ brew tap aws/tap
 brew install aws-sam-cli
 
 # Bootstrap our initial services into ./workshop-dir
-git clone https://github.com/gabehollombe-aws/step-functions-workshop.git          
+git clone https://github.com/gabehollombe-aws/step-functions-workshop.git
 cp -R step-functions-workshop/sam_template/ workshop-dir
 
 # Change to our new directory
 cd workshop-dir
 ```
-  + Quá trình cài đặt sẽ kéo dài vài phút.
+  The installation process will take a few minutes.
 
-![StepFunctions](/images/SF/008.png?width==90pc)
+![AWS Step Functions](/images/2.2/0004.png?featherlight=false&width=90pc)
 
-5. Chạy câu lệnh dưới đây để thực hiện build các Lambda functions, chuẩn bị cho việc triển khai.
+![AWS Step Functions](/images/2.2/0005.png?featherlight=false&width=90pc)
+
+4. Run the command below to build Lambda functions, ready for deployment.
 ```
-sam build
+Sam build
 ```
 
-![StepFunctions](/images/SF/009.png?width==90pc)
+![AWS Step Functions](/images/2.2/0006.png?featherlight=false&width=90pc)
 
-6. Chạy câu lệnh dưới đây để thực hiện deploy các Lambda functions và DynamoDB, lưu ý trả lời các thông tin như dưới đây :
-  + Thông tin Stack Name [sam-app]: **step-functions-workshop**.
-  + Thông tin AWS Region [ap-southeast-1]: **ap-southeast-1**.
-  +  Confirm changes before deploy [y/N]: N
-  +  Allow SAM CLI IAM role creation [Y/n]: Y
-  +  Save arguments to configuration file [Y/n]: Y
-  +  SAM configuration file [samconfig.toml]: samconfig.toml
-  +  SAM configuration environment [default]: Ấn Enter
+5. Run the command below to deploy the Lambda functions and DynamoDB, note the answer as below:
+  + Information Stack Name [sam-app]: **step-functions-workshop**.
+  + AWS Region information [ap-southeast-1]: **ap-southeast-1**.
+  + Confirm changes before deploying [y/N]: FEMALE
+  + Allow SAM CLI IAM role creation [Y/n]: Y
+  + Save arguments to configuration file [Y/n]: Y
+  + SAM configuration file [samconfig.toml]: samconfig.toml
+  + SAM configuration environment [default]: Press Enter
 
 ```
 # Run our first deploy in guided mode. Answer the interactive questions the same way that the comments show below:
 sam deploy --guided
 ```
 
-![StepFunctions](/images/SF/010.png?width==90pc)
+![AWS Step Functions](/images/2.2/0007.png?featherlight=false&width=90pc)
+
+
+![AWS Step Functions](/images/2.2/0008.png?featherlight=false&width=90pc)
 
 {{%notice warning%}}
-Nếu bạn bị lỗi ở bước deploy hãy thử thay bước 6 bằng các bước ở mục [Chạy sam deploy bằng file config tự tạo.](#chạy-sam-deploy-bằng-file-config-tự-tạo)
+If you get an error in the deploy step, try replacing step 6 with the steps in [Run sam deploy with self-created config file.](#run-sam-deploy-by-file-config-self-created)
 {{%/notice%}}
 
-7. Dành thời gian kiểm tra nội dung các files chúng ta đã tạo trong thư mục **workshop-dir** :
-
-![StepFunctions](/images/SF/011.png?width==90pc)
+6. Spend some time checking the contents of the files we have created in the **workshop-dir** directory:
 
 ```bash
 functions/account-applications/submit.js
-# Lambda SubmitApplication function: tìm, gắn cờ, từ chối và phê duyệt đăng ký. 
+# Lambda SubmitApplication function: find, flag, reject and approve registrations.
 
 functions/account-applications/AccountApplications.js
-# Đây là file chung cung cấp các tác vụ CRUD cho **Account Application** data type. Được sử dụng bởi các function khác.
+# This is a generic file that provides CRUD operations for the **Account Application** data type. Used by other functions.
 
 functions/data-checking/data-checking.js
-# File này triển khai **DataChecking** Lambda function, nhiệm vụ của nó là xử lý các yêu cầu kiểm tra tên và địa chỉ với một số rule đơn giản.
+# This file implements **DataChecking** Lambda function, its job is to handle name and address checking requests with some simple rules.
 
 template.yaml
-# Đây là file AWS SAM sẽ khai báo các tài nguyên mà chúng ta muốn tạo và triển khai trong giải pháp của mình, có cấu trúc khá tương tự CloudFormation template vì SAM được xây dựng trên nền tảng của CloudFormation.
+# This is the AWS SAM file that will declare the resources that we want to create and deploy in our solution, with a structure quite similar to the CloudFormation template because SAM is built on top of CloudFormation.
 ```
-Bước tiếp theo chúng ta sẽ kiểm tra các dịch vụ mẫu cho workflow của chúng ta.
+The next step is to test the sample services for our workflow.
 
-#### Chạy sam deploy bằng file config tự tạo.
+#### Run sam deploy with self-created config file.
 
 {{%notice warning%}}
-Chỉ thực hiện bước này nếu việc thực hiện sam deploy -guided không thành công.
+Only do this step if sam deploy -guided fails.
 {{%/notice%}}
 
-1. Kiểm tra đường dẫn thư mục đang ở workshop-dir
-2. Chạy lệnh dưới đây để tạo SAM CLI bucket ( bạn có thể thay yourname = tên bạn )
+1. Check the directory path is in workshop-dir
+2. Run the command below to create the SAM CLI bucket (you can replace yourname = your name)
 ```
 aws s3 mb s3://stepfunctions-workshop-yourname --region ap-southeast-1
 ```
-3. Chạy lệnh dưới đây để tạo file samconfig.toml
+
+![AWS Step Functions](/images/2.2/0009.png?featherlight=false&width=90pc)
+
+3. Run the command below to create the file samconfig.toml
 
 ```
 touch samconfig.toml
 ```
-4. Double click vào file samconfig.toml và thực hiện thêm nội dung cấu hình như sau :
+![AWS Step Functions](/images/2.2/00010.png?featherlight=false&width=90pc)
+
+4. Double click on the samconfig.toml file and add configuration content as follows:
 ```
 version=0.1
 [default.global.parameters]
@@ -137,11 +141,11 @@ region = "ap-southeast-1"
 confirm_changeset = false
 capabilities = "CAPABILITY_IAM"
 ```
-  + Ấn Ctrl+S để lưu file samconfig.toml.
+  + Press Ctrl + S to save the file samconfig.toml.
 
-![StepFunctions](/images/SF/f01.png?width==90pc)
+![AWS Step Functions](/images/2.2/00011.png?featherlight=false&width=90pc)
 
-5. Chạy lệnh dưới để thực hiện deploy lại.
+5. Run the command below to execute the redeployment.
 ```
 sam deploy
 ```

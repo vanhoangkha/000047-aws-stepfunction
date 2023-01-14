@@ -6,44 +6,44 @@ chapter = false
 pre = "<b>2.3.2 </b>"
 +++
 
-#### Kiểm tra dịch vụ **Data Checking**.
+#### Check **Data Checking** service.
 
-1. Chạy câu lệnh dưới đây trong giao diện dòng lệnh để kiểm tra tên có phù hợp hay không.
+1. Run the command below in the command line interface to check the name matches or not.
 ```
 aws lambda invoke --function-name sfn-workshop-DataChecking --payload '{"command": "CHECK_NAME", "data": { "name": "Spock" } }' /dev/stdout
 ```
-  + Kết quả trả về ** {"flagged":false}** , như vậy tên này phù hợp.
+  + Returns ** {"flagged":false}** , so this name matches.
 
-![StepFunctions](/images/SF/016.png?width==90pc)
+![AWS Step Functions](/images/2.3.2/0001.png?featherlight=false&width=90pc)
 
-2. Chạy câu lệnh dưới đây, lần này tên chúng ta sẽ cố tính đặt không phù hợp.
+2. Run the command below, this time the name we will try to set does not match.
 
 ```
 aws lambda invoke --function-name sfn-workshop-DataChecking --payload '{"command": "CHECK_NAME", "data": { "name": "evil Spock" } }' /dev/stdout
 ```
-  + Kết quả trả về **{"flagged":true}**, như vậy tên này không phù hợp.
+  + Returns **{"flagged":true}**, so this name is not suitable.
 
-![StepFunctions](/images/SF/017.png?width==90pc)
+![AWS Step Functions](/images/2.3.2/0002.png?featherlight=false&width=90pc)
 
-3. Chạy câu lệnh dưới đây trong giao diện dòng lệnh để kiểm tra địa chỉ có phù hợp hay không.
+3. Run the following command in the command line interface to check if the address matches.
 ```
 aws lambda invoke --function-name sfn-workshop-DataChecking --payload '{"command": "CHECK_ADDRESS", "data": { "address": "123 Street" } }' /dev/stdout
 ```
-  + Kết quả trả về ** {"flagged":false}** , như vậy địa chỉ này phù hợp.
+  + Returns ** {"flagged":false}** , so this address matches.
 
-![StepFunctions](/images/SF/018.png?width==90pc)
+![AWS Step Functions](/images/2.3.2/0003.png?featherlight=false&width=90pc)
 
-4. Chạy câu lệnh dưới đây, lần này tên chúng ta sẽ cố tính đặt không phù hợp.
+4. Run the command below, this time the name we will try to set does not match.
 
 ```
 aws lambda invoke --function-name sfn-workshop-DataChecking --payload '{"command": "CHECK_ADDRESS", "data": { "address": "DoesntMatchAddressPattern" } }' /dev/stdout
 ```
-  + Kết quả trả về **{"flagged":true}**, như vậy địa chỉ này không phù hợp.
+  + Returns **{"flagged":true}**, so this address does not match.
 
-![StepFunctions](/images/SF/019.png?width==90pc)
+![AWS Step Functions](/images/2.3.2/0004.png?featherlight=false&width=90pc)
 
-Như bạn có thể thấy, dịch vụ **Data Checking** chỉ trả về một phản hồi kiểu JSON đơn giản với một biến, được gắn cờ trả về true nếu giá trị cần kiểm soát viên kiểm tra lại.
+As you can see, the **Data Checking** service just returns a plain JSON response with a variable, flagged to return true if the value needs rechecking by the controller.
 
-Hiện tại, chúng ta đã có tất cả các khả năng cơ bản cần có trong các dịch vụ của mình để bắt đầu kết nối chúng với nhau nhằm triển khai các bước khởi đầu của quy trình xử lý đơn đăng ký. 
+We now have all the basic capabilities needed in our services to start connecting them together to implement the initial steps of application processing.
 
-Vấn đề của chúng ta là  "làm thế nào để kết nối các dịch vụ này với nhau để triển khai thành quy trình làm việc chúng ta muốn?" 
+Our problem is "how to tie these services together to deploy into the workflow we want?"

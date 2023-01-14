@@ -14,8 +14,13 @@ pre = "<b>3.3.1 </b>"
   + Click chọn state machine **Process_New_Account_Applications**.
   + Click **Delete**.
 
-![StepFunctions](/images/SF/039.png?width=90pc)
+![AWS Step Functions](/images/3.3.1/0001.png?featherlight=false&width=90pc)
 
 2. Click **Delete state machine** để xác nhận.
+
+![AWS Step Functions](/images/3.3.1/0002.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/3.3.1/0003.png?featherlight=false&width=90pc)
+
 
 Tiếp theo chúng ta sẽ cập nhật và triển khai state machine mới thông qua SAM.

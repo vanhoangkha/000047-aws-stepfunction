@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Cập nhật workflow :: AWS Step Functions</title>
 
     
-    <link href="/css/nucleus.css?1642672391" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1642672391" rel="stylesheet">
-    <link href="/css/hybrid.css?1642672391" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1642672391" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1642672391" rel="stylesheet">
-    <link href="/css/auto-complete.css?1642672391" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1642672391" rel="stylesheet">
-    <link href="/css/theme.css?1642672391" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1642672391" rel="stylesheet">
+    <link href="/css/nucleus.css?1673730818" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1673730818" rel="stylesheet">
+    <link href="/css/hybrid.css?1673730818" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1673730818" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1673730818" rel="stylesheet">
+    <link href="/css/auto-complete.css?1673730818" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1673730818" rel="stylesheet">
+    <link href="/css/theme.css?1673730818" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1673730818" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1642672391" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1673730818" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1642672391"></script>
+    <script src="/js/jquery-3.3.1.min.js?1673730818"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1642672391"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1642672391"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1673730818"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1673730818"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1642672391"></script>
+<script type="text/javascript" src="/js/search.js?1673730818"></script>
 
     
   </div>
@@ -1003,7 +1003,7 @@
   
     
     <li data-nav-id="/vi/4-improveworkflow/4.1-startworkflow/4.1.1-updateworkflow/" title="Cập nhật workflow" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>20-01-2021</font></i>
+        <i><font color=orange>15-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1535,7 +1535,6 @@
         </left>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-
     </section>
   </div>
 </nav>
@@ -1632,30 +1631,30 @@
 <ul>
 <li>Ấn <strong>Ctrl + S</strong> để lưu thay đổi.</li>
 </ul>
-<pre><code>'use strict';
+<pre tabindex="0"><code>&#39;use strict&#39;;
 const REGION = process.env.REGION
 const APPLICATIONS_TABLE_NAME = process.env.APPLICATIONS_TABLE_NAME
 const APPLICATION_PROCESSING_STEP_FUNCTION_ARN = process.env.APPLICATION_PROCESSING_STEP_FUNCTION_ARN
 
-const AWS = require('aws-sdk')
+const AWS = require(&#39;aws-sdk&#39;)
 AWS.config.update({region: REGION});
 
 const dynamo = new AWS.DynamoDB.DocumentClient();
 const stepfunctions = new AWS.StepFunctions();
 
-const AccountApplications = require('./AccountApplications')(APPLICATIONS_TABLE_NAME, dynamo)
+const AccountApplications = require(&#39;./AccountApplications&#39;)(APPLICATIONS_TABLE_NAME, dynamo)
 
 const submitNewAccountApplication = async (data) =&gt; {
     const { name, address } = data
-    const application = await AccountApplications.create({ name, address, state: 'SUBMITTED' })
+    const application = await AccountApplications.create({ name, address, state: &#39;SUBMITTED&#39; })
     return application
 } 
 
 const startStateMachineExecution = (application) =&gt; {
     const params = {
-        &quot;input&quot;: JSON.stringify({ application }),
-        &quot;name&quot;: `ApplicationID-${application.id}`,
-        &quot;stateMachineArn&quot;: APPLICATION_PROCESSING_STEP_FUNCTION_ARN
+        &#34;input&#34;: JSON.stringify({ application }),
+        &#34;name&#34;: `ApplicationID-${application.id}`,
+        &#34;stateMachineArn&#34;: APPLICATION_PROCESSING_STEP_FUNCTION_ARN
     }
     return stepfunctions.startExecution(params).promise()
 }
@@ -1672,18 +1671,18 @@ module.exports.handler = async(event) =&gt; {
         }
 
         console.error(ex)
-        console.info('event', JSON.stringify(event))
+        console.info(&#39;event&#39;, JSON.stringify(event))
         throw ex
     }
 }
-</code></pre><p><img src="/images/SF/068.png?width=90pc" alt="StepFunctions"></p>
-<ol start="2">
+</code></pre><p><img src="/images/4.1.1/0001.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Thay thế nội dung của file <strong>template.yaml</strong> với nội dung dưới đây.</li>
 </ol>
 <ul>
 <li>Ấn <strong>Ctrl + S</strong> để lưu thay đổi.</li>
 </ul>
-<pre><code>AWSTemplateFormatVersion: &quot;2010-09-09&quot;
+<pre tabindex="0"><code>AWSTemplateFormatVersion: &#34;2010-09-09&#34;
 Transform: AWS::Serverless-2016-10-31
 Description: Template for step-functions-workshop
 
@@ -1780,7 +1779,7 @@ Resources:
             StateMachineName: !GetAtt ApplicationProcessingStateMachine.Name
 
   ApplicationsTable:
-    Type: 'AWS::DynamoDB::Table'
+    Type: &#39;AWS::DynamoDB::Table&#39;
     Properties:
       TableName: !Sub StepFunctionWorkshop-AccountApplications-${AWS::StackName}
       AttributeDefinitions:
@@ -1806,30 +1805,31 @@ Resources:
                   ProjectionType: ALL
 Outputs:
   SubmitApplicationFunctionArn:
-    Description: &quot;Submit Application Function ARN&quot;
+    Description: &#34;Submit Application Function ARN&#34;
     Value: !GetAtt SubmitApplicationFunction.Arn
   FlagApplicationFunctionArn:
-    Description: &quot;Flag Application Function ARN&quot;
+    Description: &#34;Flag Application Function ARN&#34;
     Value: !GetAtt FlagApplicationFunction.Arn
   FindApplicationsFunctionArn:
-    Description: &quot;Find Applications Function ARN&quot;
+    Description: &#34;Find Applications Function ARN&#34;
     Value: !GetAtt FindApplicationsFunction.Arn
   ApproveApplicationFunctionArn:
-    Description: &quot;Approve Application Function ARN&quot;
+    Description: &#34;Approve Application Function ARN&#34;
     Value: !GetAtt ApproveApplicationFunction.Arn
   RejectApplicationFunctionArn:
-    Description: &quot;Reject Application Function ARN&quot;
+    Description: &#34;Reject Application Function ARN&#34;
     Value: !GetAtt RejectApplicationFunction.Arn
   DataCheckingFunctionArn:
-    Description: &quot;Data Checking Function ARN&quot;
+    Description: &#34;Data Checking Function ARN&#34;
     Value: !GetAtt DataCheckingFunction.Arn
-</code></pre><p><img src="/images/SF/069.png?width=90pc" alt="StepFunctions"></p>
-<ol start="3">
+</code></pre><p><img src="/images/4.1.1/0002.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Chạy lệnh dưới đây để thực hiện build và deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:</li>
 </ol>
-<pre><code>sam build &amp;&amp; sam deploy
-</code></pre><p><img src="/images/SF/070.png?width=90pc" alt="StepFunctions"></p>
+<pre tabindex="0"><code>sam build &amp;&amp; sam deploy
+</code></pre><p><img src="/images/4.1.1/0003.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
 <p>Bây giờ chúng ta đã tích hợp dịch vụ <strong>Account Applications</strong> của mình với state machine , chúng ta sẽ kích hoạt tất cả các thực thi state machine trong tương lai bằng cách gửi các đăng ký mới đến dịch vụ (bằng cách gọi Lambda Function <strong>SubmitApplication</strong> ) thay vì thực thi trực tiếp thông qua giao diện web.</p>
+<p><img src="/images/4.1.1/0004.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
 
 
 
@@ -2612,19 +2612,19 @@ Outputs:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1642672391"></script>
-    <script src="/js/jquery.sticky.js?1642672391"></script>
-    <script src="/js/featherlight.min.js?1642672391"></script>
-    <script src="/js/highlight.pack.js?1642672391"></script>
+    <script src="/js/clipboard.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1673730818"></script>
+    <script src="/js/jquery.sticky.js?1673730818"></script>
+    <script src="/js/featherlight.min.js?1673730818"></script>
+    <script src="/js/highlight.pack.js?1673730818"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1642672391"></script>
-    <script src="/js/learn.js?1642672391"></script>
-    <script src="/js/hugo-learn.js?1642672391"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1673730818"></script>
+    <script src="/js/learn.js?1673730818"></script>
+    <script src="/js/hugo-learn.js?1673730818"></script>
 
-    <link href="/mermaid/mermaid.css?1642672391" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1642672391"></script>
+    <link href="/mermaid/mermaid.css?1673730818" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1673730818"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

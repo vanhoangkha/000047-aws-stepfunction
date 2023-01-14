@@ -1,24 +1,24 @@
 +++
-title = "Kiểu Choice State"
+title = "Style selection status"
 date = 2021
 weight = 5
 chapter = false
-pre = "<b>3.5 </b>"
+pre = "<b> 3.5 </b>"
 +++
 
 
-#### Kiểu Choice State
+#### Style Selection Status
 
-**Choice state** thêm logic phân nhánh vào state machine. Bạn có thể coi điều này giống như một câu lệnh switch phổ biến trong nhiều ngôn ngữ lập trình. **Choice state** có một loạt các quy tắc ( **rules** ). Mỗi quy tắc chứa hai điều: một biểu thức đánh giá một số biểu thức boolean và một tham chiếu đến trạng thái tiếp theo để chuyển sang nếu quy tắc này khớp thành công. 
+**Selection state** adds logical branching to the state machine. You can think of this as a common statement variable in many language programs. **Selection state** has a bunch of rules (**rules**). Each rule contains two things: an expression that evaluates to some boolean expression, and a reference to the next state to switch to if the rule matches successfully.
 
-Tất cả các quy tắc được đánh giá theo thứ tự và quy tắc đầu tiên khớp thành công sẽ khiến state machine chuyển sang trạng thái tiếp theo được xác định bởi quy tắc.
+All rules are evaluated in order, and the first one that succeeds causes the state machine to transition to the next state defined by the rule.
 
-Trong workflow làm việc mẫu của chúng ta, chúng ta muốn đợi một kiểm soát viên kiểm tra đơn đăng ký nếu hai trạng thái **Check Name** và **Check Address** trả về kết quả gắn cờ. Nếu không, chúng ta muốn tự động phê duyệt ứng dụng. Hãy thêm vào **Choice State** để triển khai workflow này.
+In our sample workflow, we want an inspector to check an application if two states ** Check Name ** and ** Check Address ** return flags. Otherwise, we want to automatically approve the app. Please add to ** Choice State ** to implement this workflow.
 
-Dưới đây là workflow cập nhật của chúng ta sẽ trông như thế nào sau khi chúng ta thực hiện xong bước này:
+Here's an update to our workflow we'll see once we're done with this step:
 
-![StepFunctions](/images/SF/a01.png?width=50pc)
+! [StepFunctions] (/images/SF/a01.png? Width = 50pc)
 
-#### Nội dung
-1. [Cập nhật state machine](3.5.1-updateworkflow/)
-2. [Kiểm tra workflow](3.5.2-checkworkflow/)
+#### Content
+1. [Update machine state] (3.5.1-updateworkflow/)
+2. [Test Workflow] (3.5.2-Test Procedure/)

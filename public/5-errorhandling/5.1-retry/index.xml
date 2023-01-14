@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Thêm tính năng retry on AWS Step Functions</title>
+    <title>Add retry feature on AWS Step Functions</title>
     <link>/5-errorhandling/5.1-retry/</link>
-    <description>Recent content in Thêm tính năng retry on AWS Step Functions</description>
+    <description>Recent content in Add retry feature on AWS Step Functions</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 01 Jan 1970 07:33:41 +0700</lastBuildDate>
-    
-	<atom:link href="/5-errorhandling/5.1-retry/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 01 Jan 1970 07:33:41 +0700</lastBuildDate><atom:link href="/5-errorhandling/5.1-retry/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

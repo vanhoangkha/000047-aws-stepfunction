@@ -1,5 +1,5 @@
 +++
-title = "Giới thiệu Workshop"
+title = "Introduction to the Workshop"
 date = 2021
 weight = 1
 chapter = false
@@ -7,13 +7,12 @@ pre = "<b>1. </b>"
 +++
 
 
-#### Giới thiệu Workshop 
+#### Workshop Introduction
 
-Trong phần này chúng ta sẽ tìm hiểu tổng quan về dịch vụ điều phối ( orchestration ) cũng như logic của workflow chúng ta sắp triển khai.
+In this section we will get an overview of the orchestration service as well as the logic of the workflow we are about to deploy.
 
 
-#### Nội dung
+#### Content
 1. [Service Orchestration](1.1-orches/)
-2. [Lĩnh vực kinh doanh](1.2-businessdomain/)
-3. [Chi tiết workflow](1.3-detailworkflow/)
-
+2. [Business Domain](1.2-businessdomain/)
+3. [Workflow details](1.3-detailworkflow/)

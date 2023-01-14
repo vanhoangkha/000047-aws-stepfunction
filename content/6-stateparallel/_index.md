@@ -1,5 +1,5 @@
 +++
-title = "Xử lý state song song"
+title = "Parallel state processing"
 date = 2021
 weight = 6
 chapter = false
@@ -7,18 +7,18 @@ pre = "<b>6. </b>"
 +++
 
 
-#### Xử lý state song song ( Parallel state )
+#### Parallel state processing ( Parallel state )
 
-Hiện tại, chúng ta đã thực hiện cả hai bước kiểm tra dữ liệu của mình lần lượt. Nhưng việc kiểm tra địa chỉ không phụ thuộc vào kết quả từ việc kiểm tra tên của người đăng ký. Vì vậy, đây là cơ hội tuyệt vời để tăng tốc mọi thứ và thực hiện song song hai bước kiểm tra dữ liệu đồng thời.
+Now, we've done both steps of checking our data one after the other. But the address check does not depend on the results from checking the name of the registrant. So this is a great opportunity to speed things up and do two parallel data checks.
 
-Step Functions cho phép chúng ta tạo trạng thái song song ( Parallel state ). Khi đó state machine thực hiện song song nhiều trạng thái. Trạng thái song song khiến trình thông dịch thực thi nhiều nhánh đồng thời bắt đầu với trạng thái có tên trong trường **StartAt** và đợi cho đến khi tất cả nhánh kết thúc (đạt đến trạng thái hoàn tất) trước khi xử lý trường **Next**  của trạng thái song song.
+Step Functions allows us to create parallel state ( Parallel state ). Then the state machine executes many states in parallel. The parallel state causes the interpreter to execute multiple branches concurrently starting with the state named in the **StartAt** field and waiting until all branches have finished (reaching a complete state) before processing the **Next** field of the parallel state.
 
-Trong bước này chúng ta sẽ:
+In this step we will:
 
-+ Cập nhật state machine để chạy **Check Name** và **Check Address** song song sử dụng kiểu **Parallel** state.
++ Update state machine to run **Check Name** and **Check Address** in parallel using **Parallel** state.
 
-+ Cập nhật state machine **Review Required?** để xử lý kết quả từ bước kiểm tra song song. Chúng ta cần làm bước này vì **Parallel** state sẽ trả kết quả của từng nhánh riêng lẻ dưới dạng element trong 1 array theo thứ tự được định nghĩa bởi **Parallel** state.
++ Update state machine **Review Required?** to process results from parallel testing step. We need to do this step because **Parallel** state will return the results of each individual branch as elements in an array in the order defined by **Parallel** state.
 
-#### Nội dung
-1. [Cập nhật workflow](6.1-updateworkflow/)
-2. [Kiểm tra workflow](6.2-checkworkflow/)
+#### Content
+1. [Update workflow](6.1-updateworkflow/)
+2. [Checkworkflow](6.2-checkworkflow/)

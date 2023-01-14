@@ -21,9 +21,9 @@ Trong bước này chúng ta sẽ tạo một số Lambda function, khi được
 sudo passwd ec2-user
 ```
 
-![StepFunctions](/images/SF/005.png?width==90pc)
+![AWS Step Functions](/images/2.2/0001.png?featherlight=false&width=90pc) 
 
-2. Trong giao diện terminal của Cloud9 instance, chạy lệnh dưới đây.
+1. Trong giao diện terminal của Cloud9 instance, chạy lệnh dưới đây.
 
 ```
 # Install Homebrew
@@ -32,13 +32,13 @@ sudo passwd ec2-user
   + Điền [sudo] password cho ec2-user : **123456**.
   + Ấn phím **Enter**.
 
-![StepFunctions](/images/SF/006.png?width==90pc)
+![AWS Step Functions](/images/2.2/0002.png?featherlight=false&width=90pc) 
 
-3. Kiểm tra quá trình cài đặt diễn ra thành công.
+2. Kiểm tra quá trình cài đặt diễn ra thành công.
 
-![StepFunctions](/images/SF/007.png?width==90pc)
+![AWS Step Functions](/images/2.2/0003.png?featherlight=false&width=90pc) 
 
-4. Trong giao diện terminal của Cloud9 instance, chạy lệnh dưới đây để tiến hành cấu hình PATH cho homebrew và clone repo của workshop.
+3. Trong giao diện terminal của Cloud9 instance, chạy lệnh dưới đây để tiến hành cấu hình PATH cho homebrew và clone repo của workshop.
 ```
 # Then get brew into our $PATH
 test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
@@ -59,16 +59,18 @@ cd workshop-dir
 ```
   + Quá trình cài đặt sẽ kéo dài vài phút.
 
-![StepFunctions](/images/SF/008.png?width==90pc)
+![AWS Step Functions](/images/2.2/0004.png?featherlight=false&width=90pc) 
 
-5. Chạy câu lệnh dưới đây để thực hiện build các Lambda functions, chuẩn bị cho việc triển khai.
+![AWS Step Functions](/images/2.2/0005.png?featherlight=false&width=90pc) 
+
+4. Chạy câu lệnh dưới đây để thực hiện build các Lambda functions, chuẩn bị cho việc triển khai.
 ```
 sam build
 ```
 
-![StepFunctions](/images/SF/009.png?width==90pc)
+![AWS Step Functions](/images/2.2/0006.png?featherlight=false&width=90pc) 
 
-6. Chạy câu lệnh dưới đây để thực hiện deploy các Lambda functions và DynamoDB, lưu ý trả lời các thông tin như dưới đây :
+5. Chạy câu lệnh dưới đây để thực hiện deploy các Lambda functions và DynamoDB, lưu ý trả lời các thông tin như dưới đây :
   + Thông tin Stack Name [sam-app]: **step-functions-workshop**.
   + Thông tin AWS Region [ap-southeast-1]: **ap-southeast-1**.
   +  Confirm changes before deploy [y/N]: N
@@ -82,15 +84,16 @@ sam build
 sam deploy --guided
 ```
 
-![StepFunctions](/images/SF/010.png?width==90pc)
+![AWS Step Functions](/images/2.2/0007.png?featherlight=false&width=90pc) 
+
+
+![AWS Step Functions](/images/2.2/0008.png?featherlight=false&width=90pc) 
 
 {{%notice warning%}}
 Nếu bạn bị lỗi ở bước deploy hãy thử thay bước 6 bằng các bước ở mục [Chạy sam deploy bằng file config tự tạo.](#chạy-sam-deploy-bằng-file-config-tự-tạo)
 {{%/notice%}}
 
-7. Dành thời gian kiểm tra nội dung các files chúng ta đã tạo trong thư mục **workshop-dir** :
-
-![StepFunctions](/images/SF/011.png?width==90pc)
+6. Dành thời gian kiểm tra nội dung các files chúng ta đã tạo trong thư mục **workshop-dir** :
 
 ```bash
 functions/account-applications/submit.js
@@ -118,11 +121,16 @@ Chỉ thực hiện bước này nếu việc thực hiện sam deploy -guided k
 ```
 aws s3 mb s3://stepfunctions-workshop-yourname --region ap-southeast-1
 ```
+
+![AWS Step Functions](/images/2.2/0009.png?featherlight=false&width=90pc) 
+
 3. Chạy lệnh dưới đây để tạo file samconfig.toml
 
 ```
 touch samconfig.toml
 ```
+![AWS Step Functions](/images/2.2/00010.png?featherlight=false&width=90pc) 
+
 4. Double click vào file samconfig.toml và thực hiện thêm nội dung cấu hình như sau :
 ```
 version=0.1
@@ -139,7 +147,7 @@ capabilities = "CAPABILITY_IAM"
 ```
   + Ấn Ctrl+S để lưu file samconfig.toml.
 
-![StepFunctions](/images/SF/f01.png?width==90pc)
+![AWS Step Functions](/images/2.2/00011.png?featherlight=false&width=90pc) 
 
 5. Chạy lệnh dưới để thực hiện deploy lại.
 ```

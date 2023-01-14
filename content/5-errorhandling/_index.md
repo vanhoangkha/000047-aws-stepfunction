@@ -1,5 +1,5 @@
 +++
-title = "Xử lý lỗi"
+title = "Error handling"
 date = 2021
 weight = 5
 chapter = false
@@ -7,21 +7,21 @@ pre = "<b>5. </b>"
 +++
 
 
-#### Xử lý lỗi trong quá trình thực thi workflow bằng cách thêm khả năng retry và error handling (catch)
+#### Handle errors during workflow execution by adding retry and error handling (catch) capabilities
 
-Cho tới thời điểm này workflow của chúng ta chưa có khả năng xử lý lỗi nào. Điều gì sẽ xảy ra nếu một số lệnh gọi Lambda function bị timeout hoặc nếu chúng gặp phải một số loại lỗi tạm thời khác? Điều gì sẽ xảy ra nếu các Lambda function xuất hiện các exception ? Hoặc  một trong các Lambda function đang gọi một dịch vụ của bên thứ ba. Cuộc gọi bên ngoài đó cũng có thể không thành công hoặc timeout. Chúng ta sẽ cùng nhau giải quyết những điều-nếu-xảy ra này và tận dụng khả năng thử lại ( retry ) và xử lý lỗi ( error handling - catch) được tích hợp sẵn của AWS Step Functions.
+Up to this point our workflow is not capable of handling any errors. What if some Lambda function calls timeout or if they encounter some other kind of transient error? What if Lambda functions throw exceptions? Or one of the Lambda functions is calling a third-party service. That external call may also fail or timeout. Together we'll tackle these things-ifs and take advantage of AWS Step Functions' built-in retry and error handling - catch.
 
-Vậy những loại lỗi có thể xảy ra? Dưới đây là một số lỗi tham khảo:
+So what kind of errors can occur? Here are some reference errors:
 
-+ Bất kỳ trạng thái nào cũng có thể gặp lỗi thời gian chạy. Lỗi có thể xảy ra vì nhiều lý do:
-  + Các vấn đề về định nghĩa state machine (ví dụ: không có quy tắc phù hợp nào trong trạng thái Lựa chọn)
-  + Lỗi tác vụ (ví dụ:  Lambda function exception)
-  + Sự cố tạm thời (ví dụ: sự cố về network)
++ Any state can get a runtime error. Errors can occur for many reasons:
+  State machine definition problems (e.g. no matching rules in Selection state)
+  + Task error (eg Lambda function exception)
+  + Temporary problems (e.g. network problems)
 
-Theo mặc định, khi một trạng thái báo lỗi, AWS Step Functions khiến việc thực thi hoàn toàn không thành công.
+By default, when an error status occurs, AWS Step Functions causes the execution to fail completely.
 
-Đối với quy trình làm việc mẫu của chúng ta, chúng ta có thể đồng ý với việc cho phép quy trình làm việc của mình không thành công khi có bất kỳ lỗi không mong muốn nào xảy ra. Nhưng một số lỗi gọi Lambda function là tạm thời, vì vậy ít nhất chúng ta nên thêm một số hành vi thử lại vào trạng thái Task gọi các Lambda function.
+For our sample workflow, we can agree to allow our workflow to fail when any unexpected error occurs. But some Lambda function call errors are temporary, so we should at least add some retry behavior to the Task state that calls Lambda functions.
 
-#### Nội dung
-1. [Thêm tính năng Retry](5.1-retry/)
-2. [Thêm tính năng Catch](5.2-catch/)
+#### Content
+1. [Add Retry Feature](5.1-retry/)
+2. [Add Catch Feature](5.2-catch/)

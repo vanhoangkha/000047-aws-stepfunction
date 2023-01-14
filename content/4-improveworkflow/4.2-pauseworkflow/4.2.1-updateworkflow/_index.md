@@ -1,5 +1,5 @@
 +++
-title = "Cập nhật workflow"
+title = "Update workflow"
 date = 2021
 weight = 1
 chapter = false
@@ -7,11 +7,12 @@ pre = "<b>4.2.1 </b>"
 +++
 
 
-#### Cập nhật workflow
+#### Update workflow
 
 
-1. Quay trở lại giao diện dòng lệnh của Cloud9 instance, thay thế nội dung của file **functions/account-applications/flag.js** với nội dung dưới đây.
-  + Ấn **Ctrl + S** để lưu thay đổi.
+1. Return to the command line interface of the Cloud9 instance, replace the contents of the **functions/account-applications/flag.js** file with the content below.
+  + Press **Ctrl + S** to save changes.
+
 ```
 'use strict';
 const REGION = process.env.REGION
@@ -65,17 +66,18 @@ module.exports.handler = async(event) => {
 };
 ```
 
-![StepFunctions](/images/SF/075.png?width=90pc)
+![AWS Step Functions](/images/4.2.1/0001.png?featherlight=false&width=90pc)
 
-2. Chạy lệnh dưới đây để tạo mới file review.js 
+1. Run the command below to create a new file review.js
 ```
 touch functions/account-applications/review.js
 
 ```
-![StepFunctions](/images/SF/076.png?width=90pc)
+![AWS Step Functions](/images/4.2.1/0002.png?featherlight=false&width=90pc)
 
-3. Thay thế nội dung của file **functions/account-applications/review.js** với nội dung dưới đây.
-  + Ấn **Ctrl + S** để lưu thay đổi.
+1. Replace the contents of the file **functions/account-applications/review.js** with the content below.
+  + Press **Ctrl + S** to save changes.
+
 ```
 'use strict';
 const REGION = process.env.REGION
@@ -126,10 +128,10 @@ module.exports.handler = async(event) => {
 };
 ```
 
-![StepFunctions](/images/SF/077.png?width=90pc)
+![AWS Step Functions](/images/4.2.1/0003.png?featherlight=false&width=90pc)
 
-4. Thay thế nội dung của file **template.yaml** với nội dung dưới đây.
-  + Ấn **Ctrl + S** để lưu thay đổi.
+1. Replace the content of the file **template.yaml** with the content below.
+  + Press **Ctrl + S** to save changes.
 
 ```
 AWSTemplateFormatVersion: "2010-09-09"
@@ -299,10 +301,11 @@ Outputs:
 
 ```
 
-![StepFunctions](/images/SF/078.png?width=90pc)
+![AWS Step Functions](/images/4.2.1/0004.png?featherlight=false&width=90pc)
 
-5. Thay thế nội dung của file **statemachine/account-application-workflow.asl.json** với nội dung dưới đây.
-  + Ấn **Ctrl + S** để lưu thay đổi.
+1. Replace the contents of the file **statemachine/account-application-workflow.asl.json** with the content below.
+  + Press **Ctrl + S** to save changes.
+
 ```
 {
     "StartAt": "Check Name",
@@ -387,10 +390,7 @@ Outputs:
     }
 }
 ```
-
-![StepFunctions](/images/SF/079.png?width=90pc)
-
-6. Chạy lệnh dưới đây để thực hiện build và deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
+1. Run the command below to execute the build and deploy, check the deployment is successful before doing the next step:
 ```
 sam build && sam deploy
 ```

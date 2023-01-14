@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Cập nhật workflow :: AWS Step Functions</title>
 
     
-    <link href="/css/nucleus.css?1642672391" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1642672391" rel="stylesheet">
-    <link href="/css/hybrid.css?1642672391" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1642672391" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1642672391" rel="stylesheet">
-    <link href="/css/auto-complete.css?1642672391" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1642672391" rel="stylesheet">
-    <link href="/css/theme.css?1642672391" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1642672391" rel="stylesheet">
+    <link href="/css/nucleus.css?1673730818" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1673730818" rel="stylesheet">
+    <link href="/css/hybrid.css?1673730818" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1673730818" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1673730818" rel="stylesheet">
+    <link href="/css/auto-complete.css?1673730818" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1673730818" rel="stylesheet">
+    <link href="/css/theme.css?1673730818" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1673730818" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1642672391" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1673730818" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1642672391"></script>
+    <script src="/js/jquery-3.3.1.min.js?1673730818"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1642672391"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1642672391"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1673730818"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1673730818"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1642672391"></script>
+<script type="text/javascript" src="/js/search.js?1673730818"></script>
 
     
   </div>
@@ -1099,7 +1099,7 @@
   
     
     <li data-nav-id="/vi/4-improveworkflow/4.2-pauseworkflow/4.2.1-updateworkflow/" title="Cập nhật workflow" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>20-01-2021</font></i>
+        <i><font color=orange>15-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1535,7 +1535,6 @@
         </left>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-
     </section>
   </div>
 </nav>
@@ -1632,33 +1631,33 @@
 <ul>
 <li>Ấn <strong>Ctrl + S</strong> để lưu thay đổi.</li>
 </ul>
-<pre><code>'use strict';
+<pre tabindex="0"><code>&#39;use strict&#39;;
 const REGION = process.env.REGION
 const APPLICATIONS_TABLE_NAME = process.env.APPLICATIONS_TABLE_NAME
 
-const AWS = require('aws-sdk')
+const AWS = require(&#39;aws-sdk&#39;)
 AWS.config.update({region: REGION});
 
 const dynamo = new AWS.DynamoDB.DocumentClient();
 
-const AccountApplications = require('./AccountApplications')(APPLICATIONS_TABLE_NAME, dynamo)
+const AccountApplications = require(&#39;./AccountApplications&#39;)(APPLICATIONS_TABLE_NAME, dynamo)
 
 const flagForReview = async (data) =&gt; {
     const { id, flagType, taskToken } = data
 
-    if (flagType !== 'REVIEW' &amp;&amp; flagType !== 'UNPROCESSABLE_DATA') {
-        throw new Error(&quot;flagType must be REVIEW or UNPROCESSABLE_DATA&quot;)
+    if (flagType !== &#39;REVIEW&#39; &amp;&amp; flagType !== &#39;UNPROCESSABLE_DATA&#39;) {
+        throw new Error(&#34;flagType must be REVIEW or UNPROCESSABLE_DATA&#34;)
     }
 
     let newState
     let reason
-    if (flagType === 'REVIEW') {
-        newState = 'FLAGGED_FOR_REVIEW'
+    if (flagType === &#39;REVIEW&#39;) {
+        newState = &#39;FLAGGED_FOR_REVIEW&#39;
         reason = data.reason
     }
     else {
         reason = JSON.parse(data.errorInfo.Cause).errorMessage
-        newState = 'FLAGGED_WITH_UNPROCESSABLE_DATA'
+        newState = &#39;FLAGGED_WITH_UNPROCESSABLE_DATA&#39;
     }
 
     const updatedApplication = await AccountApplications.update(
@@ -1678,43 +1677,42 @@ module.exports.handler = async(event) =&gt; {
         return result
     } catch (ex) {
         console.error(ex)
-        console.info('event', JSON.stringify(event))
+        console.info(&#39;event&#39;, JSON.stringify(event))
         throw ex
     }
 };
-</code></pre><p><img src="/images/SF/075.png?width=90pc" alt="StepFunctions"></p>
-<ol start="2">
+</code></pre><p><img src="/images/4.2.1/0001.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Chạy lệnh dưới đây để tạo mới file review.js</li>
 </ol>
-<pre><code>touch functions/account-applications/review.js
-
-</code></pre><p><img src="/images/SF/076.png?width=90pc" alt="StepFunctions"></p>
-<ol start="3">
+<pre tabindex="0"><code>touch functions/account-applications/review.js
+</code></pre><p><img src="/images/4.2.1/0002.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Thay thế nội dung của file <strong>functions/account-applications/review.js</strong> với nội dung dưới đây.</li>
 </ol>
 <ul>
 <li>Ấn <strong>Ctrl + S</strong> để lưu thay đổi.</li>
 </ul>
-<pre><code>'use strict';
+<pre tabindex="0"><code>&#39;use strict&#39;;
 const REGION = process.env.REGION
 const APPLICATIONS_TABLE_NAME = process.env.APPLICATIONS_TABLE_NAME
 
-const AWS = require('aws-sdk')
+const AWS = require(&#39;aws-sdk&#39;)
 AWS.config.update({region: REGION});
 
 const dynamo = new AWS.DynamoDB.DocumentClient();
 const stepfunctions = new AWS.StepFunctions();
 
-const AccountApplications = require('./AccountApplications')(APPLICATIONS_TABLE_NAME, dynamo)
+const AccountApplications = require(&#39;./AccountApplications&#39;)(APPLICATIONS_TABLE_NAME, dynamo)
 
 const updateApplicationWithDecision = (id, decision) =&gt; {
-    if (decision !== 'APPROVE' &amp;&amp; decision !== 'REJECT') {
-        throw new Error(&quot;Required `decision` parameter must be 'APPROVE' or 'REJECT'&quot;)
+    if (decision !== &#39;APPROVE&#39; &amp;&amp; decision !== &#39;REJECT&#39;) {
+        throw new Error(&#34;Required `decision` parameter must be &#39;APPROVE&#39; or &#39;REJECT&#39;&#34;)
     }
 
     switch(decision) {
-        case 'APPROVE': return AccountApplications.update(id, { state: 'REVIEW_APPROVED' })
-        case 'REJECT': return AccountApplications.update(id, { state: 'REVIEW_REJECTED' })
+        case &#39;APPROVE&#39;: return AccountApplications.update(id, { state: &#39;REVIEW_APPROVED&#39; })
+        case &#39;REJECT&#39;: return AccountApplications.update(id, { state: &#39;REVIEW_REJECTED&#39; })
     }
 }
 
@@ -1738,18 +1736,18 @@ module.exports.handler = async(event) =&gt; {
         return result
     } catch (ex) {
         console.error(ex)
-        console.info('event', JSON.stringify(event))
+        console.info(&#39;event&#39;, JSON.stringify(event))
         throw ex
     }
 };
-</code></pre><p><img src="/images/SF/077.png?width=90pc" alt="StepFunctions"></p>
-<ol start="4">
+</code></pre><p><img src="/images/4.2.1/0003.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Thay thế nội dung của file <strong>template.yaml</strong> với nội dung dưới đây.</li>
 </ol>
 <ul>
 <li>Ấn <strong>Ctrl + S</strong> để lưu thay đổi.</li>
 </ul>
-<pre><code>AWSTemplateFormatVersion: &quot;2010-09-09&quot;
+<pre tabindex="0"><code>AWSTemplateFormatVersion: &#34;2010-09-09&#34;
 Transform: AWS::Serverless-2016-10-31
 Description: Template for step-functions-workshop
 
@@ -1846,10 +1844,10 @@ Resources:
             TableName: !Ref ApplicationsTable
         - Statement:
           - Sid: AllowCallbacksToStateMachinePolicy
-            Effect: &quot;Allow&quot;
+            Effect: &#34;Allow&#34;
             Action:
-              - &quot;states:SendTaskSuccess&quot;
-              - &quot;states:SendTaskFailure&quot;
+              - &#34;states:SendTaskSuccess&#34;
+              - &#34;states:SendTaskFailure&#34;
             Resource: !Ref ApplicationProcessingStateMachine
 
   SubmitApplicationFunction:
@@ -1870,7 +1868,7 @@ Resources:
             StateMachineName: !GetAtt ApplicationProcessingStateMachine.Name
 
   ApplicationsTable:
-    Type: 'AWS::DynamoDB::Table'
+    Type: &#39;AWS::DynamoDB::Table&#39;
     Properties:
       TableName: !Sub StepFunctionWorkshop-AccountApplications-${AWS::StackName}
       AttributeDefinitions:
@@ -1896,118 +1894,116 @@ Resources:
                   ProjectionType: ALL
 Outputs:
   SubmitApplicationFunctionArn:
-    Description: &quot;Submit Application Function ARN&quot;
+    Description: &#34;Submit Application Function ARN&#34;
     Value: !GetAtt SubmitApplicationFunction.Arn
   FlagApplicationFunctionArn:
-    Description: &quot;Flag Application Function ARN&quot;
+    Description: &#34;Flag Application Function ARN&#34;
     Value: !GetAtt FlagApplicationFunction.Arn
   FindApplicationsFunctionArn:
-    Description: &quot;Find Applications Function ARN&quot;
+    Description: &#34;Find Applications Function ARN&#34;
     Value: !GetAtt FindApplicationsFunction.Arn
   ApproveApplicationFunctionArn:
-    Description: &quot;Approve Application Function ARN&quot;
+    Description: &#34;Approve Application Function ARN&#34;
     Value: !GetAtt ApproveApplicationFunction.Arn
   RejectApplicationFunctionArn:
-    Description: &quot;Reject Application Function ARN&quot;
+    Description: &#34;Reject Application Function ARN&#34;
     Value: !GetAtt RejectApplicationFunction.Arn
   DataCheckingFunctionArn:
-    Description: &quot;Data Checking Function ARN&quot;
+    Description: &#34;Data Checking Function ARN&#34;
     Value: !GetAtt DataCheckingFunction.Arn
-
-</code></pre><p><img src="/images/SF/078.png?width=90pc" alt="StepFunctions"></p>
-<ol start="5">
+</code></pre><p><img src="/images/4.2.1/0004.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Thay thế nội dung của file <strong>statemachine/account-application-workflow.asl.json</strong> với nội dung dưới đây.</li>
 </ol>
 <ul>
 <li>Ấn <strong>Ctrl + S</strong> để lưu thay đổi.</li>
 </ul>
-<pre><code>{
-    &quot;StartAt&quot;: &quot;Check Name&quot;,
-    &quot;States&quot;: {
-        &quot;Check Name&quot;: {
-            &quot;Type&quot;: &quot;Task&quot;,
-            &quot;Parameters&quot;: {
-                &quot;command&quot;: &quot;CHECK_NAME&quot;,
-                &quot;data&quot;: {
-                    &quot;name.$&quot;: &quot;$.application.name&quot;
+<pre tabindex="0"><code>{
+    &#34;StartAt&#34;: &#34;Check Name&#34;,
+    &#34;States&#34;: {
+        &#34;Check Name&#34;: {
+            &#34;Type&#34;: &#34;Task&#34;,
+            &#34;Parameters&#34;: {
+                &#34;command&#34;: &#34;CHECK_NAME&#34;,
+                &#34;data&#34;: {
+                    &#34;name.$&#34;: &#34;$.application.name&#34;
                 }
             },
-            &quot;Resource&quot;: &quot;${DataCheckingFunctionArn}&quot;,
-            &quot;ResultPath&quot;: &quot;$.checks.name&quot;,
-            &quot;Next&quot;: &quot;Check Address&quot;
+            &#34;Resource&#34;: &#34;${DataCheckingFunctionArn}&#34;,
+            &#34;ResultPath&#34;: &#34;$.checks.name&#34;,
+            &#34;Next&#34;: &#34;Check Address&#34;
         },
-        &quot;Check Address&quot;: {
-            &quot;Type&quot;: &quot;Task&quot;,
-            &quot;Parameters&quot;: {
-                &quot;command&quot;: &quot;CHECK_ADDRESS&quot;,
-                &quot;data&quot;: {
-                    &quot;address.$&quot;: &quot;$.application.address&quot;
+        &#34;Check Address&#34;: {
+            &#34;Type&#34;: &#34;Task&#34;,
+            &#34;Parameters&#34;: {
+                &#34;command&#34;: &#34;CHECK_ADDRESS&#34;,
+                &#34;data&#34;: {
+                    &#34;address.$&#34;: &#34;$.application.address&#34;
                 }
             },
-            &quot;Resource&quot;: &quot;${DataCheckingFunctionArn}&quot;,
-            &quot;ResultPath&quot;: &quot;$.checks.address&quot;,
-            &quot;Next&quot;: &quot;Review Required?&quot;
+            &#34;Resource&#34;: &#34;${DataCheckingFunctionArn}&#34;,
+            &#34;ResultPath&#34;: &#34;$.checks.address&#34;,
+            &#34;Next&#34;: &#34;Review Required?&#34;
         },
-        &quot;Review Required?&quot;: {
-            &quot;Type&quot;: &quot;Choice&quot;,
-            &quot;Choices&quot;: [
+        &#34;Review Required?&#34;: {
+            &#34;Type&#34;: &#34;Choice&#34;,
+            &#34;Choices&#34;: [
                 {
-                    &quot;Variable&quot;: &quot;$.checks.name.flagged&quot;,
-                    &quot;BooleanEquals&quot;: true,
-                    &quot;Next&quot;: &quot;Pending Review&quot;
+                    &#34;Variable&#34;: &#34;$.checks.name.flagged&#34;,
+                    &#34;BooleanEquals&#34;: true,
+                    &#34;Next&#34;: &#34;Pending Review&#34;
                 },
                 {
-                    &quot;Variable&quot;: &quot;$.checks.address.flagged&quot;,
-                    &quot;BooleanEquals&quot;: true,
-                    &quot;Next&quot;: &quot;Pending Review&quot;
+                    &#34;Variable&#34;: &#34;$.checks.address.flagged&#34;,
+                    &#34;BooleanEquals&#34;: true,
+                    &#34;Next&#34;: &#34;Pending Review&#34;
                 }
             ],
-            &quot;Default&quot;: &quot;Approve Application&quot;
+            &#34;Default&#34;: &#34;Approve Application&#34;
         },
-        &quot;Pending Review&quot;: {
-            &quot;Type&quot;: &quot;Task&quot;,
-            &quot;Resource&quot;: &quot;arn:aws:states:::lambda:invoke.waitForTaskToken&quot;,
-            &quot;Parameters&quot;: {
-                &quot;FunctionName&quot;: &quot;${FlagApplicationFunctionName}&quot;,
-                &quot;Payload&quot;: {
-                    &quot;id.$&quot;: &quot;$.application.id&quot;,
-                    &quot;flagType&quot;: &quot;REVIEW&quot;,
-                    &quot;taskToken.$&quot;: &quot;$$.Task.Token&quot;
+        &#34;Pending Review&#34;: {
+            &#34;Type&#34;: &#34;Task&#34;,
+            &#34;Resource&#34;: &#34;arn:aws:states:::lambda:invoke.waitForTaskToken&#34;,
+            &#34;Parameters&#34;: {
+                &#34;FunctionName&#34;: &#34;${FlagApplicationFunctionName}&#34;,
+                &#34;Payload&#34;: {
+                    &#34;id.$&#34;: &#34;$.application.id&#34;,
+                    &#34;flagType&#34;: &#34;REVIEW&#34;,
+                    &#34;taskToken.$&#34;: &#34;$$.Task.Token&#34;
                 }
             },
-            &quot;ResultPath&quot;: &quot;$.review&quot;,
-            &quot;Next&quot;: &quot;Review Approved?&quot;
+            &#34;ResultPath&#34;: &#34;$.review&#34;,
+            &#34;Next&#34;: &#34;Review Approved?&#34;
         },
-        &quot;Review Approved?&quot;: {
-            &quot;Type&quot;: &quot;Choice&quot;,
-            &quot;Choices&quot;: [
+        &#34;Review Approved?&#34;: {
+            &#34;Type&#34;: &#34;Choice&#34;,
+            &#34;Choices&#34;: [
                 {
-                    &quot;Variable&quot;: &quot;$.review.decision&quot;,
-                    &quot;StringEquals&quot;: &quot;APPROVE&quot;,
-                    &quot;Next&quot;: &quot;Approve Application&quot;
+                    &#34;Variable&#34;: &#34;$.review.decision&#34;,
+                    &#34;StringEquals&#34;: &#34;APPROVE&#34;,
+                    &#34;Next&#34;: &#34;Approve Application&#34;
                 },
                 {
-                    &quot;Variable&quot;: &quot;$.review.decision&quot;,
-                    &quot;StringEquals&quot;: &quot;REJECT&quot;,
-                    &quot;Next&quot;: &quot;Reject Application&quot;
+                    &#34;Variable&#34;: &#34;$.review.decision&#34;,
+                    &#34;StringEquals&#34;: &#34;REJECT&#34;,
+                    &#34;Next&#34;: &#34;Reject Application&#34;
                 }
             ]
         },
-        &quot;Reject Application&quot;: {
-            &quot;Type&quot;: &quot;Pass&quot;,
-            &quot;End&quot;: true
+        &#34;Reject Application&#34;: {
+            &#34;Type&#34;: &#34;Pass&#34;,
+            &#34;End&#34;: true
         },
-        &quot;Approve Application&quot;: {
-            &quot;Type&quot;: &quot;Pass&quot;,
-            &quot;End&quot;: true
+        &#34;Approve Application&#34;: {
+            &#34;Type&#34;: &#34;Pass&#34;,
+            &#34;End&#34;: true
         }
     }
 }
-</code></pre><p><img src="/images/SF/079.png?width=90pc" alt="StepFunctions"></p>
-<ol start="6">
+</code></pre><ol>
 <li>Chạy lệnh dưới đây để thực hiện build và deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:</li>
 </ol>
-<pre><code>sam build &amp;&amp; sam deploy
+<pre tabindex="0"><code>sam build &amp;&amp; sam deploy
 </code></pre><p><img src="/images/SF/080.png?width=90pc" alt="StepFunctions"></p>
 <p><img src="/images/SF/081.png?width=90pc" alt="StepFunctions"></p>
 
@@ -2795,19 +2791,19 @@ Outputs:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1642672391"></script>
-    <script src="/js/jquery.sticky.js?1642672391"></script>
-    <script src="/js/featherlight.min.js?1642672391"></script>
-    <script src="/js/highlight.pack.js?1642672391"></script>
+    <script src="/js/clipboard.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1673730818"></script>
+    <script src="/js/jquery.sticky.js?1673730818"></script>
+    <script src="/js/featherlight.min.js?1673730818"></script>
+    <script src="/js/highlight.pack.js?1673730818"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1642672391"></script>
-    <script src="/js/learn.js?1642672391"></script>
-    <script src="/js/hugo-learn.js?1642672391"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1673730818"></script>
+    <script src="/js/learn.js?1673730818"></script>
+    <script src="/js/hugo-learn.js?1673730818"></script>
 
-    <link href="/mermaid/mermaid.css?1642672391" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1642672391"></script>
+    <link href="/mermaid/mermaid.css?1673730818" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1673730818"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

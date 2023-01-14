@@ -1,5 +1,5 @@
 +++
-title = "Hoàn tất workflow"
+title = "Finish workflow"
 date = 2021
 weight = 3
 chapter = false
@@ -7,16 +7,17 @@ pre = "<b>4.3 </b>"
 +++
 
 
-#### Hoàn tất workflow
+#### Complete the workflow
 
-Hiện tại, chúng ta vẫn để trống trạng thái **Approve Application** và **Reject Application**, ( sử dụng trạng thái **Pass**, không thực hiện tác vụ cụ thể ). Chúng ta sẽ thay thế các trạng thái này bằng các trạng thái Tast gọi các Lambda function thích hợp.
+For now, we still leave the **Approve Application** and **Reject Application** states empty, (using the **Pass** state, not performing a specific action). We will replace these states with Tast states that call the appropriate Lambda functions.
 
-Trong bước này chúng ta sẽ :
+In this step we will:
 
-+ Thay đổi trạng thái **Approve Application** và **Reject Application** từ trạng thái **Pass** sang trạng thái **Task** và gọi các Lambda function thích hợp. 
-+ Cấp quyền bổ sung cho IAM Role mà Step Functions thực thi để nó có thể gọi các Lambda function cần thiết từ dịch vụ **Account Applications**.
++ Change the **Approve Application** and **Reject Application** state from **Pass** state to **Task** state and call the appropriate Lambda functions.
++ Grant additional permissions to the IAM Role that Step Functions executes so that it can call the necessary Lambda functions from the **Account Applications** service.
 
-1. Quay trở lại giao diện dòng lệnh của Cloud9 instance, thay thế nội dung của file **statemachine/account-application-workflow.asl.json** với nội dung dưới đây.
+1. Return to the command line interface of the Cloud9 instance, replace the contents of the **statemachine/account-application-workflow.asl.json** file with the content below.
+
 ```
 {
     "StartAt": "Check Name",
@@ -110,10 +111,11 @@ Trong bước này chúng ta sẽ :
 }
 ```
 
-![StepFunctions](/images/SF/089.png?width=90pc)
+![AWS Step Functions](/images/4.3/0001.png?featherlight=false&width=90pc)
 
-2. Thay thế nội dung của file **template.yaml** với nội dung dưới đây.
-  + Ấn **Ctrl + S** để lưu thay đổi.
+1. Replace the content of the file **template.yaml** with the content below.
+  + Press **Ctrl + S** to save changes.
+
 ```
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
@@ -286,12 +288,14 @@ Outputs:
     Description: "Data Checking Function ARN"
     Value: !GetAtt DataCheckingFunction.Arn
 ```
-![StepFunctions](/images/SF/090.png?width=90pc)
+![AWS Step Functions](/images/4.3/0002.png?featherlight=false&width=90pc)
 
-3. Chạy lệnh dưới đây để thực hiện build và deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
+1. Run the command below to execute the build and deploy, and check the deployment is successful before doing the next step:
 ```
 sam build && sam deploy
 ```
-![StepFunctions](/images/SF/091.png?width=90pc)
+![AWS Step Functions](/images/4.3/0003.png?featherlight=false&width=90pc)
 
-Chúc mừng bạn đã hoàn tất tạo một qui trình làm việc cơ bản trên Step Functions state machine.Trong phần tiếp theo chúng ta sẽ tìm hiểu về cách xử lý khi có sự cố xảy ra trong lúc state machine thực thi.
+Congratulations, you've completed creating a basic workflow on the Step Functions state machine. In the next section we'll learn about what to do when something goes wrong while the state machine is running.
+
+![AWS Step Functions](/images/4.3/0004.png?featherlight=false&width=90pc)

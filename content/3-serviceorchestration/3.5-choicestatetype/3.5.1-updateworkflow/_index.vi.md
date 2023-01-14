@@ -73,18 +73,18 @@ Các bước chúng ta sẽ làm trong phần này :
 }
  ```
 
-![StepFunctions](/images/SF/057.png?width=90pc)
+![AWS Step Functions](/images/3.5.1/0001.png?featherlight=false&width=90pc)
 
-2. Thực hiện triển khai cập nhật bằng câu lệnh sau:
+1. Thực hiện triển khai cập nhật bằng câu lệnh sau:
 ```
 sam deploy
 ```
 
-![StepFunctions](/images/SF/058.png?width=90pc)
+![AWS Step Functions](/images/3.5.1/0002.png?featherlight=false&width=90pc)
 
-3. Kiểm tra quá trình triển khai cập nhật thành công.
+1. Kiểm tra quá trình triển khai cập nhật thành công.
 
-![StepFunctions](/images/SF/059.png?width=90pc)
+![AWS Step Functions](/images/3.5.1/0003.png?featherlight=false&width=90pc)
 
 Chúng ta vừa thêm hai trạng thái mới vào workflow làm việc của mình: **Review Required** Và **Pending Review**. Trạng thái **Review Requried?** Kiểm tra đầu vào của nó (là đầu ra từ trạng thái **Check Address**) và sẽ chạy qua một loạt các quy tắc kiểm tra ( rules ). 
 

@@ -65,16 +65,16 @@ module.exports.handler = async(event) => {
 };
 ```
 
-![StepFunctions](/images/SF/075.png?width=90pc)
+![AWS Step Functions](/images/4.2.1/0001.png?featherlight=false&width=90pc)
 
-2. Chạy lệnh dưới đây để tạo mới file review.js 
+1. Chạy lệnh dưới đây để tạo mới file review.js 
 ```
 touch functions/account-applications/review.js
 
 ```
-![StepFunctions](/images/SF/076.png?width=90pc)
+![AWS Step Functions](/images/4.2.1/0002.png?featherlight=false&width=90pc)
 
-3. Thay thế nội dung của file **functions/account-applications/review.js** với nội dung dưới đây.
+1. Thay thế nội dung của file **functions/account-applications/review.js** với nội dung dưới đây.
   + Ấn **Ctrl + S** để lưu thay đổi.
 ```
 'use strict';
@@ -126,9 +126,9 @@ module.exports.handler = async(event) => {
 };
 ```
 
-![StepFunctions](/images/SF/077.png?width=90pc)
+![AWS Step Functions](/images/4.2.1/0003.png?featherlight=false&width=90pc)
 
-4. Thay thế nội dung của file **template.yaml** với nội dung dưới đây.
+1. Thay thế nội dung của file **template.yaml** với nội dung dưới đây.
   + Ấn **Ctrl + S** để lưu thay đổi.
 
 ```
@@ -299,9 +299,9 @@ Outputs:
 
 ```
 
-![StepFunctions](/images/SF/078.png?width=90pc)
+![AWS Step Functions](/images/4.2.1/0004.png?featherlight=false&width=90pc)
 
-5. Thay thế nội dung của file **statemachine/account-application-workflow.asl.json** với nội dung dưới đây.
+1. Thay thế nội dung của file **statemachine/account-application-workflow.asl.json** với nội dung dưới đây.
   + Ấn **Ctrl + S** để lưu thay đổi.
 ```
 {
@@ -388,9 +388,7 @@ Outputs:
 }
 ```
 
-![StepFunctions](/images/SF/079.png?width=90pc)
-
-6. Chạy lệnh dưới đây để thực hiện build và deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
+1. Chạy lệnh dưới đây để thực hiện build và deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
 ```
 sam build && sam deploy
 ```

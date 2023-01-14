@@ -1,5 +1,5 @@
 +++
-title = "Cập nhật workflow"
+title = "Update workflow"
 date = 2021
 weight = 1
 chapter = false
@@ -7,11 +7,12 @@ pre = "<b>6.1 </b>"
 +++
 
 
-#### Cập nhật workflow
+#### Update workflow
 
 
-1. Quay trở lại giao diện dòng lệnh của Cloud9 instance, thay thế nội dung của file **statemachine/account-application-workflow.asl.json** với nội dung dưới đây.
-  + Ấn **Ctrl + S** để lưu thay đổi.
+1. Return to the command line interface of the Cloud9 instance, replace the contents of the **statemachine/account-application-workflow.asl.json** file with the content below.
+  + Press **Ctrl + S** to save changes.
+
 ```
 {
     "StartAt": "Check Applicant Data",
@@ -203,11 +204,12 @@ pre = "<b>6.1 </b>"
 }
 ```
 
-![StepFunctions](/images/SF/102.png?width=90pc)
+![AWS Step Functions](/images/6.1/0001.png?featherlight=false&width=90pc)
 
-
-2. Chạy lệnh dưới đây để thực hiện deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
+1. Run the command below to execute the deploy, check the deployment is successful before doing the next step:
 ```
 sam deploy
 ```
-![StepFunctions](/images/SF/103.png?width=90pc)
+![AWS Step Functions](/images/6.1/0002.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/6.1/0003.png?featherlight=false&width=90pc)

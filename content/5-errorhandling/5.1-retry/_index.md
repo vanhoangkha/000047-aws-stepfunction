@@ -1,5 +1,5 @@
 +++
-title = "Thêm tính năng retry"
+title = "Add retry feature"
 date = 2021
 weight = 1
 chapter = false
@@ -7,12 +7,12 @@ pre = "<b>5.1 </b>"
 +++
 
 
-#### Thêm tính năng retry
+#### Add retry feature
 
-Các Task state (và các trạng thái khác như Parallel state, mà chúng ta sẽ nói đến sau), có khả năng thử lại công việc  khi gặp lỗi. Chúng ta chỉ cần thêm tham số Thử lại vào định nghĩa Task state của mình, cho state machine biết loại lỗi nào  nên thử lại và tùy chọn chỉ định cấu hình bổ sung để kiểm soát tốc độ thử lại và số lần thử lại tối đa.
+Task states (and others like Parallel state, which we'll talk about later), have the ability to retry work on error. We just need to add a Retry parameter to our Task state definition, which tells the state machine what type of error to retry and optionally specify additional configurations to control retries rate and maximum number of retries. .
 
 
-1. Quay trở lại giao diện dòng lệnh của Cloud9 instance, thay thế nội dung của file **statemachine/account-application-workflow.asl.json** với nội dung dưới đây.
+1. Return to the command line interface of the Cloud9 instance, replace the contents of the **statemachine/account-application-workflow.asl.json** file with the content below.
 
 ```
 {
@@ -157,16 +157,19 @@ Các Task state (và các trạng thái khác như Parallel state, mà chúng ta
 }
 ```
 
-![StepFunctions](/images/SF/093.png?width=90pc)
+![AWS Step Functions](/images/5.1/0001.png?featherlight=false&width=90pc)
 
-2. Chạy lệnh dưới đây để thực hiện deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
+1. Run the command below to perform the deploy, check the deployment is successful before doing the next step:
 ```
 sam deploy
 ```
-![StepFunctions](/images/SF/094.png?width=90pc)
+
+![AWS Step Functions](/images/5.1/0002.png?featherlight=false&width=90pc)
 
 {{%notice tip%}}
-Chúng ta có thể chỉ định cấu hình bổ sung cho các thông số Thử lại của mình, bao gồm **IntervalSeconds** (mặc định là 1), **MaxAttempts** (mặc định là 3) và **BackoffRate** (mặc định là 2), các cấu hình mặc định cũng tương đối phù hợp với trường hợp của chúng ta, vì vậy chúng ta vẫn sử dụng các giá trị mặc định.
+We can specify additional configuration for our Retry parameters, including **IntervalSeconds** (defaults to 1), **MaxAttempts** (defaults to 3) and **BackoffRate** (default is 2), the default configurations are also quite suitable for our case, so we still use the default values.
 {{%/notice%}}
 
-Hiện tại, chúng ta không kiểm tra thử lỗi được bởi vì việc Lambda function sinh ra exception chỉ là tạm thời. Nhưng mục đích của bước này giúp cung cấp các ví dụ để bạn biết cách tự thêm các kiểu thử lại cho state machine của bạn. Tiếp tục, chúng ta cũng hãy tìm hiểu cách xử lý các lỗi cấp ứng dụng cụ thể.
+Currently, we can't test it because the Lambda function throwing an exception is only temporary. But the purpose of this step is to help provide examples so you know how to manually add retry types to your state machine. Moving on, let's also learn how to handle specific application-level errors.
+
+![AWS Step Functions](/images/5.1/0003.png?featherlight=false&width=90pc)

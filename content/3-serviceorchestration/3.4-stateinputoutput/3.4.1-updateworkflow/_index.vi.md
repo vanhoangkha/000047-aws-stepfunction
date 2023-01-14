@@ -50,18 +50,18 @@ Trong bước này chúng ta sẽ thêm thuộc tính ResultPath vào trạng th
 }
  ```
 
-![StepFunctions](/images/SF/049.png?width=90pc)
+![AWS Step Functions](/images/3.3.4/0001.png?featherlight=false&width=90pc)
 
 2. Thực hiện triển khai cập nhật bằng câu lệnh sau:
 ```
 sam deploy
 ```
 
-![StepFunctions](/images/SF/050.png?width=90pc)
+![AWS Step Functions](/images/3.3.4/0002.png?featherlight=false&width=90pc)
 
 3. Kiểm tra quá trình triển khai cập nhật thành công.
 
-![StepFunctions](/images/SF/051.png?width=90pc)
+![AWS Step Functions](/images/3.3.4/0003.png?featherlight=false&width=90pc)
 
 Bước tiếp theo chúng ta sẽ thử thực thi workflow để xem kết quả.
 

@@ -1,5 +1,5 @@
 +++
-title = "Kiểm tra workflow"
+title = "Check workflow"
 date = 2021
 weight = 2
 chapter = false
@@ -7,46 +7,61 @@ pre = "<b>6.2 </b>"
 +++
 
 
-#### Kiểm tra workflow
+#### Check workflow
 
-Chúng ta sẽ thử gửi các đơn đăng ký khác nhau để xem state machine của chúng ta thực thi như thế nào.
+We'll try submitting different applications to see how our state machine performs.
 
-1. Chạy câu lệnh dưới để thực hiện submit một đăng ký  hợp lệ.
+1. Run the command below to submit a valid registration.
 ```
-aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "name": "Spock", "address": "123 Enterprise Street" }' /dev/stdout 
+aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "name": "Spock", "address": "123 Enterprise Street" }' /dev/stdout
 ```
 **ApplicationProcessingStateMachine-xxxxxxxxxxxx**/
 
-![StepFunctions](/images/SF/104.png?width=90pc)
+![AWS Step Functions](/images/6.2/0001.png?featherlight=false&width=90pc)
 
-2. Quay lại giao diện StepFunctions, click vào state machine 
-![StepFunctions](/images/SF/105.png?width=90pc)
+1. Back to StepFunctions interface, click on state machine
 
-3. Tại tab Executions, click vào lần thực thi mới nhất.
-![StepFunctions](/images/SF/106.png?width=90pc)
+![AWS Step Functions](/images/6.2/0002.png?featherlight=false&width=90pc)
+
+2. At the Executions tab, click on the last execution.
+
+![AWS Step Functions](/images/6.2/0003.png?featherlight=false&width=90pc)
 
 
-4. Chúng ta có thể thấy các state **Check Name** và **Check Address** được thực thi song song với nhau.
+3. We can see **Check Name** and **Check Address** states executed in parallel.
 
-![StepFunctions](/images/SF/107.png?width=90pc)
+![AWS Step Functions](/images/6.2/0004.png?featherlight=false&width=90pc)
 
-5. Chạy câu lệnh dưới để thực hiện submit một đăng ký không hợp lệ.
+![AWS Step Functions](/images/6.2/0005.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/6.2/0006.png?featherlight=false&width=90pc)
+
+4. Run the command below to submit an invalid registration.
 ```
-aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "name": "Spock", "address": "ABadAddress" }' /dev/stdout 
+aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "name": "Spock", "address": "ABadAddress" }' /dev/stdout
 ```
-![StepFunctions](/images/SF/108.png?width=90pc)
+![AWS Step Functions](/images/6.2/0007.png?featherlight=false&width=90pc)
 
-6. Làm tương tự bước 2-4, chúng ta sẽ thấy state machine của chúng ta dừng ở bước **Pending Review**.
+1. Do the same steps 2-4, we will see our state machine stop at **Pending Review** step.
 
-![StepFunctions](/images/SF/109.png?width=90pc)
+![AWS Step Functions](/images/6.2/0008.png?featherlight=false&width=90pc)
 
-7.  Chạy câu lệnh dưới để thực hiện submit một đăng ký có dữ liệu không thể xử lý.
+![AWS Step Functions](/images/6.2/0009.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/6.2/00010.png?featherlight=false&width=90pc)
+
+2. Run the command below to submit a subscription whose data cannot be processed.
+
 ```
-aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "name": "UNPROCESSABLE_DATA", "address": "123 Street" }' /dev/stdout 
+aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "name": "UNPROCESSABLE_DATA", "address": "123 Street" }' /dev/stdout
 ```
-![StepFunctions](/images/SF/110.png?width=90pc)
 
-8. Làm tương tự bước 2-4, chúng ta sẽ thấy state machine của chúng ta dừng ở bước **Flag Application as Unprocessable**.
-![StepFunctions](/images/SF/111.png?width=90pc)
+![AWS Step Functions](/images/6.2/00011.png?featherlight=false&width=90pc)
 
-Chúc mừng bạn đã hoàn thành workshop, chúng ta có một state machine có cấu trúc tốt để quản lý quy trình xử lý các đăng ký mới cho hệ thống ngân hàng đơn giản. Nếu muốn, chúng ta có thể thêm một bước nữa trong quy trình làm việc của mình để xử lý logic chi tiết hơn nữa liên quan đến việc mở tài khoản ngân hàng cho các đơn đăng ký được chấp thuận. Hi vọng qua workshop này bạn đã có thêm kinh nghiệm cần thiết để tiếp tục tự mình phát triển ứng dụng với AWS Step Functions.
+1. Do the same steps 2-4, we will see our state machine stop at **Flag Application as Unprocessable** step.
+
+![AWS Step Functions](/images/6.2/00012.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/6.2/00013.png?featherlight=false&width=90pc)
+
+Congratulations on completing the workshop, we have a well-structured state machine to manage the processing of new registrations for a simple banking system. If desired, we can add one more step in our workflow to handle even more detailed logic related to opening a bank account for approved applications. Hopefully, through this workshop, you have gained the necessary experience to continue to develop applications on your own with AWS Step Functions.

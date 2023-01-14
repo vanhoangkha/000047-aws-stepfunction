@@ -1,5 +1,5 @@
 +++
-title = "Thêm tính năng catch"
+title = "Add catch feature"
 date = 2021
 weight = 2
 chapter = false
@@ -7,22 +7,22 @@ pre = "<b>5.2 </b>"
 +++
 
 
-#### Thêm tính năng catch
+#### Add catch
 
-Ngoài việc xử lý các vấn đề tạm thời với Thử lại, Step Functions còn cho phép chúng ta bắt các lỗi cụ thể và phản hồi bằng cách chuyển sang các trạng thái thích hợp để xử lý các lỗi này. 
+In addition to dealing with temporary problems with Retry, Step Functions also allows us to catch specific errors and respond by transitioning to the appropriate states to handle these errors.
 
-Ví dụ: giả sử rằng có một số loại tên mà dịch vụ kiểm tra dữ liệu của chúng ta không thể xử lý. Trong những trường hợp này, thay vì gắn cờ đơn đăng ký để xem xét, chúng ta sẽ  gắn cờ đơn đăng ký theo dạng **không thể xử lý được** do dữ liệu không tương thích.
+For example, let's say that there are some types of names that our data checking service cannot handle. In these cases, instead of flagging the application for review, we will flag the application as **unprocessable** due to incompatible data.
 
-Để minh họa cho khả năng này, chúng ta sẽ tận dụng một số mã kiểm tra trong Lambda function **Data Checking** để yêu cầu nó phát ra lỗi nếu nó thấy một chuỗi kí tự cụ thể đi qua trong tên của người đăng ký. 
+To illustrate this possibility, we'll leverage some of the testing code in the Lambda function **Data Checking** to tell it to throw an error if it sees a specific string of characters passing in the poster's name. sign.
 
-Chúng tôi sẽ cập nhật state machine của mình để phát hiện loại lỗi tùy chỉnh cụ thể này và chuyển hướng đến trạng thái mới, đồng thời gắn cờ đơn đăng ký là **không thể xử lý**.
+We'll update our state machine to detect this specific type of custom error and redirect to the new state, and flag the application as **unprocessable**.
 
-Trong bước này chúng ta sẽ:
-  + Thêm một trạng thái mới là **Flag Application As Unprocessable** vào state machine.
+In this step we will:
+  + Add a new state **Flag Application As Unprocessable** to the state machine.
 
-  + Thêm cấu hình Catch vào trạng thái **Check Name** trong state machine của chúng ta,  nếu gặp dữ liệu không thể xử lý thì sẽ chuyển đổi sang trạng thái **Flag Application As Unprocessable**.
+  + Add Catch configuration to **Check Name** state in our state machine, if encountering data that cannot be processed, it will switch to **Flag Application As Unprocessable** state.
   
-1. Quay trở lại giao diện dòng lệnh của Cloud9 instance, thay thế nội dung của file **statemachine/account-application-workflow.asl.json** với nội dung dưới đây.
+1. Return to the command line interface of the Cloud9 instance, replace the contents of the **statemachine/account-application-workflow.asl.json** file with the content below.
 
 ```
 {
@@ -200,34 +200,50 @@ Trong bước này chúng ta sẽ:
 }
 ```
 
-![StepFunctions](/images/SF/095.png?width=90pc)
+![AWS Step Functions](/images/5.2/0001.png?featherlight=false&width=90pc)
 
-2. Chạy lệnh dưới đây để thực hiện deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
+1. Run the command below to perform the deploy, check the deployment is successful before doing the next step:
 ```
 sam deploy
 ```
-![StepFunctions](/images/SF/096.png?width=90pc)
 
-3. Chạy lệnh dưới đây để  gửi đơn đăng ký mới có chứa dữ liệu không thể xử lý được cho trường tên của người đăng ký.
+![AWS Step Functions](/images/5.2/0002.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/5.2/0003.png?featherlight=false&width=90pc)
+
+1. Run the command below to submit a new application that contains unprocessable data for the applicant's name field.
 ```
-aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "name": "UNPROCESSABLE_DATA", "address": "123 Street" }' /dev/stdout 
+aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "name": "UNPROCESSABLE_DATA", "address": "123 Street" }' /dev/stdout
 ```
-![StepFunctions](/images/SF/097.png?width=90pc)
 
 
-4. Quay trở lại giao diện Step Functions, Click vào tên state machine **ApplicationProcessingStateMachine-xxxxxxxxxxxx**.
 
-![StepFunctions](/images/SF/098.png?width=90pc)
+![AWS Step Functions](/images/5.2/0004.png?featherlight=false&width=90pc)
 
-5. Click vào lần thực thi mới nhất.
-![StepFunctions](/images/SF/099.png?width=90pc)
+1. Return to the Step Functions interface, Click on the state machine name **ApplicationProcessingStateMachine-xxxxxxxxxxxx**.
 
-6. Chúng ta có thể nhìn thấy state machine của chúng ta đã phát hiện dữ liệu không thể xử lý và chuyển trạng thái tới **Flag Application As Unprocessable**.
 
-![StepFunctions](/images/SF/100.png?width=90pc)
+![AWS Step Functions](/images/5.2/0005.png?featherlight=false&width=90pc)
 
-7. Chúng ta có thể kiểm tra đơn đăng ký bị gắn cờ không thể xử lý bằng cách chạy lệnh dưới đây.
+2. Click on the latest execution.
+
+
+![AWS Step Functions](/images/5.2/0006.png?featherlight=false&width=90pc)
+
+3. We can see our state machine has detected unprocessable data and passed the state to **Flag Application As Unprocessable**.
+
+
+![AWS Step Functions](/images/5.2/0007.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/5.2/0008.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/5.2/0009.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/5.2/00010.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/5.2/00011.png?featherlight=false&width=90pc)
+
+4. We can check the application is flagged as unprocessable by running the command below.
 ```
-aws lambda invoke --function-name sfn-workshop-FindApplications --payload '{ "state": "FLAGGED_WITH_UNPROCESSABLE_DATA" }' /dev/stdout 
+aws lambda invoke --function-name sfn-workshop-FindApplications --payload '{ "state": "FLAGGED_WITH_UNPROCESSABLE_DATA" }' /dev/stdout
 ```
-![StepFunctions](/images/SF/101.png?width=90pc)

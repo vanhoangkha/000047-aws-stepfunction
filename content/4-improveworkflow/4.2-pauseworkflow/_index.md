@@ -1,5 +1,5 @@
 +++
-title = "Tạm dừng workflow để chờ kiểm tra hoàn tất"
+title = "Pause workflow to wait for the test to complete"
 date = 2021
 weight = 2
 chapter = false
@@ -7,33 +7,33 @@ pre = "<b>4.2 </b>"
 +++
 
 
-#### Tạm dừng workflow để chờ kiểm tra hoàn tất
+#### Pause the workflow to wait for the test to complete
 
-**Step Functions** thực hiện công việc của mình bằng cách tích hợp trực tiếp với các dịch vụ AWS khác nhau và bạn có thể kiểm soát các dịch vụ AWS này bằng cách sử dụng ba cách tích hợp dịch vụ dưới đây:
+**Step Functions** does its job by integrating directly with various AWS services, and you can control these AWS services using the following three service integrations:
 
-  + Gọi một dịch vụ và để cho Step Functions chuyển sang trạng thái tiếp theo ngay sau khi nó nhận được  HTTP response. Bạn đã thấy loại tích hợp này hoạt động thông qua việc chúng ta sử dụng để gọi Lambda function kiểm tra dữ liệu và nhận lại phản hồi.
+  Call a service and let Step Functions move to the next state as soon as it receives the HTTP response. You've seen this kind of integration in action through what we use to call the Lambda function that checks the data and gets back a response.
 
-  + Gọi một dịch vụ và để Step Functions chờ công việc hoàn tất. Điều này thường được sử dụng  để kích hoạt khối lượng công việc theo kiểu hàng loạt ( batch ), tạm dừng, sau đó tiếp tục thực thi sau khi công việc hoàn thành. Chúng ta không sử dụng cách tích hợp này trong workshop hiện tại.
+  + Call a service and let Step Functions wait for the job to complete. This is typically used to trigger workloads in a batch fashion, pause, then resume execution once the job is complete. We are not using this integration in the current workshop.
 
-  + Gọi một dịch vụ có task token và để Step Functions chờ cho đến khi mã thông báo đó được phản hồi cùng với payload ( nội dung ). Đây là cách tích hợp mà chúng ta muốn sử dụng ở đây, vì chúng ta muốn thực hiện gọi dịch vụ, sau đó chờ phản hồi rồi mới tiếp tục thực thi.
+  + Call a service that has a task token and let Step Functions wait until that token is returned along with the payload. This is the integration we want to use here, because we want to make a service call, then wait for a response, and then continue executing.
 
 {{%notice info%}}
 
-Phản hồi ( call back ) cung cấp một cách để tạm dừng một quy trình công việc cho đến khi một task token được chuyển lại. Một nhiệm vụ có thể cần phải đợi sự chấp thuận của kiểm soát viên, tích hợp với bên thứ ba hoặc gọi các hệ thống kế thừa. Đối với những tác vụ như thế này, bạn có thể tạm dừng việc thực thi Step Functions state machine và đợi một quy trình hoặc quy trình công việc bên ngoài hoàn thành.
+The response ( call back ) provides a way to pause a workflow until a task token is transferred again. A task may need to wait for controller approval, integrate with a third party, or invoke legacy systems. For tasks like this, you can pause the execution of the Step Functions state machine and wait for an external process or workflow to complete.
 {{%/notice%}}
 
-Bạn có thể điều chỉnh trạng thái Task tạo task token duy nhất ( task token ) (một ID duy nhất tham chiếu trạng thái Task cụ thể trong một lần thực thi cụ thể),  gọi dịch vụ AWS mong muốn , sau đó tạm dừng thực thi cho đến khi dịch vụ Step Functions nhận được task token vụ trở lại thông qua lệnh gọi API từ một số quy trình khác.
+You can modify the Task state to generate a unique task token (a unique ID that references a specific Task state during a particular execution), call the desired AWS service, and then suspend execution. executes until the Step Functions service receives the task token back through an API call from some other process.
 
-Trong bước này chúng ta sẽ :
+In this step we will:
 
-  + Đặt trạng thái **Pending Review** của chúng ta gọi Lambda function **Account Applications** bằng cách sử dụng cú pháp định nghĩa trạng thái Tác vụ bao gồm hậu tố .waitForTaskToken. Thao tác này sẽ tạo task token mà chúng ta có thể chuyển cho dịch vụ **Account Applications** cùng với ID đăng ký mà chúng ta muốn gắn cờ.
+  + Setting our **Pending Review** state calls the Lambda function **Account Applications** using the Task state definition syntax including the .waitForTaskToken suffix. This will generate a task token that we can pass to the **Account Applications** service along with the registration ID we want to flag.
 
-  + Làm cho các **Account Applications** Lambda function cập nhật hồ sơ đăng ký để đánh dấu nó là **Pending Review** và lưu trữ task token cùng với hồ sơ. Sau đó, khi kiểm soát viên xem xét đăng ký đang chờ xử lý, dịch vụ **Account Applications** sẽ thực hiện gọi lại API Step Functions, gọi điểm cuối **SendTaskSuccesss**, chuyển lại task token cùng với đầu ra có liên quan từ bước này, trong trường hợp của chúng ta, sẽ là dữ liệu để cho biết liệu kiểm soát viên đã chấp thuận hay từ chối đăng ký. Thông tin này sẽ cho phép state machine quyết định phải làm gì tiếp theo dựa trên quyết định của kiểm soát viên.
++ Make the **Account Applications** Lambda function update the registration record to mark it as **Pending Review** and store the task token with the record. Then, when the controller considers the pending registration, the **Account Applications** service executes the Step Functions API callback, calls the **SendTaskSuccesss** endpoint, passing the task token back with the output. relevant from this step, in our case, will be the data to indicate whether the controller has approved or denied the registration. This information will allow the state machine to decide what to do next based on the controller's decision.
 
-  + Tạo một Lambda function **ReviewApplication** mới (và các quyền IAM cần thiết cho nó) để triển khai logic cho phép kiểm soát viên đưa ra quyết định cho một đăng ký được gắn cờ, gọi lại API Step Functions với kết quả là quyết định của kiểm soát viên.
+  + Create a new Lambda function **ReviewApplication** (and the required IAM permissions for it) to implement logic that allows the controller to make a decision for a flagged booking, calling the Step Functions API again with the result is the decision of the controller.
 
-  + Thêm một trạng thái Lựa chọn khác có tên là **Review Approved?** sẽ kiểm tra kết quả từ trạng thái **Pending Review** và chuyển sang trạng thái **Approve Application** hoặc trạng thái **Reject Application** mà chúng ta cũng sẽ thêm .
+  + Add another Selection state named **Review Approved?** which will check the result from **Pending Review** and switch to **Approve Application** or **Reject Application status ** which we will also add .
 
-#### Nội dung
-1. [Cập nhật state machine](4.2.1-updateworkflow/)
-2. [Kiểm tra workflow](4.2.2-checkworkflow/)
+#### Content
+1. [Update state machine](4.2.1-updateworkflow/)
+2. [Checkworkflow](4.2.2-checkworkflow/)

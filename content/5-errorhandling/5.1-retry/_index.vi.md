@@ -157,16 +157,19 @@ Các Task state (và các trạng thái khác như Parallel state, mà chúng ta
 }
 ```
 
-![StepFunctions](/images/SF/093.png?width=90pc)
+![AWS Step Functions](/images/5.1/0001.png?featherlight=false&width=90pc)
 
-2. Chạy lệnh dưới đây để thực hiện deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
+1. Chạy lệnh dưới đây để thực hiện deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
 ```
 sam deploy
 ```
-![StepFunctions](/images/SF/094.png?width=90pc)
+
+![AWS Step Functions](/images/5.1/0002.png?featherlight=false&width=90pc)
 
 {{%notice tip%}}
 Chúng ta có thể chỉ định cấu hình bổ sung cho các thông số Thử lại của mình, bao gồm **IntervalSeconds** (mặc định là 1), **MaxAttempts** (mặc định là 3) và **BackoffRate** (mặc định là 2), các cấu hình mặc định cũng tương đối phù hợp với trường hợp của chúng ta, vì vậy chúng ta vẫn sử dụng các giá trị mặc định.
 {{%/notice%}}
 
 Hiện tại, chúng ta không kiểm tra thử lỗi được bởi vì việc Lambda function sinh ra exception chỉ là tạm thời. Nhưng mục đích của bước này giúp cung cấp các ví dụ để bạn biết cách tự thêm các kiểu thử lại cho state machine của bạn. Tiếp tục, chúng ta cũng hãy tìm hiểu cách xử lý các lỗi cấp ứng dụng cụ thể.
+
+![AWS Step Functions](/images/5.1/0003.png?featherlight=false&width=90pc)

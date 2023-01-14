@@ -200,34 +200,52 @@ Trong bước này chúng ta sẽ:
 }
 ```
 
-![StepFunctions](/images/SF/095.png?width=90pc)
+![AWS Step Functions](/images/5.2/0001.png?featherlight=false&width=90pc)
 
-2. Chạy lệnh dưới đây để thực hiện deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
+1. Chạy lệnh dưới đây để thực hiện deploy, kiểm tra quá trình deploy thành công trước khi làm bước tiếp theo:
 ```
 sam deploy
 ```
-![StepFunctions](/images/SF/096.png?width=90pc)
 
-3. Chạy lệnh dưới đây để  gửi đơn đăng ký mới có chứa dữ liệu không thể xử lý được cho trường tên của người đăng ký.
+![AWS Step Functions](/images/5.2/0002.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/5.2/0003.png?featherlight=false&width=90pc)
+
+1. Chạy lệnh dưới đây để  gửi đơn đăng ký mới có chứa dữ liệu không thể xử lý được cho trường tên của người đăng ký.
 ```
 aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload '{ "name": "UNPROCESSABLE_DATA", "address": "123 Street" }' /dev/stdout 
 ```
-![StepFunctions](/images/SF/097.png?width=90pc)
 
 
-4. Quay trở lại giao diện Step Functions, Click vào tên state machine **ApplicationProcessingStateMachine-xxxxxxxxxxxx**.
 
-![StepFunctions](/images/SF/098.png?width=90pc)
+![AWS Step Functions](/images/5.2/0004.png?featherlight=false&width=90pc)
 
-5. Click vào lần thực thi mới nhất.
-![StepFunctions](/images/SF/099.png?width=90pc)
+1. Quay trở lại giao diện Step Functions, Click vào tên state machine **ApplicationProcessingStateMachine-xxxxxxxxxxxx**.
 
-6. Chúng ta có thể nhìn thấy state machine của chúng ta đã phát hiện dữ liệu không thể xử lý và chuyển trạng thái tới **Flag Application As Unprocessable**.
 
-![StepFunctions](/images/SF/100.png?width=90pc)
+![AWS Step Functions](/images/5.2/0005.png?featherlight=false&width=90pc)
 
-7. Chúng ta có thể kiểm tra đơn đăng ký bị gắn cờ không thể xử lý bằng cách chạy lệnh dưới đây.
+2. Click vào lần thực thi mới nhất.
+
+
+![AWS Step Functions](/images/5.2/0006.png?featherlight=false&width=90pc)
+
+3. Chúng ta có thể nhìn thấy state machine của chúng ta đã phát hiện dữ liệu không thể xử lý và chuyển trạng thái tới **Flag Application As Unprocessable**.
+
+
+![AWS Step Functions](/images/5.2/0007.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/5.2/0008.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/5.2/0009.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/5.2/00010.png?featherlight=false&width=90pc)
+
+![AWS Step Functions](/images/5.2/00011.png?featherlight=false&width=90pc)
+
+4. Chúng ta có thể kiểm tra đơn đăng ký bị gắn cờ không thể xử lý bằng cách chạy lệnh dưới đây.
 ```
 aws lambda invoke --function-name sfn-workshop-FindApplications --payload '{ "state": "FLAGGED_WITH_UNPROCESSABLE_DATA" }' /dev/stdout 
 ```
-![StepFunctions](/images/SF/101.png?width=90pc)
+
+

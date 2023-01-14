@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Tạo các dịch vụ mẫu :: AWS Step Functions</title>
 
     
-    <link href="/css/nucleus.css?1642672391" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1642672391" rel="stylesheet">
-    <link href="/css/hybrid.css?1642672391" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1642672391" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1642672391" rel="stylesheet">
-    <link href="/css/auto-complete.css?1642672391" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1642672391" rel="stylesheet">
-    <link href="/css/theme.css?1642672391" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1642672391" rel="stylesheet">
+    <link href="/css/nucleus.css?1673730818" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1673730818" rel="stylesheet">
+    <link href="/css/hybrid.css?1673730818" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1673730818" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1673730818" rel="stylesheet">
+    <link href="/css/auto-complete.css?1673730818" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1673730818" rel="stylesheet">
+    <link href="/css/theme.css?1673730818" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1673730818" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1642672391" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1673730818" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1642672391"></script>
+    <script src="/js/jquery-3.3.1.min.js?1673730818"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1642672391"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1642672391"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1673730818"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1673730818"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1642672391"></script>
+<script type="text/javascript" src="/js/search.js?1673730818"></script>
 
     
   </div>
@@ -264,7 +264,7 @@
   
     
     <li data-nav-id="/vi/2-prepare/2.2-createservice/" title="Tạo các dịch vụ mẫu" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>20-01-2021</font></i>
+        <i><font color=orange>15-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1535,7 +1535,6 @@
         </left>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-
     </section>
   </div>
 </nav>
@@ -1629,30 +1628,30 @@
 <ul>
 <li>Đặt password sudo mới cho ec2-user của Cloud9 instance, ví dụ <strong>123456</strong>.</li>
 </ul>
-<pre><code>sudo passwd ec2-user
-</code></pre><p><img src="/images/SF/005.png?width==90pc" alt="StepFunctions"></p>
-<ol start="2">
+<pre tabindex="0"><code>sudo passwd ec2-user
+</code></pre><p><img src="/images/2.2/0001.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol>
 <li>Trong giao diện terminal của Cloud9 instance, chạy lệnh dưới đây.</li>
 </ol>
-<pre><code># Install Homebrew
-/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;
+<pre tabindex="0"><code># Install Homebrew
+/bin/bash -c &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&#34;
 </code></pre><ul>
 <li>Điền [sudo] password cho ec2-user : <strong>123456</strong>.</li>
 <li>Ấn phím <strong>Enter</strong>.</li>
 </ul>
-<p><img src="/images/SF/006.png?width==90pc" alt="StepFunctions"></p>
-<ol start="3">
+<p><img src="/images/2.2/0002.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol start="2">
 <li>Kiểm tra quá trình cài đặt diễn ra thành công.</li>
 </ol>
-<p><img src="/images/SF/007.png?width==90pc" alt="StepFunctions"></p>
-<ol start="4">
+<p><img src="/images/2.2/0003.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol start="3">
 <li>Trong giao diện terminal của Cloud9 instance, chạy lệnh dưới đây để tiến hành cấu hình PATH cho homebrew và clone repo của workshop.</li>
 </ol>
-<pre><code># Then get brew into our $PATH
+<pre tabindex="0"><code># Then get brew into our $PATH
 test -d ~/.linuxbrew &amp;&amp; eval $(~/.linuxbrew/bin/brew shellenv)
 test -d /home/linuxbrew/.linuxbrew &amp;&amp; eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-test -r ~/.bash_profile &amp;&amp; echo &quot;eval \$($(brew --prefix)/bin/brew shellenv)&quot; &gt;&gt;~/.bash_profile
-echo &quot;eval \$($(brew --prefix)/bin/brew shellenv)&quot; &gt;&gt;~/.profile
+test -r ~/.bash_profile &amp;&amp; echo &#34;eval \$($(brew --prefix)/bin/brew shellenv)&#34; &gt;&gt;~/.bash_profile
+echo &#34;eval \$($(brew --prefix)/bin/brew shellenv)&#34; &gt;&gt;~/.profile
 
 # Install the AWS SAM CLI
 brew tap aws/tap
@@ -1667,13 +1666,14 @@ cd workshop-dir
 </code></pre><ul>
 <li>Quá trình cài đặt sẽ kéo dài vài phút.</li>
 </ul>
-<p><img src="/images/SF/008.png?width==90pc" alt="StepFunctions"></p>
-<ol start="5">
+<p><img src="/images/2.2/0004.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img src="/images/2.2/0005.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol start="4">
 <li>Chạy câu lệnh dưới đây để thực hiện build các Lambda functions, chuẩn bị cho việc triển khai.</li>
 </ol>
-<pre><code>sam build
-</code></pre><p><img src="/images/SF/009.png?width==90pc" alt="StepFunctions"></p>
-<ol start="6">
+<pre tabindex="0"><code>sam build
+</code></pre><p><img src="/images/2.2/0006.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol start="5">
 <li>Chạy câu lệnh dưới đây để thực hiện deploy các Lambda functions và DynamoDB, lưu ý trả lời các thông tin như dưới đây :</li>
 </ol>
 <ul>
@@ -1685,29 +1685,29 @@ cd workshop-dir
 <li>SAM configuration file [samconfig.toml]: samconfig.toml</li>
 <li>SAM configuration environment [default]: Ấn Enter</li>
 </ul>
-<pre><code># Run our first deploy in guided mode. Answer the interactive questions the same way that the comments show below:
+<pre tabindex="0"><code># Run our first deploy in guided mode. Answer the interactive questions the same way that the comments show below:
 sam deploy --guided
-</code></pre><p><img src="/images/SF/010.png?width==90pc" alt="StepFunctions"></p>
+</code></pre><p><img src="/images/2.2/0007.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img src="/images/2.2/0008.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
 
 <div class="notices warning" ><p>Nếu bạn bị lỗi ở bước deploy hãy thử thay bước 6 bằng các bước ở mục <a href="#ch%E1%BA%A1y-sam-deploy-b%E1%BA%B1ng-file-config-t%E1%BB%B1-t%E1%BA%A1o">Chạy sam deploy bằng file config tự tạo.</a></p>
 </div>
 
-<ol start="7">
+<ol start="6">
 <li>Dành thời gian kiểm tra nội dung các files chúng ta đã tạo trong thư mục <strong>workshop-dir</strong> :</li>
 </ol>
-<p><img src="/images/SF/011.png?width==90pc" alt="StepFunctions"></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">functions/account-applications/submit.js
-<span style="color:#75715e"># Lambda SubmitApplication function: tìm, gắn cờ, từ chối và phê duyệt đăng ký.</span> 
-
-functions/account-applications/AccountApplications.js
-<span style="color:#75715e"># Đây là file chung cung cấp các tác vụ CRUD cho **Account Application** data type. Được sử dụng bởi các function khác.</span>
-
-functions/data-checking/data-checking.js
-<span style="color:#75715e"># File này triển khai **DataChecking** Lambda function, nhiệm vụ của nó là xử lý các yêu cầu kiểm tra tên và địa chỉ với một số rule đơn giản.</span>
-
-template.yaml
-<span style="color:#75715e"># Đây là file AWS SAM sẽ khai báo các tài nguyên mà chúng ta muốn tạo và triển khai trong giải pháp của mình, có cấu trúc khá tương tự CloudFormation template vì SAM được xây dựng trên nền tảng của CloudFormation.</span>
-</code></pre></div><p>Bước tiếp theo chúng ta sẽ kiểm tra các dịch vụ mẫu cho workflow của chúng ta.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>functions/account-applications/submit.js
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Lambda SubmitApplication function: tìm, gắn cờ, từ chối và phê duyệt đăng ký. </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>functions/account-applications/AccountApplications.js
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Đây là file chung cung cấp các tác vụ CRUD cho **Account Application** data type. Được sử dụng bởi các function khác.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>functions/data-checking/data-checking.js
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># File này triển khai **DataChecking** Lambda function, nhiệm vụ của nó là xử lý các yêu cầu kiểm tra tên và địa chỉ với một số rule đơn giản.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>template.yaml
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Đây là file AWS SAM sẽ khai báo các tài nguyên mà chúng ta muốn tạo và triển khai trong giải pháp của mình, có cấu trúc khá tương tự CloudFormation template vì SAM được xây dựng trên nền tảng của CloudFormation.</span>
+</span></span></code></pre></div><p>Bước tiếp theo chúng ta sẽ kiểm tra các dịch vụ mẫu cho workflow của chúng ta.</p>
 <h4 id="chạy-sam-deploy-bằng-file-config-tự-tạo">Chạy sam deploy bằng file config tự tạo.</h4>
 
 <div class="notices warning" ><p>Chỉ thực hiện bước này nếu việc thực hiện sam deploy -guided không thành công.</p>
@@ -1717,33 +1717,35 @@ template.yaml
 <li>Kiểm tra đường dẫn thư mục đang ở workshop-dir</li>
 <li>Chạy lệnh dưới đây để tạo SAM CLI bucket ( bạn có thể thay yourname = tên bạn )</li>
 </ol>
-<pre><code>aws s3 mb s3://stepfunctions-workshop-yourname --region ap-southeast-1
-</code></pre><ol start="3">
+<pre tabindex="0"><code>aws s3 mb s3://stepfunctions-workshop-yourname --region ap-southeast-1
+</code></pre><p><img src="/images/2.2/0009.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol start="3">
 <li>Chạy lệnh dưới đây để tạo file samconfig.toml</li>
 </ol>
-<pre><code>touch samconfig.toml
-</code></pre><ol start="4">
+<pre tabindex="0"><code>touch samconfig.toml
+</code></pre><p><img src="/images/2.2/00010.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<ol start="4">
 <li>Double click vào file samconfig.toml và thực hiện thêm nội dung cấu hình như sau :</li>
 </ol>
-<pre><code>version=0.1
+<pre tabindex="0"><code>version=0.1
 [default.global.parameters]
-stack_name = &quot;step-functions-workshop&quot;
+stack_name = &#34;step-functions-workshop&#34;
 
 [default.deploy.parameters]
-stack_name = &quot;step-functions-workshop&quot;
-s3_bucket = &quot;stepfunctions-workshop-yourname&quot;
-s3_prefix = &quot;stepfunctions&quot;
-region = &quot;ap-southeast-1&quot;
+stack_name = &#34;step-functions-workshop&#34;
+s3_bucket = &#34;stepfunctions-workshop-yourname&#34;
+s3_prefix = &#34;stepfunctions&#34;
+region = &#34;ap-southeast-1&#34;
 confirm_changeset = false
-capabilities = &quot;CAPABILITY_IAM&quot;
+capabilities = &#34;CAPABILITY_IAM&#34;
 </code></pre><ul>
 <li>Ấn Ctrl+S để lưu file samconfig.toml.</li>
 </ul>
-<p><img src="/images/SF/f01.png?width==90pc" alt="StepFunctions"></p>
+<p><img src="/images/2.2/00011.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
 <ol start="5">
 <li>Chạy lệnh dưới để thực hiện deploy lại.</li>
 </ol>
-<pre><code>sam deploy
+<pre tabindex="0"><code>sam deploy
 </code></pre>
 
 
@@ -2528,19 +2530,19 @@ capabilities = &quot;CAPABILITY_IAM&quot;
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.min.js?1642672391"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1642672391"></script>
-    <script src="/js/jquery.sticky.js?1642672391"></script>
-    <script src="/js/featherlight.min.js?1642672391"></script>
-    <script src="/js/highlight.pack.js?1642672391"></script>
+    <script src="/js/clipboard.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.min.js?1673730818"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1673730818"></script>
+    <script src="/js/jquery.sticky.js?1673730818"></script>
+    <script src="/js/featherlight.min.js?1673730818"></script>
+    <script src="/js/highlight.pack.js?1673730818"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1642672391"></script>
-    <script src="/js/learn.js?1642672391"></script>
-    <script src="/js/hugo-learn.js?1642672391"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1673730818"></script>
+    <script src="/js/learn.js?1673730818"></script>
+    <script src="/js/hugo-learn.js?1673730818"></script>
 
-    <link href="/mermaid/mermaid.css?1642672391" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1642672391"></script>
+    <link href="/mermaid/mermaid.css?1673730818" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1673730818"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
