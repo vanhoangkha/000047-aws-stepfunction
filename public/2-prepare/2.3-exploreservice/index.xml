@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Test Sample Service on AWS Step Functions</title>
+    <title>Test Sample Service on GET STARTED WITH AWS STEP FUNCTIONS</title>
     <link>/2-prepare/2.3-exploreservice/</link>
-    <description>Recent content in Test Sample Service on AWS Step Functions</description>
+    <description>Recent content in Test Sample Service on GET STARTED WITH AWS STEP FUNCTIONS</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 01 Jan 1970 07:33:41 +0700</lastBuildDate><atom:link href="/2-prepare/2.3-exploreservice/index.xml" rel="self" type="application/rss+xml" />
   </channel>

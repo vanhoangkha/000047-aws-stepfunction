@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cập nhật workflow on AWS Step Functions</title>
+    <title>Cập nhật workflow on BẮT ĐẦU VỚI AWS STEP FUNCTIONS</title>
     <link>/vi/3-serviceorchestration/3.4-stateinputoutput/3.4.1-updateworkflow/</link>
-    <description>Recent content in Cập nhật workflow on AWS Step Functions</description>
+    <description>Recent content in Cập nhật workflow on BẮT ĐẦU VỚI AWS STEP FUNCTIONS</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 01 Jan 1970 07:33:41 +0700</lastBuildDate><atom:link href="/vi/3-serviceorchestration/3.4-stateinputoutput/3.4.1-updateworkflow/index.xml" rel="self" type="application/rss+xml" />
   </channel>

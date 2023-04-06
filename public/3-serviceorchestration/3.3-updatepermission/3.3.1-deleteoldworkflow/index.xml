@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Delete state machine on AWS Step Functions</title>
+    <title>Delete state machine on GET STARTED WITH AWS STEP FUNCTIONS</title>
     <link>/3-serviceorchestration/3.3-updatepermission/3.3.1-deleteoldworkflow/</link>
-    <description>Recent content in Delete state machine on AWS Step Functions</description>
+    <description>Recent content in Delete state machine on GET STARTED WITH AWS STEP FUNCTIONS</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 01 Jan 1970 07:33:41 +0700</lastBuildDate><atom:link href="/3-serviceorchestration/3.3-updatepermission/3.3.1-deleteoldworkflow/index.xml" rel="self" type="application/rss+xml" />
   </channel>
