@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Check the workflow :: GET STARTED WITH AWS STEP FUNCTIONS</title>
 
     
-    <link href="/css/nucleus.css?1701074858" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1701074858" rel="stylesheet">
-    <link href="/css/hybrid.css?1701074858" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1701074858" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1701074858" rel="stylesheet">
-    <link href="/css/auto-complete.css?1701074858" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1701074858" rel="stylesheet">
-    <link href="/css/theme.css?1701074858" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1701074858" rel="stylesheet">
+    <link href="/css/nucleus.css?1733802161" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733802161" rel="stylesheet">
+    <link href="/css/hybrid.css?1733802161" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733802161" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733802161" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733802161" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733802161" rel="stylesheet">
+    <link href="/css/theme.css?1733802161" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733802161" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1701074858" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733802161" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1701074858"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733802161"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1701074858"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1701074858"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733802161"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733802161"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1701074858"></script>
+<script type="text/javascript" src="/js/search.js?1733802161"></script>
 
     
   </div>
@@ -705,7 +705,7 @@
   
     
     <li data-nav-id="/3-serviceorchestration/3.3-updatepermission/3.3.3-checkworkflow/" title="Check the workflow" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>27-11-2023</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1632,7 +1632,7 @@
 <li>Click on state machine <strong>ApplicationProcessingStateMachine-xxxxxxxxxxxx</strong>.
 This is a re-implemented version of our state machine. The new version has not changed, except that we have granted its IAM role to call the lambda function <strong>Data Checking</strong>. Try doing it again with some sample input to see what happens.</li>
 </ul>
-<p><img src="/images/3.3.3/0001.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/3.3.3/0001.png?featherlight=false&width=90pc"></p>
 <ol start="2">
 <li>Click <strong>Start execution</strong> to execute the workflow again.</li>
 <li>Enter the following JSON content in the input field.</li>
@@ -1646,13 +1646,13 @@ This is a re-implemented version of our state machine. The new version has not c
 </code></pre><ul>
 <li>Click <strong>Start execution</strong>.</li>
 </ul>
-<p><img src="/images/3.3.3/0002.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/3.3.3/0002.png?featherlight=false&width=90pc"></p>
 
 <div class="notices tip" ><p>After a while, you will see that the execution failed. This time, however, we don&rsquo;t have any red states, because this time we get a different error. <br>
 <strong>Check Name</strong> status has executed successfully, however <strong>Check Address</strong> status is grayed out. If you look at the color code at the bottom of the visualization you will see that this means the state has been destroyed. Let&rsquo;s see why.</p>
 </div>
 
-<p><img src="/images/3.3.3/0003.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/3.3.3/0003.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Scroll down to the <strong>Execution event history</strong> section.</li>
 </ol>
@@ -1664,12 +1664,12 @@ This is a re-implemented version of our state machine. The new version has not c
  &#34;error&#34;: &#34;States.Runtime&#34;,
  &#34;cause&#34;: &#34;An error occurred while executing the state &#39;Check Address&#39; (entered at the event id #7). The JSONPath &#39;$.application.address&#39; specified for the field &#39;address.$&#39; could not be found in the input &#39;{\&#34;flagged\&#34;:false}&#39;&#34;
 }
-</code></pre><p><img src="/images/3.3.3/0004.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+</code></pre><p><img alt="AWS Step Functions" src="/images/3.3.3/0004.png?featherlight=false&width=90pc"></p>
 <p>If you look back at our state machine definition for the <strong>Check Address</strong> state, you&rsquo;ll see that it expects an <strong>application</strong> object in its input and it tries to pass <strong>application .address</strong> down to Lambda function <strong>Data Checking</strong>.</p>
-<p><img src="/images/3.3.3/0005.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
-<p><img src="/images/3.3.3/0006.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
-<p><img src="/images/3.3.3/0007.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
-<p><img src="/images/3.3.3/0008.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/3.3.3/0005.png?featherlight=false&width=90pc"></p>
+<p><img alt="AWS Step Functions" src="/images/3.3.3/0006.png?featherlight=false&width=90pc"></p>
+<p><img alt="AWS Step Functions" src="/images/3.3.3/0007.png?featherlight=false&width=90pc"></p>
+<p><img alt="AWS Step Functions" src="/images/3.3.3/0008.png?featherlight=false&width=90pc"></p>
 <p>The error message tells us that the state machine cannot find application.address in the state input. To understand why, we need to learn a little more about how an active state produces its output and passes it to the next state&rsquo;s input in the next step.</p>
 
 
@@ -2459,19 +2459,19 @@ This is a re-implemented version of our state machine. The new version has not c
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1701074859"></script>
-    <script src="/js/perfect-scrollbar.min.js?1701074859"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1701074859"></script>
-    <script src="/js/jquery.sticky.js?1701074859"></script>
-    <script src="/js/featherlight.min.js?1701074859"></script>
-    <script src="/js/highlight.pack.js?1701074859"></script>
+    <script src="/js/clipboard.min.js?1733802161"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733802161"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733802161"></script>
+    <script src="/js/jquery.sticky.js?1733802161"></script>
+    <script src="/js/featherlight.min.js?1733802161"></script>
+    <script src="/js/highlight.pack.js?1733802161"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1701074859"></script>
-    <script src="/js/learn.js?1701074859"></script>
-    <script src="/js/hugo-learn.js?1701074859"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733802161"></script>
+    <script src="/js/learn.js?1733802161"></script>
+    <script src="/js/hugo-learn.js?1733802161"></script>
 
-    <link href="/mermaid/mermaid.css?1701074859" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1701074859"></script>
+    <link href="/mermaid/mermaid.css?1733802161" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733802161"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

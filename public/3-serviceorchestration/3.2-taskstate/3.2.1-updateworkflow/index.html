@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Update workflow :: GET STARTED WITH AWS STEP FUNCTIONS</title>
 
     
-    <link href="/css/nucleus.css?1701074858" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1701074858" rel="stylesheet">
-    <link href="/css/hybrid.css?1701074858" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1701074858" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1701074858" rel="stylesheet">
-    <link href="/css/auto-complete.css?1701074858" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1701074858" rel="stylesheet">
-    <link href="/css/theme.css?1701074858" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1701074858" rel="stylesheet">
+    <link href="/css/nucleus.css?1733802161" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733802161" rel="stylesheet">
+    <link href="/css/hybrid.css?1733802161" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733802161" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733802161" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733802161" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733802161" rel="stylesheet">
+    <link href="/css/theme.css?1733802161" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733802161" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1701074858" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733802161" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1701074858"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733802161"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1701074858"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1701074858"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733802161"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733802161"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1701074858"></script>
+<script type="text/javascript" src="/js/search.js?1733802161"></script>
 
     
   </div>
@@ -553,7 +553,7 @@
   
     
     <li data-nav-id="/3-serviceorchestration/3.2-taskstate/3.2.1-updateworkflow/" title="Update workflow" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>27-11-2023</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1632,7 +1632,7 @@
 <li>Click <strong>Process_New_Account_Applications</strong>.</li>
 <li>Click <strong>Edit</strong>.</li>
 </ul>
-<p><img src="/images/3.2.1/0001.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/3.2.1/0001.png?featherlight=false&width=90pc"></p>
 <ol start="2">
 <li>Next, we will update the definition of the state machine. Note that after pasting the content below, you&rsquo;ll see a few lines with an error indicator because our new state machine definition has some placeholder strings written as &lsquo;REPLACE_WITH_DATA_CHECKING_LAMBDA_ARN&rsquo;. <strong>We will fix this in the next step</strong>. Replace the existing definition with the following:</li>
 </ol>
@@ -1667,7 +1667,7 @@
         }
     }
 }
-</code></pre><p><img src="/images/3.2.1/0002.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+</code></pre><p><img alt="AWS Step Functions" src="/images/3.2.1/0002.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Return to the Cloud9 Terminal interface, run the command below, to determine the <strong>ARN</strong> of <strong>DataCheckingFunction</strong>. (Make sure you are in the <strong>workshop-dir</strong> folder location. )</li>
 </ol>
@@ -1678,18 +1678,18 @@ aws cloudformation describe-stacks --region $REGION --stack-name $STACK_NAME --q
 <div class="notices tip" ><p>The above seemingly complicated set of commands is just to help you get the ARN faster by automatically pulling the configuration values ​​out of the samconfig.toml file (this file remembers things like Region and the name of the cloudformation stack we&rsquo;re using. SAM for deployment), then use those profiles to configure the value for the AWS CLI command to display the ARN of the Lambda functions <strong>DataCheckingFunction</strong> we deployed.</p>
 </div>
 
-<p><img src="/images/3.2.1/0003.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/3.2.1/0003.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Copy and save the result of step 3.</li>
 </ol>
-<p><img src="/images/3.2.1/0004.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/3.2.1/0004.png?featherlight=false&width=90pc"></p>
 <ol start="2">
 <li>In the <strong>Definition</strong> section of the state machine, update the Lambda function ARN parameter of step 3 as shown below:</li>
 </ol>
 <ul>
 <li>Click <strong>Save</strong>.</li>
 </ul>
-<p><img src="/images/3.2.1/0005.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/3.2.1/0005.png?featherlight=false&width=90pc"></p>
 <ol start="3">
 <li>We get a warning that our IAM role may need to change to allow the state machine to execute. This is a helpful reminder. Actually, we have changed our state machine and will ask to change permissions. Now, we require the Lambda function <strong>Data Checking</strong> capability. We will deal with this in the next big step. Click <strong>Save anyway</strong>.</li>
 </ol>
@@ -2478,19 +2478,19 @@ aws cloudformation describe-stacks --region $REGION --stack-name $STACK_NAME --q
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1701074859"></script>
-    <script src="/js/perfect-scrollbar.min.js?1701074859"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1701074859"></script>
-    <script src="/js/jquery.sticky.js?1701074859"></script>
-    <script src="/js/featherlight.min.js?1701074859"></script>
-    <script src="/js/highlight.pack.js?1701074859"></script>
+    <script src="/js/clipboard.min.js?1733802161"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733802161"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733802161"></script>
+    <script src="/js/jquery.sticky.js?1733802161"></script>
+    <script src="/js/featherlight.min.js?1733802161"></script>
+    <script src="/js/highlight.pack.js?1733802161"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1701074859"></script>
-    <script src="/js/learn.js?1701074859"></script>
-    <script src="/js/hugo-learn.js?1701074859"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733802161"></script>
+    <script src="/js/learn.js?1733802161"></script>
+    <script src="/js/hugo-learn.js?1733802161"></script>
 
-    <link href="/mermaid/mermaid.css?1701074859" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1701074859"></script>
+    <link href="/mermaid/mermaid.css?1733802161" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733802161"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Kiểm tra workflow :: BẮT ĐẦU VỚI AWS STEP FUNCTIONS</title>
 
     
-    <link href="/css/nucleus.css?1701074859" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1701074859" rel="stylesheet">
-    <link href="/css/hybrid.css?1701074859" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1701074859" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1701074859" rel="stylesheet">
-    <link href="/css/auto-complete.css?1701074859" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1701074859" rel="stylesheet">
-    <link href="/css/theme.css?1701074859" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1701074859" rel="stylesheet">
+    <link href="/css/nucleus.css?1733802162" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733802162" rel="stylesheet">
+    <link href="/css/hybrid.css?1733802162" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733802162" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733802162" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733802162" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733802162" rel="stylesheet">
+    <link href="/css/theme.css?1733802162" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733802162" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1701074859" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733802162" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1701074859"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733802162"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1701074859"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1701074859"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733802162"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733802162"></script>
 <script type="text/javascript">
     
-        var baseurl = "\/vi";
+        var baseurl = "\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1701074859"></script>
+<script type="text/javascript" src="/js/search.js?1733802162"></script>
 
     
   </div>
@@ -1127,7 +1127,7 @@
   
     
     <li data-nav-id="/vi/4-improveworkflow/4.2-pauseworkflow/4.2.2-checkworkflow/" title="Kiểm tra workflow" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>27-11-2023</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1630,27 +1630,27 @@
 <li>Chạy câu lệnh dưới để thực hiện submit một đăng ký có địa chỉ không hợp lệ.</li>
 </ol>
 <pre tabindex="0"><code>aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload &#39;{ &#34;name&#34;: &#34;Spock&#34;, &#34;address&#34;: &#34;InvalidAddressFormat&#34; }&#39; /dev/stdout 
-</code></pre><p><img src="/images/4.2.2/0001.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+</code></pre><p><img alt="AWS Step Functions" src="/images/4.2.2/0001.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Kiểm tra xem đăng ký của chúng ta có bị gắn cờ để kiểm tra lại hay không bằng lệnh dưới đây</li>
 </ol>
 <pre tabindex="0"><code>aws lambda invoke --function-name sfn-workshop-FindApplications --payload &#39;{ &#34;state&#34;: &#34;FLAGGED_FOR_REVIEW&#34; }&#39; /dev/stdout 
-</code></pre><p><img src="/images/4.2.2/0002.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+</code></pre><p><img alt="AWS Step Functions" src="/images/4.2.2/0002.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Quét khối và copy id của đơn đăng ký bị gắn cờ.</li>
 </ol>
-<p><img src="/images/4.2.2/0003.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/0003.png?featherlight=false&width=90pc"></p>
 <ol start="2">
 <li>Quay lại giao diện dịch vụ Step Functions , click vào State machine <strong>ApplicationProcessingStateMachine-xxxxxxx</strong>.</li>
 </ol>
-<p><img src="/images/4.2.2/0004.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/0004.png?featherlight=false&width=90pc"></p>
 <ol start="3">
 <li>Tại tab Executions, chúng ta có thể thấy trạng thái của lần thực thi này đang thể hiện là <strong>Running</strong>. Click chọn lần thực thi mới nhất.</li>
 </ol>
 <ul>
 <li>Chúng ta sẽ thấy  trạng thái <strong>Pending Review</strong> đang <strong>in-progress</strong>. Điều này có nghĩa là state machine của chúng ta đang tạm dừng và chờ phản hồi trước khi tiếp tục thực thi.</li>
 </ul>
-<p><img src="/images/4.2.2/0005.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/0005.png?featherlight=false&width=90pc"></p>
 <ol start="4">
 <li>Quay trở lại Cloud9 console, chúng ta sẽ cần phản hồi và thực hiện approve đơn đăng ký. ( Hiện chúng ta chưa xây dựng giao diện web cho việc này, chúng ta chỉ gọi 1 Lambda Function trong dịch vụ <strong>Account Applications</strong> để thực hiện thao tác approve.)</li>
 </ol>
@@ -1658,7 +1658,7 @@
 <li>Chạy câu lệnh dưới đây và thay thế <strong>REPLACE_WITH_APPLICATION_ID</strong> với giá trị ID đăng ký bạn đã copy lại ở bước 3.</li>
 </ul>
 <pre tabindex="0"><code>aws lambda invoke --function-name sfn-workshop-ReviewApplication --payload &#39;{ &#34;id&#34;: &#34;REPLACE_WITH_APPLICATION_ID&#34;, &#34;decision&#34;: &#34;APPROVE&#34; }&#39; /dev/stdout 
-</code></pre><p><img src="/images/4.2.2/0006.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+</code></pre><p><img alt="AWS Step Functions" src="/images/4.2.2/0006.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Quay trở lại giao diện Step Functions chúng ta có thể thấy việc thực thi đã được tiếp tục và hoàn tất ( do chúng ta đã approve đơn đăng ký).</li>
 </ol>
@@ -1667,11 +1667,11 @@
 <li>Click vào <strong>Step input</strong>.</li>
 <li>Chúng ta có thể thấy quyết định approve đã được đưa vào phần dữ liệu input. (thông qua phản hồi  <strong>SendTaskSuccess</strong> mà  Lambda function <strong>Review Application</strong> - functions/account-Applications/review.js đã gọi).</li>
 </ul>
-<p><img src="/images/4.2.2/0007.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
-<p><img src="/images/4.2.2/0008.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
-<p><img src="/images/4.2.2/0009.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
-<p><img src="/images/4.2.2/00010.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
-<p><img src="/images/4.2.2/00011.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/0007.png?featherlight=false&width=90pc"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/0008.png?featherlight=false&width=90pc"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/0009.png?featherlight=false&width=90pc"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/00010.png?featherlight=false&width=90pc"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/00011.png?featherlight=false&width=90pc"></p>
 <p>Để hoàn tất việc triển khai quy trình làm việc, chúng ta sẽ thay thế các bước <strong>Approve Application</strong> và <strong>Reject Application</strong> để gọi các Lambda function ApproveApplication và RejectApplication mà chúng ta đã tạo.</p>
 
 
@@ -2461,19 +2461,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1701074859"></script>
-    <script src="/js/perfect-scrollbar.min.js?1701074859"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1701074859"></script>
-    <script src="/js/jquery.sticky.js?1701074859"></script>
-    <script src="/js/featherlight.min.js?1701074859"></script>
-    <script src="/js/highlight.pack.js?1701074859"></script>
+    <script src="/js/clipboard.min.js?1733802162"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733802162"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733802162"></script>
+    <script src="/js/jquery.sticky.js?1733802162"></script>
+    <script src="/js/featherlight.min.js?1733802162"></script>
+    <script src="/js/highlight.pack.js?1733802162"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1701074859"></script>
-    <script src="/js/learn.js?1701074859"></script>
-    <script src="/js/hugo-learn.js?1701074859"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733802162"></script>
+    <script src="/js/learn.js?1733802162"></script>
+    <script src="/js/hugo-learn.js?1733802162"></script>
 
-    <link href="/mermaid/mermaid.css?1701074859" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1701074859"></script>
+    <link href="/mermaid/mermaid.css?1733802162" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733802162"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

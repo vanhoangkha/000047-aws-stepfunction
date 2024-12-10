@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Dọn dẹp tài nguyên :: BẮT ĐẦU VỚI AWS STEP FUNCTIONS</title>
 
     
-    <link href="/css/nucleus.css?1701074859" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1701074859" rel="stylesheet">
-    <link href="/css/hybrid.css?1701074859" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1701074859" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1701074859" rel="stylesheet">
-    <link href="/css/auto-complete.css?1701074859" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1701074859" rel="stylesheet">
-    <link href="/css/theme.css?1701074859" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1701074859" rel="stylesheet">
+    <link href="/css/nucleus.css?1733802162" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733802162" rel="stylesheet">
+    <link href="/css/hybrid.css?1733802162" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733802162" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733802162" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733802162" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733802162" rel="stylesheet">
+    <link href="/css/theme.css?1733802162" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733802162" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1701074859" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733802162" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1701074859"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733802162"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1701074859"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1701074859"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733802162"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733802162"></script>
 <script type="text/javascript">
     
-        var baseurl = "\/vi";
+        var baseurl = "\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1701074859"></script>
+<script type="text/javascript" src="/js/search.js?1733802162"></script>
 
     
   </div>
@@ -1413,7 +1413,7 @@
   
     
     <li data-nav-id="/vi/8-cleanup/" title="Dọn dẹp tài nguyên" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>27-11-2023</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1612,11 +1612,11 @@
 <li>Click vào state machine <strong>ApplicationProcessingStateMachine-xxxxxxxxxxxx</strong>.</li>
 <li>Click vào execution đang running.</li>
 </ul>
-<p><img src="/images/8/0001.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/8/0001.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Click <strong>Stop execution</strong> để dừng thực thi state machine.</li>
 </ol>
-<p><img src="/images/8/0002.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/8/0002.png?featherlight=false&width=90pc"></p>
 
 <div class="notices warning" ><p>Đảm bảo không còn execution nào đang ở trạng thái <strong>running</strong> trước khi bạn thực hiện bước tiếp theo. AWS Cloud Formation sẽ không thực hiện xóa state machine nếu như vẫn còn execution đang running.</p>
 </div>
@@ -1627,7 +1627,7 @@
 <pre tabindex="0"><code>REGION=$(grep region samconfig.toml | awk -F\= &#39;{gsub(/&#34;/, &#34;&#34;, $2); gsub(/ /, &#34;&#34;, $2); print $2}&#39;)
 STACK_NAME=$(grep stack_name samconfig.toml | awk -F\= &#39;{gsub(/&#34;/, &#34;&#34;, $2); gsub(/ /, &#34;&#34;, $2); print $2}&#39;)
 aws cloudformation delete-stack --region $REGION --stack-name $STACK_NAME
-</code></pre><p><img src="/images/8/0003.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+</code></pre><p><img alt="AWS Step Functions" src="/images/8/0003.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Truy cập vào giao diện quản lý <a href="https://ap-southeast-1.console.aws.amazon.com/cloud9/home?region=ap-southeast-1">dịch vụ Cloud9</a></li>
 </ol>
@@ -1635,14 +1635,14 @@ aws cloudformation delete-stack --region $REGION --stack-name $STACK_NAME
 <li>Chọn Cloud9 Instance <strong>StepFunctions</strong>.</li>
 <li>Click <strong>Delete</strong>.</li>
 </ul>
-<p><img src="/images/8/0004.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/8/0004.png?featherlight=false&width=90pc"></p>
 <ol start="2">
 <li>Điền <strong>Delete</strong> để xác nhận.</li>
 </ol>
 <ul>
 <li>Click <strong>Delete</strong> để tiến hành xóa Cloud9 Instance.</li>
 </ul>
-<p><img src="/images/8/0005.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/8/0005.png?featherlight=false&width=90pc"></p>
 
 
 
@@ -2420,19 +2420,19 @@ aws cloudformation delete-stack --region $REGION --stack-name $STACK_NAME
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1701074859"></script>
-    <script src="/js/perfect-scrollbar.min.js?1701074859"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1701074859"></script>
-    <script src="/js/jquery.sticky.js?1701074859"></script>
-    <script src="/js/featherlight.min.js?1701074859"></script>
-    <script src="/js/highlight.pack.js?1701074859"></script>
+    <script src="/js/clipboard.min.js?1733802162"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733802162"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733802162"></script>
+    <script src="/js/jquery.sticky.js?1733802162"></script>
+    <script src="/js/featherlight.min.js?1733802162"></script>
+    <script src="/js/highlight.pack.js?1733802162"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1701074859"></script>
-    <script src="/js/learn.js?1701074859"></script>
-    <script src="/js/hugo-learn.js?1701074859"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733802162"></script>
+    <script src="/js/learn.js?1733802162"></script>
+    <script src="/js/hugo-learn.js?1733802162"></script>
 
-    <link href="/mermaid/mermaid.css?1701074859" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1701074859"></script>
+    <link href="/mermaid/mermaid.css?1733802162" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733802162"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

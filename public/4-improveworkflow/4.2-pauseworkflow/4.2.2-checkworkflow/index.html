@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Check the workflow :: GET STARTED WITH AWS STEP FUNCTIONS</title>
 
     
-    <link href="/css/nucleus.css?1701074859" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1701074859" rel="stylesheet">
-    <link href="/css/hybrid.css?1701074859" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1701074859" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1701074859" rel="stylesheet">
-    <link href="/css/auto-complete.css?1701074859" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1701074859" rel="stylesheet">
-    <link href="/css/theme.css?1701074859" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1701074859" rel="stylesheet">
+    <link href="/css/nucleus.css?1733802161" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733802161" rel="stylesheet">
+    <link href="/css/hybrid.css?1733802161" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733802161" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733802161" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733802161" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733802161" rel="stylesheet">
+    <link href="/css/theme.css?1733802161" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733802161" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1701074859" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733802161" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1701074859"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733802161"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1701074859"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1701074859"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733802161"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733802161"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1701074859"></script>
+<script type="text/javascript" src="/js/search.js?1733802161"></script>
 
     
   </div>
@@ -1127,7 +1127,7 @@
   
     
     <li data-nav-id="/4-improveworkflow/4.2-pauseworkflow/4.2.2-checkworkflow/" title="Check the workflow" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>27-11-2023</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1630,27 +1630,27 @@
 <li>Run the command below to submit a registration with an invalid address.</li>
 </ol>
 <pre tabindex="0"><code>aws lambda invoke --function-name sfn-workshop-SubmitApplication --payload &#39;{ &#34;name&#34;: &#34;Spock&#34;, &#34;address&#34;: &#34;InvalidAddressFormat&#34; }&#39; /dev/stdout
-</code></pre><p><img src="/images/4.2.2/0001.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+</code></pre><p><img alt="AWS Step Functions" src="/images/4.2.2/0001.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Check if our subscription is flagged for rechecking with the command below</li>
 </ol>
 <pre tabindex="0"><code>aws lambda invoke --function-name sfn-workshop-FindApplications --payload &#39;{ &#34;state&#34;: &#34;FLAGGED_FOR_REVIEW&#34; }&#39; /dev/stdout
-</code></pre><p><img src="/images/4.2.2/0002.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+</code></pre><p><img alt="AWS Step Functions" src="/images/4.2.2/0002.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Scan the block and copy the id of the flagged application.</li>
 </ol>
-<p><img src="/images/4.2.2/0003.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/0003.png?featherlight=false&width=90pc"></p>
 <ol start="2">
 <li>Back to the Step Functions service interface, click on State machine <strong>ApplicationProcessingStateMachine-xxxxxxx</strong>.</li>
 </ol>
-<p><img src="/images/4.2.2/0004.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/0004.png?featherlight=false&width=90pc"></p>
 <ol start="3">
 <li>At the Executions tab, we can see the status of this execution is showing as <strong>Running</strong>. Click to select the latest execution.</li>
 </ol>
 <ul>
 <li>We will see the status <strong>Pending Review</strong> is <strong>in-progress</strong>. This means that our state machine is paused and waiting for a response before resuming execution.</li>
 </ul>
-<p><img src="/images/4.2.2/0005.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/0005.png?featherlight=false&width=90pc"></p>
 <ol start="4">
 <li>Back in the Cloud9 console, we&rsquo;ll need to respond and approve the application. (We haven&rsquo;t built a web interface for this yet, we just call a Lambda Function in the <strong>Account Applications</strong> service to perform the approve operation.)</li>
 </ol>
@@ -1658,7 +1658,7 @@
 <li>Run the command below and replace <strong>REPLACE_WITH_APPLICATION_ID</strong> with the registration ID value you copied in step 3.</li>
 </ul>
 <pre tabindex="0"><code>aws lambda invoke --function-name sfn-workshop-ReviewApplication --payload &#39;{ &#34;id&#34;: &#34;REPLACE_WITH_APPLICATION_ID&#34;, &#34;decision&#34;: &#34;APPROVE&#34; }&#39; /dev/stdout
-</code></pre><p><img src="/images/4.2.2/0006.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+</code></pre><p><img alt="AWS Step Functions" src="/images/4.2.2/0006.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Returning to the Step Functions interface we can see that the execution has been continued and completed (since we have approved the application).</li>
 </ol>
@@ -1667,11 +1667,11 @@
 <li>Click on <strong>Step input</strong>.</li>
 <li>We can see the approval decision has been included in the input data. (via the <strong>SendTaskSuccess</strong> response that the Lambda function <strong>Review Application</strong> - functions/account-Applications/review.js called).</li>
 </ul>
-<p><img src="/images/4.2.2/0007.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
-<p><img src="/images/4.2.2/0008.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
-<p><img src="/images/4.2.2/0009.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
-<p><img src="/images/4.2.2/00010.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
-<p><img src="/images/4.2.2/00011.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/0007.png?featherlight=false&width=90pc"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/0008.png?featherlight=false&width=90pc"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/0009.png?featherlight=false&width=90pc"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/00010.png?featherlight=false&width=90pc"></p>
+<p><img alt="AWS Step Functions" src="/images/4.2.2/00011.png?featherlight=false&width=90pc"></p>
 <p>To complete the workflow implementation, we will replace the <strong>Approve Application</strong> and <strong>Reject Application</strong> steps to call the Lambda functions ApproveApplication and RejectApplication that we created.</p>
 
 
@@ -2461,19 +2461,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1701074859"></script>
-    <script src="/js/perfect-scrollbar.min.js?1701074859"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1701074859"></script>
-    <script src="/js/jquery.sticky.js?1701074859"></script>
-    <script src="/js/featherlight.min.js?1701074859"></script>
-    <script src="/js/highlight.pack.js?1701074859"></script>
+    <script src="/js/clipboard.min.js?1733802161"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733802161"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733802161"></script>
+    <script src="/js/jquery.sticky.js?1733802161"></script>
+    <script src="/js/featherlight.min.js?1733802161"></script>
+    <script src="/js/highlight.pack.js?1733802161"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1701074859"></script>
-    <script src="/js/learn.js?1701074859"></script>
-    <script src="/js/hugo-learn.js?1701074859"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733802161"></script>
+    <script src="/js/learn.js?1733802161"></script>
+    <script src="/js/hugo-learn.js?1733802161"></script>
 
-    <link href="/mermaid/mermaid.css?1701074859" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1701074859"></script>
+    <link href="/mermaid/mermaid.css?1733802161" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733802161"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

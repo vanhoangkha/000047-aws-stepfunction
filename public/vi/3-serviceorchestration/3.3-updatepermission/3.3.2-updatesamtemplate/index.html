@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Cập nhật SAM template :: BẮT ĐẦU VỚI AWS STEP FUNCTIONS</title>
 
     
-    <link href="/css/nucleus.css?1701074859" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1701074859" rel="stylesheet">
-    <link href="/css/hybrid.css?1701074859" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1701074859" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1701074859" rel="stylesheet">
-    <link href="/css/auto-complete.css?1701074859" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1701074859" rel="stylesheet">
-    <link href="/css/theme.css?1701074859" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1701074859" rel="stylesheet">
+    <link href="/css/nucleus.css?1733802161" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733802161" rel="stylesheet">
+    <link href="/css/hybrid.css?1733802161" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733802161" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733802161" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733802161" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733802161" rel="stylesheet">
+    <link href="/css/theme.css?1733802161" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733802161" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1701074859" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733802161" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1701074859"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733802161"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1701074859"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1701074859"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733802161"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733802161"></script>
 <script type="text/javascript">
     
-        var baseurl = "\/vi";
+        var baseurl = "\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1701074859"></script>
+<script type="text/javascript" src="/js/search.js?1733802161"></script>
 
     
   </div>
@@ -677,7 +677,7 @@
   
     
     <li data-nav-id="/vi/3-serviceorchestration/3.3-updatepermission/3.3.2-updatesamtemplate/" title="Cập nhật SAM template" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -1521,7 +1521,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>27-11-2023</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1632,7 +1632,7 @@
 </code></pre><ul>
 <li>Lệnh trên tạo một file <strong>statemachine/account-application-workflow.asl.json</strong> không có nội dung trong thư mục workshop-dir.</li>
 </ul>
-<p><img src="/images/3.3.2/0001.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/3.3.2/0001.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Click vào thư mục <strong>statemachine</strong> và mở file <strong>account-application-workflow.asl.json</strong>.</li>
 </ol>
@@ -1671,7 +1671,7 @@
             }
         }
     }
-</code></pre><p><img src="/images/3.3.2/0002.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+</code></pre><p><img alt="AWS Step Functions" src="/images/3.3.2/0002.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Tiếp theo chúng ta mở file <strong>template.yaml</strong> trong thư mục workshop-dir.</li>
 </ol>
@@ -1816,12 +1816,12 @@ Outputs:
   DataCheckingFunctionArn:
     Description: &#34;Data Checking Function ARN&#34;
     Value: !GetAtt DataCheckingFunction.Arn
-</code></pre><p><img src="/images/3.3.2/0003.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+</code></pre><p><img alt="AWS Step Functions" src="/images/3.3.2/0003.png?featherlight=false&width=90pc"></p>
 <ol>
 <li>Chạy câu lệnh sau để triển khai lại ứng dụng.</li>
 </ol>
 <pre tabindex="0"><code>sam build &amp;&amp; sam deploy
-</code></pre><p><img src="/images/3.3.2/0004.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+</code></pre><p><img alt="AWS Step Functions" src="/images/3.3.2/0004.png?featherlight=false&width=90pc"></p>
 
 <div class="notices tip" ><p>Bạn có thể tải về những file đã chỉnh sửa và chạy thành công ở dưới đây:</p>
 </div>
@@ -1866,7 +1866,7 @@ Outputs:
 </section>
 
 
-<p><img src="/images/3.3.2/0005.png?featherlight=false&amp;width=90pc" alt="AWS Step Functions"></p>
+<p><img alt="AWS Step Functions" src="/images/3.3.2/0005.png?featherlight=false&width=90pc"></p>
 
 
 
@@ -2655,19 +2655,19 @@ Outputs:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1701074859"></script>
-    <script src="/js/perfect-scrollbar.min.js?1701074859"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1701074859"></script>
-    <script src="/js/jquery.sticky.js?1701074859"></script>
-    <script src="/js/featherlight.min.js?1701074859"></script>
-    <script src="/js/highlight.pack.js?1701074859"></script>
+    <script src="/js/clipboard.min.js?1733802161"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733802161"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733802161"></script>
+    <script src="/js/jquery.sticky.js?1733802161"></script>
+    <script src="/js/featherlight.min.js?1733802161"></script>
+    <script src="/js/highlight.pack.js?1733802161"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1701074859"></script>
-    <script src="/js/learn.js?1701074859"></script>
-    <script src="/js/hugo-learn.js?1701074859"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733802161"></script>
+    <script src="/js/learn.js?1733802161"></script>
+    <script src="/js/hugo-learn.js?1733802161"></script>
 
-    <link href="/mermaid/mermaid.css?1701074859" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1701074859"></script>
+    <link href="/mermaid/mermaid.css?1733802161" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733802161"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
