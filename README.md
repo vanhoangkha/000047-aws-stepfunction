@@ -1,4 +1,4 @@
-# 🔀 Step Functions
+# Step Functions
 
 Orchestrate microservices with AWS Step Functions.
 
@@ -8,7 +8,7 @@ This is a hands-on workshop from the **AWS First Cloud Journey** series, designe
 
 ## Workshop
 
-📖 **[Start the workshop](https://vanhoangkha.github.io/000047-aws-stepfunction/)**
+**[Start the workshop](https://vanhoangkha.github.io/000047-aws-stepfunction/)**
 
 ## Prerequisites
 
